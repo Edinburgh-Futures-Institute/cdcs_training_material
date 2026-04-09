@@ -1,0 +1,396 @@
+<html>
+  <head>
+    <title>Repository Search</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .site-header {
+        width: 100%;
+        min-height: 220px;
+        background: url("images/BannerImage.png") center center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        border-radius: 0.7rem;
+        box-shadow: 0 2px 12px 0 #0001;
+      }
+      .site-header-title {
+        color: #fff;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-shadow: 0 2px 8px #0007;
+        letter-spacing: 1px;
+        text-align: center;
+        padding: 0.1rem 0.4rem;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 0.2rem;
+      }
+      :root {
+        --site-bg: #f8f9fb;
+        --card-bg: #fff;
+        --text-main: #1f2933;
+        --text-muted: #52606d;
+        --line-soft: #d9e2ec;
+        --accent: #0f766e;
+        --accent-strong: #0b5f5a;
+      }
+      html,
+      body {
+        background: var(--site-bg);
+        color: var(--text-main);
+        width: 80%;
+        margin: auto;
+      }
+      body {
+        line-height: 1.6;
+        font-family: system-ui, Arial, sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: #102a43;
+        line-height: 1.25;
+      }
+      h4 {
+        margin-top: 0.5rem;
+      }
+      p {
+        color: var(--text-muted);
+      }
+      a {
+        color: var(--accent);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+      }
+      a:hover,
+      a:focus {
+        color: var(--accent-strong);
+      }
+      .column img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16/9;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 0.4rem;
+        margin: 0.5rem 0 1rem 0;
+        padding: 0.25rem;
+        background: #f3f4f6;
+      }
+      input,
+      select {
+        width: 100%;
+        max-width: 28rem;
+        margin: 0.25rem 0.5rem 0.75rem 0;
+        padding: 0.6rem 0.7rem;
+        border: 1px solid var(--line-soft);
+        border-radius: 0.35rem;
+        background: #fff;
+        color: var(--text-main);
+      }
+      input:focus,
+      select:focus {
+        outline: 2px solid #9bd4cf;
+        outline-offset: 1px;
+        border-color: var(--accent);
+      }
+      #repo-list {
+        margin-top: 0.75rem;
+        padding-left: 1.25rem;
+      }
+      #repo-list li {
+        margin: 0.3rem 0;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+      .column {
+        background: var(--card-bg);
+        border: 1px solid var(--line-soft);
+        border-radius: 0.5rem;
+        padding: 0.9rem;
+      }
+      .row {
+        align-items: stretch;
+      }
+      @media (max-width: 900px) {
+        .row {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 640px) {
+        .row {
+          grid-template-columns: 1fr;
+        }
+        .column {
+          padding: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-header">
+      <div class="site-header-title">CDCS TRAINING MATERIAL</div>
+    </div>
+    <h1>Our GitHub Repositories</h1>
+    <p>
+      All the material that we have prepared for our Training Programme is
+      hosted in our
+      <a href="https://github.com/DCS-training" target="_blank"
+        >GitHub Repository</a
+      >. There are currently more than 10 repositories developped in the last 6
+      years. Each repository will contain a <strong>readme.md</strong> with
+      instructions on their content and how to use them. You can search directly
+      among the repositories using the Search tools at the bottom of this page.
+      To facilitate self-learning we have also created a series of more
+      self-contained tutorials that you can find below divided by topics.
+    </p>
+    <h2>Tutorials</h2>
+    <div class="row">
+      <div class="column">
+        <h4>Good Practices of Digital Research</h4>
+        <img src="images/Group in workshop.png" alt="Image 1" />
+        <ul>
+          <li>
+            <a href="Tutorials/SPSSTutorial.html" target="_blank"
+              >Make your Statistical Analysis Reproducible (From SPSS to R)</a
+            >
+          </li>
+          <li>
+            <a href="Tutorials/ShinyApps.html" target="_blank"
+              >Share your research Results with Interactive Applications
+              (SHINY)</a
+            >
+          </li>
+          <li>More to Come Soon</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Artificial Intelligence</h4>
+        <img src="images/Map.png" alt="Image 2" />
+        <ul>
+          <li>
+            <a href="Tutorials/LocalLLMs.html"
+              >Working Locally with Small Language Models</a
+            >
+          </li>
+          <li>More to Come Soon</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Digitised Document & Text Analysis</h4>
+        <img src="images/Recordings.png" alt="Image 3" />
+        <ul>
+          <li>
+            <a href="Tutorials/MappingAFamilyNetwork.html" target="_blank"
+              >Mapping a Family Network with Gephi</a
+            >
+          </li>
+          <li>
+            <a
+              href="Tutorials/DecipheringAFinancialNetwork.html"
+              target="_blank"
+              >Deciphering a Financial Network with Gephi</a
+            >
+          </li>
+          <li>More to Come Soon</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <h4>Data Wrangling & Data Visualisation</h4>
+        <img src="images/weaving black and white.png" alt="Image 4" />
+        <ul>
+          <li>More to Come Soon</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Geographical Data & Digital Drawing</h4>
+        <img src="images/Atlas Black and white.png" alt="Image 5" />
+        <ul>
+          <li>More to Come Soon</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Structured Data Analysis</h4>
+        <img src="images/Typewriter black and white.png" alt="Image 6" />
+        <ul>
+          <li>
+            <a href="Tutorials/bayesian-statistics.html"
+              >Introduction to Bayesian Statistics</a
+            >
+          </li>
+          <li>More to Come Soon</li>
+        </ul>
+      </div>
+    </div>
+    <h2>Search GitHub Repositories</h2>
+    <p>You can search the repositories either by topic or by title.</p>
+    <!-- Search by Topic -->
+    <h3>Search by Topic</h3>
+    <p>
+      You can use the search functions below to filter the repositories based on
+      the topics they cover. You can either type a topic or select one from the
+      drop-down menu.
+    </p>
+    <div>
+      <input
+        type="text"
+        id="search-topic-input"
+        placeholder="Search by topic"
+      />
+      <select id="topic-select">
+        <option value="">-- Select a Topic --</option>
+      </select>
+    </div>
+    <!-- Search by Name -->
+    <h3>Search by Name</h3>
+    <p>Use the search function below to filter based on the repository name.</p>
+    <div>
+      <input
+        type="text"
+        id="search-name-input"
+        placeholder="Search by repository name"
+      />
+    </div>
+    <ul id="repo-list"></ul>
+    <h3>Research Adaptation: Guidance and Case Studies</h3>
+    <p>
+      In June 2021, the Centre for Data, Culture & Society and the Research
+      Office of the College of Arts, Humanities and Social Sciences held three
+      online workshops focused on adapting approaches to research in the context
+      of ongoing remote and hybrid working. Each workshop focused on one
+      research area that has been significantly impacted by social distancing
+      measures, with the aim of capturing ideas, resources, advice and tips from
+      the community to share more widely. As a part of this work we were also
+      able to resource the development of ethics guidance for social media
+      research, and to gather a set of 'research adaptation case studies'
+      provided by local researchers. While there is now a considerable amount of
+      general resources and guidance available, we wanted to explore what is
+      required locally for our community to move forward and invest in
+      developing hybrid and remote research methods.
+    </p>
+    <h4><a href="research-adaptation.html" target="blank">Explore More </a></h4>
+    <p></p>
+    <h1>Contacts</h1>
+    <script>
+      async function loadRepos() {
+        const response = await fetch("./_data/repos.json");
+        if (!response.ok) {
+          throw new Error(`Unable to load repos.json: ${response.status}`);
+        }
+        return response.json();
+      }
+
+      function createIndex(repos, field) {
+        return lunr(function () {
+          this.ref("name");
+          this.field("name");
+          this.field(field);
+          repos.forEach((repo) => {
+            const data = {
+              name: repo.name,
+              id: repo.name,
+            };
+            data[field] = repo[field].join
+              ? repo[field].join(" ")
+              : repo[field];
+            this.add(data);
+          });
+        });
+      }
+      function populateTopicSelect(repos) {
+        const topicSelect = document.getElementById("topic-select");
+        const uniqueTopics = new Set();
+        // Collect unique topics
+        repos.forEach((repo) => {
+          repo.topics.forEach((topic) => uniqueTopics.add(topic));
+        });
+        // Convert Set to array and sort alphabetically
+        const sortedTopics = Array.from(uniqueTopics).sort();
+        console.log("Sorted topics:", sortedTopics);
+        // Clear previous options
+        topicSelect.innerHTML =
+          '<option value="">-- Select a Topic --</option>';
+        // Add sorted topics to the dropdown
+        sortedTopics.forEach((topic) => {
+          const option = document.createElement("option");
+          option.value = topic;
+          option.textContent = topic;
+          topicSelect.appendChild(option);
+        });
+      }
+      function searchRepos(query, index, repos, field, exactMatch = false) {
+        const results = index.search(query);
+        const repoList = document.getElementById("repo-list");
+        repoList.innerHTML = "";
+        results.forEach((result) => {
+          const repo = repos.find((r) => r.name === result.ref);
+          if (repo) {
+            const fieldValue = repo[field];
+            const matchesExact = exactMatch ? fieldValue.includes(query) : true;
+            if (!field || matchesExact) {
+              const li = document.createElement("li");
+              li.innerHTML = `<a href="${repo.url}">${repo.name}</a>`;
+              repoList.appendChild(li);
+            }
+          }
+        });
+        if (results.length === 0 || repoList.innerHTML === "") {
+          repoList.innerHTML = "<li>No results found</li>";
+        }
+      }
+      function initialize(repos) {
+        if (!Array.isArray(repos)) {
+          return;
+        }
+
+        const topicIndex = createIndex(repos, "topics");
+        const nameIndex = createIndex(repos, "name");
+        populateTopicSelect(repos);
+
+        // Flexible search for topics when typing
+        document
+          .getElementById("search-topic-input")
+          .addEventListener("input", function () {
+            const query = this.value.trim();
+            searchRepos(query, topicIndex, repos, "topics"); // flexible matching
+          });
+
+        // Exact search for topics when selecting from the dropdown
+        document
+          .getElementById("topic-select")
+          .addEventListener("change", function () {
+            const query = this.value.trim();
+            searchRepos(query, topicIndex, repos, "topics", true); // exact matching
+          });
+
+        // Flexible search for repository names
+        document
+          .getElementById("search-name-input")
+          .addEventListener("input", function () {
+            const query = this.value.trim();
+            searchRepos(query, nameIndex, repos, "name"); // flexible matching
+          });
+      }
+
+      loadRepos()
+        .then((repos) => {
+          console.log("Fetched repositories:", repos);
+          initialize(repos);
+        })
+        .catch((error) => {
+          console.error(error);
+          const repoList = document.getElementById("repo-list");
+          repoList.innerHTML = "<li>Unable to load repositories</li>";
+        });
+    </script>
+  </body>
+</html>
