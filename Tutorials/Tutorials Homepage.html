@@ -1,0 +1,200 @@
+<html>
+  <head>
+    <title>Tutorials Homepage</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+
+  html,
+  body {
+    background: #fff;
+    color: #000;
+    width: 80%;
+    margin: auto;
+  }
+
+  body {
+    line-height: 1.6;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #000;
+    line-height: 1.25;
+  }
+
+  h4 {
+    margin-top: 0.5rem;
+  }
+
+  p {
+    color: #000;
+  }
+
+  .column img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 0.5rem 0 1rem 0;
+    background: #fff;
+  }
+
+  input,
+  select {
+    width: 100%;
+    max-width: 28rem;
+    margin: 0.25rem 0.5rem 0.75rem 0;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #000;
+    border-radius: 0.35rem;
+    background: #fff;
+    color: #000;
+  }
+
+  input:focus,
+  select:focus {
+    outline: 2px solid #999;
+    outline-offset: 1px;
+    border-color: #000;
+  }
+
+  #repo-list {
+    margin-top: 0.75rem;
+    padding-left: 1.25rem;
+  }
+
+  #repo-list li {
+    margin: 0.3rem 0;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 1rem 0;
+    align-items: stretch;
+  }
+
+  .column {
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    flex: 1 1 300px;
+    max-width: 32%;
+    min-width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  @media (max-width: 900px) {
+    .row {
+      flex-direction: column;
+    }
+
+    .column {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .column {
+      padding: 1rem;
+    }
+  }
+</style>
+
+  </head>
+  <body>
+    <h1>Our GitHub Repositories</h1>
+    <p>
+      Across the years we have started developing a series of self-contained tutorial based on the content of our training programme. 
+      At the moment there are around 6 tutorials you can explore on topic ranging from working with Network Analysis to using small language models locally
+      Our tutorials are subdivided in 6 categories: Good Practices of Digital Research, Artificial Intelligence, Digitised Documents & Text Analysis, Data Wrangling and Data Visualisation, Geographical Data and Digital Drawing, and Structured Data Analysis.
+    </p>
+    <h2>Tutorials</h2>
+    <div class="row">
+      <div class="column">
+        <h4>Good Practices of Digital Research</h4>
+        <img src="../images/Group in workshop.png" alt="Image 1" />
+        <ul>
+          <li>
+            <a href="SPSSTutorial.html" target="_blank"
+              >Make your Statistical Analysis Reproducible (From SPSS to R)</a
+            >
+          </li>
+          <li>
+            <a href="ShinyApps.html" target="_blank"
+              >Share your research Results with Interactive Applications
+              (SHINY)</a
+            >
+          </li>
+          <li>More to Come Soon</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Artificial Intelligence</h4>
+        <img src="../images/Map.png" alt="Image 2" />
+        <ul>
+          <li>
+            <a href="LocalLLMs.html"
+              >Working Locally with Small Language Models</a
+            >
+          </li>
+          <li>More to Come Soon</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Digitised Document & Text Analysis</h4>
+        <img src="../images/Recordings.png" alt="Image 3" />
+        <ul>
+          <li>
+            <a href="MappingAFamilyNetwork.html" target="_blank"
+              >Mapping a Family Network with Gephi</a>
+          </li>
+          <li>
+            <a
+              href="DecipheringAFinancialNetwork.html"
+              target="_blank"
+              >Deciphering a Financial Network with Gephi</a
+            >
+          </li>
+          <li>More to Come Soon</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <h4>Data Wrangling & Data Visualisation</h4>
+        <img src="../images/weaving black and white.png" alt="Image 4" />
+        <ul>
+          <li>More to Come Soon</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Geographical Data & Digital Drawing</h4>
+        <img src="../images/Atlas Black and white.png" alt="Image 5" />
+        <ul>
+          <li>More to Come Soon</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Structured Data Analysis</h4>
+        <img src="../images/Typewriter black and white.png" alt="Image 6" />
+        <ul>
+          <li>
+            <a href="bayesian-statistics.html"
+              >Introduction to Bayesian Statistics</a
+            >
+          </li>
+          <li>More to Come Soon</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
