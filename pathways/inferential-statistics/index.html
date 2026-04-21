@@ -49,8 +49,8 @@
   }
 
   .node text {
-    font: 12px sans-serif;
-    font-weight: 500;
+    font: 14px sans-serif;
+    font-weight: 600;
     font-family: "Montserrat", sans-serif;
   }
 
@@ -201,6 +201,24 @@
         })
         .style("fill-opacity", 1e-6);
 
+      // semi-transparent white background rect behind each text label
+      nodeEnter.each(function (d) {
+        var g = d3.select(this);
+        var textEl = g.select("text").node();
+        var bbox = textEl.getBBox();
+        var pad = 3;
+        g.insert("rect", "text")
+          .attr("class", "text-bg")
+          .attr("x", bbox.x - pad)
+          .attr("y", bbox.y - pad)
+          .attr("width", Math.max(0, bbox.width + pad * 2))
+          .attr("height", Math.max(0, bbox.height + pad * 2))
+          .attr("rx", 2)
+          .attr("ry", 2)
+          .attr("fill", "white")
+          .attr("fill-opacity", 0);
+      });
+
       // Transition nodes to their new position.
       var nodeUpdate = node
         .transition()
@@ -215,6 +233,8 @@
         .style("fill", function (d) {
           return d._children ? "lightsteelblue" : "#fff";
         });
+
+      nodeUpdate.select("rect.text-bg").attr("fill-opacity", 0.75);
 
       nodeUpdate.select("text").style("fill-opacity", 1);
 
@@ -238,6 +258,8 @@
         .remove();
 
       nodeExit.select("circle").attr("r", 1e-6);
+
+      nodeExit.select("rect.text-bg").attr("fill-opacity", 0);
 
       nodeExit.select("text").style("fill-opacity", 1e-6);
 
