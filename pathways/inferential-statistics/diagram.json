@@ -1,0 +1,152 @@
+{
+  "name": "Type of Data",
+  "children": [
+    {
+      "name": "Discrete/Categorical",
+      "children": [
+        {
+          "name": " < 5",
+          "children": [{ "name": "Fisher's Exact Test", "size": 3938 }]
+        },
+        {
+          "name": " > 5",
+          "children": [{ "name": "CHI Square Test", "size": 3534 }]
+        }
+      ]
+    },
+    {
+      "name": "Continuous",
+      "children": [
+        {
+          "name": "Relationship",
+          "children": [
+            {
+              "name": "Dependent/Independent Variables",
+              "size": 3938,
+              "children": [{ "name": "Regression Analysis", "size": 3938 }]
+            },
+            {
+              "name": "No Dependent/Independent Variables",
+              "size": 3938,
+              "children": [
+                {
+                  "name": "Correlation Analysis Parametric",
+                  "size": 3938,
+                  "children": [
+                    { "name": "Pearson's Correlation", "size": 3938 }
+                  ]
+                },
+                {
+                  "name": "Correlation Analysis Non-Parametric",
+                  "size": 3938,
+                  "children": [
+                    { "name": "Spearman's Correlation", "size": 3938 }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Difference",
+          "children": [
+            {
+              "name": "Different Means",
+              "size": 3534,
+              "children": [{ "name": "One Sample t-Test", "size": 3534 }]
+            },
+            {
+              "name": "Different Variances",
+              "size": 5731,
+              "children": [{ "name": "Bartlett's Test", "size": 5731 }]
+            },
+            {
+              "name": "Multiple Means",
+              "size": 5731,
+              "children": [
+                {
+                  "name": "Two Groups",
+                  "size": 5731,
+                  "children": [
+                    {
+                      "name": "Parametric Assumption Satisfied",
+                      "size": 5731,
+                      "children": [{ "name": "Student t-Test", "size": 5731 }]
+                    },
+                    {
+                      "name": "Parametric Assumption Not Satisfied",
+                      "size": 5731,
+                      "children": [
+                        { "name": "Kolmogorov Smirnov Test", "size": 5731 },
+                        {
+                          "name": "Transform Data",
+                          "size": 5731,
+                          "children": [
+                            { "name": "Student t-Test", "size": 5731 }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "More Than Two Groups",
+                  "size": 5731,
+                  "children": [
+                    {
+                      "name": "Parametric Assumption Satisfied",
+                      "size": 5731,
+                      "children": [
+                        {
+                          "name": "One Way ANOVA",
+                          "size": 5731,
+                          "children": [
+                            {
+                              "name": "If Significant: Bonferroni's, Tukey's ETC."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Parametric Assumption Not Satisfied",
+                      "size": 5731,
+                      "children": [
+                        {
+                          "name": "Kruskal Wallis Test",
+                          "size": 5731,
+                          "children": [
+                            {
+                              "name": "If Significant: Bonferroni's, Tukey's ETC.",
+                              "size": 5731
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Transform Data",
+                          "size": 5731,
+                          "children": [
+                            {
+                              "name": "One Way ANOVA",
+                              "size": 5731,
+                              "children": [
+                                {
+                                  "name": "If Significant: Bonferroni's, Tukey's ETC.",
+                                  "size": 5731
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
