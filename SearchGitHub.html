@@ -205,6 +205,8 @@
       }
       function searchRepos(query, index, repos, field, exactMatch = false) {
         const results = index.search(query);
+        const matchedRepos = [];
+        
         const repoList = document.getElementById("repo-list");
         repoList.innerHTML = "";
         results.forEach((result) => {
@@ -213,12 +215,19 @@
             const fieldValue = repo[field];
             const matchesExact = exactMatch ? fieldValue.includes(query) : true;
             if (!field || matchesExact) {
-              const li = document.createElement("li");
-              li.innerHTML = `<a href="${repo.url}">${repo.name}</a>`;
-              repoList.appendChild(li);
+              matchedRepos.push(repo);
             }
           }
         });
+
+        matchedRepos
+          .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
+          .forEach((repo) => {
+            const li = document.createElement("li");
+            li.innerHTML = `<a href="${repo.url} " target="_blank">${repo.name}</a>`;
+            repoList.appendChild(li);
+          });
+        
         if (results.length === 0 || repoList.innerHTML === "") {
           repoList.innerHTML = "<li>No results found</li>";
         }
