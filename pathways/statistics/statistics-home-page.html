@@ -106,6 +106,7 @@
       const mid45 = (nodes[3].x + nodes[4].x) / 2;
       const split56 = (nodes[4].x + nodes[5].x) / 2;
 
+      // nodes 6 and 7 links
       const branchNodes = [
         {
           index: 5,
@@ -119,7 +120,7 @@
           label: 7,
           x: nodes[5].x,
           y: yTop + branchOffsetY,
-          link: "https://example.com/step-7",
+          link: "inferential-statistics/step-7.html",
         },
       ];
 
@@ -186,15 +187,13 @@
         `Inferential statistics. Inferential statistics help to suggest explanations for asituation or phenomenon by inferring the characteristics of the whole population based on the sample collected.`,
       ];
 
-      // One URL per numbered node (1..6)
+      // 1-5 node links are set here and 6/7 are in the variable called branchNodes. 
       const nodeLinks = [
-        "https://example.com/step-1",
+        "https://google.com",
         "https://example.com/step-2",
         "https://example.com/step-3",
         "https://example.com/step-4",
         "https://example.com/step-5",
-        "https://example.com/step-6",
-        "https://example.com/step-7",
       ];
 
       const upperNodeLink = "https://www.google.com";
@@ -331,13 +330,11 @@
         .data(branchPathPoints)
         .join("path")
         .attr("class", "branch-path")
-        .attr(
-          "d",
-          (points) =>
-            d3
-              .line()
-              .x((d) => d.x)
-              .y((d) => d.y)(points),
+        .attr("d", (points) =>
+          d3
+            .line()
+            .x((d) => d.x)
+            .y((d) => d.y)(points),
         )
         .attr("fill", "none")
         .attr("stroke", "#041d40")
