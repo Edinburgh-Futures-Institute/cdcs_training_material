@@ -1,320 +1,442 @@
-<!doctype html>
-<meta charset="utf-8" />
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/uni_logo.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet"
-  />
-  <title>Inferential Statistics</title>
+    <meta charset="UTF-8">
+    <title>Inferential Statistics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/svg+xml" href="/uni_logo.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../../../styles.css">
+
+    <style>
+        .diagram-section {
+            margin: 2rem 0;
+        }
+
+        #inferential-statistics-diagram {
+            width: 100%;
+            height: 700px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            background: #fff;
+        }
+
+        #inferential-statistics-diagram svg.diagram {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        #inferential-statistics-diagram .node {
+            cursor: pointer;
+        }
+
+        #inferential-statistics-diagram .node circle {
+            fill: #fff;
+            stroke: black;
+            stroke-width: 1.5px;
+        }
+
+        #inferential-statistics-diagram .node.on-path circle {
+            stroke: #f4a261;
+            stroke-width: 2px;
+        }
+
+        #inferential-statistics-diagram .node.selected circle {
+            fill: #ffd166;
+            stroke: #e76f51;
+            stroke-width: 2.5px;
+        }
+
+        #inferential-statistics-diagram .node text {
+            font: 14px sans-serif;
+            font-weight: 600;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        #inferential-statistics-diagram .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 1.5px;
+        }
+
+        #inferential-statistics-diagram .link.on-path {
+            stroke: #e76f51;
+            stroke-width: 3px;
+        }
+    </style>
 </head>
-<style>
-  html,
-  body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-  }
 
-  svg.diagram {
-    width: 100vw;
-    height: 100vh;
-    display: block;
-  }
-
-  .node {
-    cursor: pointer;
-  }
-
-  .node circle {
-    fill: #fff;
-    stroke: black;
-    stroke-width: 1.5px;
-  }
-
-  .node.on-path circle {
-    stroke: #f4a261;
-    stroke-width: 2px;
-  }
-
-  .node.selected circle {
-    fill: #ffd166;
-    stroke: #e76f51;
-    stroke-width: 2.5px;
-  }
-
-  .node text {
-    font: 14px sans-serif;
-    font-weight: 600;
-    font-family: "Montserrat", sans-serif;
-  }
-
-  .link {
-    fill: none;
-    stroke: #ccc;
-    stroke-width: 1.5px;
-  }
-
-  .link.on-path {
-    stroke: #e76f51;
-    stroke-width: 3px;
-  }
-</style>
 <body>
-  <script src="//d3js.org/d3.v3.min.js"></script>
-  <script>
-    var margin = { top: 20, right: 120, bottom: 20, left: 120 },
-      viewportWidth = Math.max(window.innerWidth, 960),
-      viewportHeight = Math.max(window.innerHeight, 700),
-      width = Math.max(1, viewportWidth - margin.right - margin.left),
-      height = Math.max(1, viewportHeight - margin.top - margin.bottom);
+    <nav class="top-menu" aria-label="Main navigation">
+        <div class="top-menu-home">
+            <a href="../../../index.html">Home</a>
+            <a href="https://efi.ed.ac.uk/" class="logo-btn">
+                <img src="../../../images/logo.png" alt="Site Logo">
+            </a>
+        </div>
 
-    var i = 0,
-      duration = 750,
-      root;
+        <div class="top-menu-links">
+            <a href="../../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+            <a href="../../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+            <a href="../../pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+            <a href="../../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+            <a href="../../../Workflows.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+        </div>
+    </nav>
 
-    var selectedNode = null;
+    <div class="container">
+        <div class="site-header">
+            <div class="site-header-title">EFI Data-led Research Methods</div>
+        </div>
 
-    var minDepthSpacing = 70,
-      maxDepthSpacing = 180,
-      horizontalPadding = 30;
+        <h1>Inferential Statistics</h1>
 
-    var tree = d3.layout.tree().size([height, width]);
+        <p>Inferential statistics help to suggest explanations for a situation or phenomenon, by inferring the characteristics of the whole population based on the sample collected. With inferential statistics, you are trying to reach conclusions that extend beyond the immediate data alone.</p>
 
-    var diagonal = d3.svg.diagonal().projection(function (d) {
-      return [d.y, d.x];
-    });
+        <p>The main difference between inferential and descriptive statistics is that the latter will just describe your data, while inferential statistics will draw a general conclusion that will represent the whole population.</p>
 
-    var svgRoot = d3
-      .select("body")
-      .append("svg")
-      .attr("class", "diagram")
-      .attr(
-        "viewBox",
-        "0 0 " +
-          (width + margin.right + margin.left) +
-          " " +
-          (height + margin.top + margin.bottom),
-      )
-      .attr("preserveAspectRatio", "xMidYMid meet");
+        <h2>Statistical models selection and scientific process</h2>
 
-    var svg = svgRoot
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        <p>The field of statistical analysis is very vast and the number of different models and tests you may want to build/apply on your data may look overwhelming. It is important that you always start from the analysis of the structure of your data to identify what could be a good/bad analysis, for example you may need to use a non-parametric test if your data are not <a href="https://www.varsitytutors.com/hotmath/hotmath_help/topics/normal-distribution-of-data" target="_blank" rel="noopener noreferrer">normally distributed</a>.</p>
 
-    d3.json("diagram.json", function (error, flare) {
-      if (error) throw error;
+        <p>Equally important is to always start from a clear and defined research question. Randomly trying to apply different tests/models will make it very difficult for you to assess the results and it will compromise your analysis. One of the easiest missteps you can make is <a href="https://www.tylervigen.com/spurious-correlations" target="_blank" rel="noopener noreferrer">confusing correlation with causation</a>. The only way to assess proper causation is knowing your sample and establishing clear hypotheses to test.</p>
 
-      root = flare;
-      root.x0 = height / 2;
-      root.y0 = 0;
+        <p>Below is a list of principles you may want to get accustomed with:</p>
 
-      function collapse(d) {
-        if (d.children) {
-          d._children = d.children;
-          d._children.forEach(collapse);
-          d.children = null;
+        <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing" target="_blank" rel="noopener noreferrer">Null-Hypothesis Significance tests</a></li>
+            <li><a href="https://www.youtube.com/watch?v=5Z9OIYA8He8" target="_blank" rel="noopener noreferrer">P-Values</a></li>
+            <li><a href="https://stattrek.com/sampling/populations-and-samples.aspx" target="_blank" rel="noopener noreferrer">Population vs Samples</a></li>
+            <li><a href="https://www.mathsisfun.com/data/probability.html" target="_blank" rel="noopener noreferrer">Probability</a></li>
+            <li><a href="https://www.youtube.com/watch?v=FgakZw6K1QQ&amp;t=985s" target="_blank" rel="noopener noreferrer">PCA</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Cluster_analysis" target="_blank" rel="noopener noreferrer">Cluster Analysis</a></li>
+            <li><a href="https://www.bmj.com/about-bmj/resources-readers/publications/statistics-square-one/11-correlation-and-regression" target="_blank" rel="noopener noreferrer">Correlation and Regression</a></li>
+            <li><a href="https://cals.arizona.edu/classes/rnr555/lecnotes/10.html" target="_blank" rel="noopener noreferrer">Similarity Measures</a></li>
+        </ul>
+
+        <h2>Null Hypothesis testing: choose the right test</h2>
+
+        <p>Choosing the right test to perform on a sample can be very complicated and it is also influenced by the distribution of your data sample. Before starting testing your sample you always have to go through the same steps:</p>
+
+        <ol>
+            <li><em>Observe the dataset you are going to perform the test on</em>: you need to know the structure and content of it very well to be able to select the right method.</li>
+            <li><em>Define the hypothesis you want to test</em>: this needs to be translated into something that the system will understand. It is often a good idea to properly write it down.</li>
+            <li><em>Define the Null hypothesis</em>: once you have defined your hypothesis you need to identify the contrary of your hypothesis. This step is sometimes very hard in humanities and social sciences because there are not always just two mutually exclusive hypotheses. Being aware of this will make the difference between a good and a poor interpretation of the results.</li>
+            <li><em>Choose the right method to compare the formal model against your data</em>: the choice of the right method is connected to the structure of your data and the hypothesis you are trying to test.</li>
+        </ol>
+
+        <p>Below is an interactive flow chart to help you with deciding which test to use.</p>
+
+        <section class="diagram-section" aria-label="Interactive statistical test flowchart">
+            <div id="inferential-statistics-diagram"></div>
+        </section>
+
+        <h2>Where to find more information</h2>
+
+        <div class="row">
+            <div class="column">
+                <h3>Our Tutorials</h3>
+                <img src="../../../images/Class black and white.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://github.com/DCS-training/Linear-Regression" target="_blank" rel="noopener noreferrer">Linear Regression</a></li>
+                    <li><a href="../../../Tutorials/SPSSTutorial.html" target="_blank" rel="noopener noreferrer">From SPSS to R: How to Make Your Statistical Analysis Reproducible</a></li>
+                    <li><a href="https://github.com/DCS-training/Linear-Mixed-Effects-Modelling" target="_blank" rel="noopener noreferrer">Regression And Mixed Effects Modelling</a></li>
+                    <li><a href="https://github.com/DCS-training/Null-Hypothesis-Testing-With-R" target="_blank" rel="noopener noreferrer">Null Hypothesis Testing With R</a></li>
+                    <li><a href="https://github.com/DCS-training/summerschool2024-stream2/tree/main/Day4" target="_blank" rel="noopener noreferrer">Day 4 of the 2024 Summer School (Data Analysis)</a></li>
+                    <li><a href="https://github.com/DCS-training/Digital-Method-of-the-Month/blob/main/DMM%20Docs/Descriptive%20and%20inferential%20statistics.md" target="_blank" rel="noopener noreferrer">Descriptive and Inferential Statistics Digital Method of the Month</a></li>
+                    <li><a href="../../../Tutorials/bayesian-statistics.html" target="_blank" rel="noopener noreferrer">Introduction to Bayesian Statistics</a></li>
+                  </ul>
+            </div>
+
+            <div class="column">
+                <h3>UoE Resources</h3>
+                <img src="../../../images/Playfair Header.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://media.ed.ac.uk/media/12.%20Hypothesis%20Testing%20%E2%80%93%20Points%20to%20Remember/1_7nasdr5c" target="_blank" rel="noopener noreferrer">Hypothesis Testing Points to Remember</a></li>
+                    <li><a href="https://media.ed.ac.uk/media/4.%20T-Test%20for%20Comparing%20Two%20Groups%20/1_bjbeb4vp" target="_blank" rel="noopener noreferrer">Tests for Comparing Two Groups</a></li>
+                    <li><a href="https://media.ed.ac.uk/media/15.%20Tests%20for%20Binary%20%20Categorical%20Data%20%E2%80%93%20Introduction%20/1_yv82maf7" target="_blank" rel="noopener noreferrer">Tests for Binary & Categorical Data</a></li>
+                  </ul>
+            </div>
+
+            <div class="column">
+                <h3>Self-Guided Learning</h3>
+                <img src="../../../images/Group with basket sepia.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://www.andrew.cmu.edu/user/achoulde/94842/lectures/lecture07/lecture07-94842.html" target="_blank" rel="noopener noreferrer">Hypothesis Testing with R</a></li>
+                    <li><a href="geeksforgeeks.org/r-language/hypothesis-testing-in-r-programming/" target="_blank" rel="noopener noreferrer">Hypothesis Testing in R Programming</a></li>
+                     <li><a href="https://www.r-bloggers.com/2022/12/hypothesis-testing-in-r/" target="_blank" rel="noopener noreferrer">Hypothesis Testing in R</a></li>
+                     <li><a href="https://learningstatisticswithr.com/book/hypothesistesting.html" target="_blank" rel="noopener noreferrer">Learning Statistics with R</a></li>
+                     <li><a href="https://ethanweed.github.io/pythonbook/04.04-hypothesis-testing.html" target="_blank" rel="noopener noreferrer">Hypothesis Testing with Python</a></li>
+                     <li><a href="https://www.youtube.com/watch?v=5cZE2mhPvSU" target="_blank" rel="noopener noreferrer">Introduction to Hypothesis Testing with Python</a></li>
+                  </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="../statistics-home-page.html"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #e7135d;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+               ">
+                Back to the Statistical Analysis Pathway Homepage
+            </a>
+        </div>
+    </div>
+
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script>
+        var diagramContainer = document.getElementById("inferential-statistics-diagram");
+
+        var margin = { top: 20, right: 120, bottom: 20, left: 120 },
+            viewportWidth = Math.max(diagramContainer.clientWidth, 960),
+            viewportHeight = Math.max(diagramContainer.clientHeight, 700),
+            width = Math.max(1, viewportWidth - margin.right - margin.left),
+            height = Math.max(1, viewportHeight - margin.top - margin.bottom);
+
+        var i = 0,
+            duration = 750,
+            root;
+
+        var selectedNode = null;
+
+        var minDepthSpacing = 70,
+            maxDepthSpacing = 180,
+            horizontalPadding = 30;
+
+        var tree = d3.layout.tree().size([height, width]);
+
+        var diagonal = d3.svg.diagonal().projection(function (d) {
+            return [d.y, d.x];
+        });
+
+        var svgRoot = d3
+            .select("#inferential-statistics-diagram")
+            .append("svg")
+            .attr("class", "diagram")
+            .attr(
+                "viewBox",
+                "0 0 " +
+                    (width + margin.right + margin.left) +
+                    " " +
+                    (height + margin.top + margin.bottom)
+            )
+            .attr("preserveAspectRatio", "xMidYMid meet");
+
+        var svg = svgRoot
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        d3.json("diagram.json", function (error, flare) {
+            if (error) throw error;
+
+            root = flare;
+            root.x0 = height / 2;
+            root.y0 = 0;
+
+            function collapse(d) {
+                if (d.children) {
+                    d._children = d.children;
+                    d._children.forEach(collapse);
+                    d.children = null;
+                }
+            }
+
+            root.children.forEach(collapse);
+            update(root);
+        });
+
+        function update(source) {
+            var nodes = tree.nodes(root).reverse(),
+                links = tree.links(nodes);
+
+            var selectedPathIds = {};
+            if (selectedNode) {
+                var current = selectedNode;
+                while (current) {
+                    if (current.id) selectedPathIds[current.id] = true;
+                    current = current.parent;
+                }
+            }
+
+            var maxDepth =
+                    d3.max(nodes, function (d) {
+                        return d.depth;
+                    }) || 1,
+                availableWidth = Math.max(width - horizontalPadding * 2, 1),
+                depthSpacing = Math.max(
+                    minDepthSpacing,
+                    Math.min(maxDepthSpacing, availableWidth / maxDepth)
+                );
+
+            nodes.forEach(function (d) {
+                d.y = d.depth * depthSpacing;
+            });
+
+            var node = svg.selectAll("g.node").data(nodes, function (d) {
+                return d.id || (d.id = ++i);
+            });
+
+            var nodeEnter = node
+                .enter()
+                .append("g")
+                .attr("class", "node")
+                .attr("transform", function () {
+                    return "translate(" + source.y0 + "," + source.x0 + ")";
+                })
+                .on("click", click);
+
+            nodeEnter
+                .append("circle")
+                .attr("r", 1e-6)
+                .style("fill", function (d) {
+                    return d._children ? "lightsteelblue" : "#fff";
+                });
+
+            nodeEnter
+                .append("text")
+                .attr("x", function (d) {
+                    return d.children || d._children ? -10 : 10;
+                })
+                .attr("text-anchor", function (d) {
+                    return d.children || d._children ? "end" : "start";
+                })
+                .each(function (d) {
+                    var text = d3.select(this),
+                        words = (d.name || "").split(/[\s/]+/).filter(Boolean),
+                        firstLineDy = -((words.length - 1) * 0.55);
+
+                    words.forEach(function (word, index) {
+                        text
+                            .append("tspan")
+                            .attr("x", text.attr("x"))
+                            .attr("dy", (index === 0 ? firstLineDy : 1.1) + "em")
+                            .text(word);
+                    });
+                })
+                .style("fill-opacity", 1e-6);
+
+            nodeEnter.each(function () {
+                var g = d3.select(this);
+                var textEl = g.select("text").node();
+                var bbox = textEl.getBBox();
+                var pad = 3;
+
+                g.insert("rect", "text")
+                    .attr("class", "text-bg")
+                    .attr("x", bbox.x - pad)
+                    .attr("y", bbox.y - pad)
+                    .attr("width", Math.max(0, bbox.width + pad * 2))
+                    .attr("height", Math.max(0, bbox.height + pad * 2))
+                    .attr("rx", 2)
+                    .attr("ry", 2)
+                    .attr("fill", "white")
+                    .attr("fill-opacity", 0);
+            });
+
+            var nodeUpdate = node
+                .transition()
+                .duration(duration)
+                .attr("transform", function (d) {
+                    return "translate(" + d.y + "," + d.x + ")";
+                });
+
+            nodeUpdate
+                .select("circle")
+                .attr("r", 5)
+                .style("fill", function (d) {
+                    return d._children ? "lightsteelblue" : "#fff";
+                });
+
+            nodeUpdate.select("rect.text-bg").attr("fill-opacity", 0.75);
+            nodeUpdate.select("text").style("fill-opacity", 1);
+
+            svg
+                .selectAll("g.node")
+                .classed("on-path", function (d) {
+                    return !!selectedPathIds[d.id];
+                })
+                .classed("selected", function (d) {
+                    return selectedNode && d === selectedNode;
+                });
+
+            var nodeExit = node
+                .exit()
+                .transition()
+                .duration(duration)
+                .attr("transform", function () {
+                    return "translate(" + source.y + "," + source.x + ")";
+                })
+                .remove();
+
+            nodeExit.select("circle").attr("r", 1e-6);
+            nodeExit.select("rect.text-bg").attr("fill-opacity", 0);
+            nodeExit.select("text").style("fill-opacity", 1e-6);
+
+            var link = svg.selectAll("path.link").data(links, function (d) {
+                return d.target.id;
+            });
+
+            link
+                .enter()
+                .insert("path", "g")
+                .attr("class", "link")
+                .attr("d", function () {
+                    var o = { x: source.x0, y: source.y0 };
+                    return diagonal({ source: o, target: o });
+                });
+
+            link.transition().duration(duration).attr("d", diagonal);
+
+            svg.selectAll("path.link").classed("on-path", function (d) {
+                return !!selectedPathIds[d.source.id] && !!selectedPathIds[d.target.id];
+            });
+
+            link
+                .exit()
+                .transition()
+                .duration(duration)
+                .attr("d", function () {
+                    var o = { x: source.x, y: source.y };
+                    return diagonal({ source: o, target: o });
+                })
+                .remove();
+
+            nodes.forEach(function (d) {
+                d.x0 = d.x;
+                d.y0 = d.y;
+            });
         }
-      }
 
-      root.children.forEach(collapse);
-      update(root);
-    });
+        function click(d) {
+            selectedNode = d;
 
-    function update(source) {
-      // Compute the new tree layout.
-      var nodes = tree.nodes(root).reverse(),
-        links = tree.links(nodes);
+            if (d.children) {
+                d._children = d.children;
+                d.children = null;
+            } else {
+                d.children = d._children;
+                d._children = null;
+            }
 
-      var selectedPathIds = {};
-      if (selectedNode) {
-        var current = selectedNode;
-        while (current) {
-          if (current.id) selectedPathIds[current.id] = true;
-          current = current.parent;
+            update(d);
         }
-      }
-
-      // Recalculate horizontal spacing based on current visible depth.
-      var maxDepth =
-          d3.max(nodes, function (d) {
-            return d.depth;
-          }) || 1,
-        availableWidth = Math.max(width - horizontalPadding * 2, 1),
-        depthSpacing = Math.max(
-          minDepthSpacing,
-          Math.min(maxDepthSpacing, availableWidth / maxDepth),
-        );
-
-      // Normalize for dynamic depth spacing.
-      nodes.forEach(function (d) {
-        d.y = d.depth * depthSpacing;
-      });
-
-      // Update the nodes…
-      var node = svg.selectAll("g.node").data(nodes, function (d) {
-        return d.id || (d.id = ++i);
-      });
-
-      // Enter any new nodes at the parent's previous position.
-      var nodeEnter = node
-        .enter()
-        .append("g")
-        .attr("class", "node")
-        .attr("transform", function (d) {
-          return "translate(" + source.y0 + "," + source.x0 + ")";
-        })
-        .on("click", click);
-
-      nodeEnter
-        .append("circle")
-        .attr("r", 1e-6)
-        .style("fill", function (d) {
-          return d._children ? "lightsteelblue" : "#fff";
-        });
-
-      nodeEnter
-        .append("text")
-        .attr("x", function (d) {
-          return d.children || d._children ? -10 : 10;
-        })
-        .attr("text-anchor", function (d) {
-          return d.children || d._children ? "end" : "start";
-        })
-        .each(function (d) {
-          var text = d3.select(this),
-            words = (d.name || "").split(/[\s/]+/).filter(Boolean),
-            firstLineDy = -((words.length - 1) * 0.55);
-
-          words.forEach(function (word, index) {
-            text
-              .append("tspan")
-              .attr("x", text.attr("x"))
-              .attr("dy", (index === 0 ? firstLineDy : 1.1) + "em")
-              .text(word);
-          });
-        })
-        .style("fill-opacity", 1e-6);
-
-      // semi-transparent white background rect behind each text label
-      nodeEnter.each(function (d) {
-        var g = d3.select(this);
-        var textEl = g.select("text").node();
-        var bbox = textEl.getBBox();
-        var pad = 3;
-        g.insert("rect", "text")
-          .attr("class", "text-bg")
-          .attr("x", bbox.x - pad)
-          .attr("y", bbox.y - pad)
-          .attr("width", Math.max(0, bbox.width + pad * 2))
-          .attr("height", Math.max(0, bbox.height + pad * 2))
-          .attr("rx", 2)
-          .attr("ry", 2)
-          .attr("fill", "white")
-          .attr("fill-opacity", 0);
-      });
-
-      // Transition nodes to their new position.
-      var nodeUpdate = node
-        .transition()
-        .duration(duration)
-        .attr("transform", function (d) {
-          return "translate(" + d.y + "," + d.x + ")";
-        });
-
-      nodeUpdate
-        .select("circle")
-        .attr("r", 5)
-        .style("fill", function (d) {
-          return d._children ? "lightsteelblue" : "#fff";
-        });
-
-      nodeUpdate.select("rect.text-bg").attr("fill-opacity", 0.75);
-
-      nodeUpdate.select("text").style("fill-opacity", 1);
-
-      svg
-        .selectAll("g.node")
-        .classed("on-path", function (d) {
-          return !!selectedPathIds[d.id];
-        })
-        .classed("selected", function (d) {
-          return selectedNode && d === selectedNode;
-        });
-
-      // Transition exiting nodes to the parent's new position.
-      var nodeExit = node
-        .exit()
-        .transition()
-        .duration(duration)
-        .attr("transform", function (d) {
-          return "translate(" + source.y + "," + source.x + ")";
-        })
-        .remove();
-
-      nodeExit.select("circle").attr("r", 1e-6);
-
-      nodeExit.select("rect.text-bg").attr("fill-opacity", 0);
-
-      nodeExit.select("text").style("fill-opacity", 1e-6);
-
-      // Update the links…
-      var link = svg.selectAll("path.link").data(links, function (d) {
-        return d.target.id;
-      });
-
-      // Enter any new links at the parent's previous position.
-      link
-        .enter()
-        .insert("path", "g")
-        .attr("class", "link")
-        .attr("d", function (d) {
-          var o = { x: source.x0, y: source.y0 };
-          return diagonal({ source: o, target: o });
-        });
-
-      // Transition links to their new position.
-      link.transition().duration(duration).attr("d", diagonal);
-
-      svg.selectAll("path.link").classed("on-path", function (d) {
-        return !!selectedPathIds[d.source.id] && !!selectedPathIds[d.target.id];
-      });
-
-      // Transition exiting nodes to the parent's new position.
-      link
-        .exit()
-        .transition()
-        .duration(duration)
-        .attr("d", function (d) {
-          var o = { x: source.x, y: source.y };
-          return diagonal({ source: o, target: o });
-        })
-        .remove();
-
-      // Stash the old positions for transition.
-      nodes.forEach(function (d) {
-        d.x0 = d.x;
-        d.y0 = d.y;
-      });
-    }
-
-    // Toggle children on click.
-    function click(d) {
-      selectedNode = d;
-
-      if (d.children) {
-        d._children = d.children;
-        d.children = null;
-      } else {
-        d.children = d._children;
-        d._children = null;
-      }
-      update(d);
-    }
-  </script>
+    </script>
 </body>
+</html>

@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../../styles.css">
     <title>Statistics</title>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <style>
@@ -38,21 +39,56 @@
     </style>
   </head>
   <body>
+    <nav class="top-menu" aria-label="Main navigation">
+      <div class="top-menu-home">
+         <a href="index.html">Home</a>
+         <a href="https://efi.ed.ac.uk/" class="logo-btn">
+      <img src="../../images/logo.png" alt="Site Logo">
+        </div>
+        <div class="top-menu-links">
+      <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+      <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+      <a href="../../pathways/pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+      <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+      <a href="Workflows.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+      </div>
+    </nav>
+
+    <div class="site-header">
+      <div class="site-header-title">Data Visualisation Pathway </div>
+    </div>
     <div id="visualization">
       <svg viewBox="0 0 960 700" aria-label="Visualization canvas"></svg>
     </div>
     <div id="below-visualization-text">
+      <h2>Before Starting: Data Collection</h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-        facilisis, nunc vitae tincidunt convallis, lectus enim faucibus sem, at
-        aliquet augue tortor ut nunc. Proin non urna feugiat, posuere dolor
-        eget, tempus lectus.
+        Every discipline has its own rules when it comes to data collection. 
+        
+        In general though, it is important to also consider which type of analysis you plan to do before starting your data collection.
+        
+        Different analyses will require different types/qualities of data (e.g. the precision of measurements will influence the type of analysis you will be able to perform).
+        
+        Below you can find a series of blogs/pages with useful suggestions on how to plan and perform an efficient data collection.
       </p>
+      <ul>
+        <li><a href="https://www.scribbr.com/methodology/data-collection/" target="_blank">A Step-by-Step Guide to Data Collection</a></li>
+        <li><a href="https://ori.hhs.gov/education/products/n_illinois_u/datamanagement/dctopic.html" target="_blank">Responsible Conduct in Data Collection</a></li>
+        <li><a href="https://www.leadquizzes.com/blog/data-collection-methods/" target="_blank">Data Collection Methods for Obtaining Quantitative and Qualitative Data</a></li>
+      </ul>
+      <h2>
+      Python VS R - What should I choose?
+      </h2>
       <p>
-        Curabitur ultricies sem non justo commodo, vitae feugiat arcu rhoncus.
-        Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci
-        luctus et ultrices posuere cubilia curae.
+       Which would be better for your research, R or Python?
+       
+       The articles below discuss the pros and cons of Python and R and can help you decide which of the two languages would be the best choice for your research.
       </p>
+
+            <ul>
+        <li><a href="https://towardsdatascience.com/python-vs-r-the-basics-d754c45c1596/" target="_blank">R vs Python for Data Science</a></li>
+        <li><a href="https://www.datacamp.com/blog/python-vs-r-for-data-science-whats-the-difference" target="_blank">R vs Python Infographic</a></li>
+      </ul>
     </div>
     <script>
       const svg = d3.select("#visualization svg");
