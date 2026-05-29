@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Visualisation</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <style>
+      #visualization {
+        font-family: "Source Sans 3", sans-serif;
+        padding: 1rem;
+        background: #ebebeb;
+      }
+
+      #visualization svg {
+        display: block;
+        width: 100%;
+        height: 680px;
+        border: 1px solid #d0d7de;
+        overflow: visible;
+        border-radius: 5px;
+      }
+
+      #below-visualization-text {
+        font-family: "Source Sans 3", sans-serif;
+        width: 70vw;
+        margin: 1.5rem auto 2rem;
+        color: #1f2937;
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+
+      #node-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(15, 23, 42, 0.45);
+        z-index: 1000;
+      }
+
+      #node-modal.open {
+        display: flex;
+      }
+
+      #node-modal-content {
+        font-family: "Source Sans 3", sans-serif;
+        position: relative;
+        width: min(560px, 90vw);
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.25);
+        color: #1f2937;
+        line-height: 1.6;
+      }
+
+      #node-modal-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        border-radius: 999px;
+        background: #e5e7eb;
+        color: #111827;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      #node-modal-close:hover {
+        background: #d1d5db;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="top-menu" aria-label="Main navigation">
+      <div class="top-menu-home">
+         <a href="index.html">Home</a>
+         <a href="https://efi.ed.ac.uk/" class="logo-btn">
+      <img src="../../images/logo.png" alt="Site Logo">
+        </div>
+        <div class="top-menu-links">
+      <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+      <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+      <a href="../../pathways/pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+      <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+      <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+      </div>
+    </nav>
+    <div class="site-header">
+      <div class="site-header-title">Working with 3D Data Pathway</div>
+    </div>
+    <div id="visualization">
+      <svg viewBox="0 0 960 700" aria-label="Visualization canvas"></svg>
+    </div>
+    <div id="below-visualization-text" style="width: 100%">
+      <p>
+        dam-di-dam
+      </p>
+    </div>
+    <div id="node-modal" aria-hidden="true">
+      <div id="node-modal-content" role="dialog" aria-modal="true">
+        <button id="node-modal-close" aria-label="Close">X</button>
+        <p id="node-modal-body"></p>
+      </div>
+    </div>
+    <script>
+      const svg = d3.select("#visualization svg");
+      const width = 960;
+      const height = 700;
+      const nodeRadius = 18;
+
+      const boxWidth = 220;
+      const boxMinHeight = 90;
+      const boxTextPaddingX = 10;
+      const boxTextPaddingY = 18;
+      const boxLineHeight = 18;
+      const boxFontSize = 14;
+      const boxFontWeight = 500;
+
+      const leftX = 90;
+      const farRightX = width - 30;
+      const centerX = 340;
+      const node2X = centerX + 24;
+      const middleX = 560;
+      const rightX = 760;
+
+      const y1A = 120;
+      const y1B = 300;
+      const y1C = 500;
+      const yTopExtra = 50;
+
+      const y2 = 380;
+      const y3 = 300;
+
+      const y4A = 120;
+      const y4B = 300;
+      const y4C = 500;
+
+      // -----------------------------------------------------
+      // NODES
+      // -----------------------------------------------------
+
+      const nodes = [
+        { id: "0X", x: farRightX, y: yTopExtra, number: "?" },
+        { id: "0L", x: leftX, y: yTopExtra, number: "?" },
+        { id: "1A", x: leftX, y: y1A, number: "1A" },
+        { id: "1B", x: leftX, y: y1B, number: "1B" },
+        { id: "1C", x: leftX, y: y1C, number: "1C" },
+
+        { id: "2", x: node2X, y: y2, number: "2" },
+
+        { id: "3", x: middleX, y: y3, number: "3" },
+
+        { id: "0R", x: rightX, y: yTopExtra, number: "?" },
+        { id: "4A", x: rightX, y: y4A, number: "4A" },
+        { id: "4B", x: rightX, y: y4B, number: "4B" },
+        { id: "4C", x: rightX, y: y4C, number: "4C" },
+      ];
+
+      const nodeMap = Object.fromEntries(nodes.map((d) => [d.id, d]));
+
+      // -----------------------------------------------------
+      // TEXT
+      // -----------------------------------------------------
+
+      const boxTexts = {
+        "0X": `3d print at uoe`,
+        "0L": `data creation`,
+        "1A": `Computer drawing. 3D data can be  reated using a broad
+        array of software. Some software is extremely
+        precise and suitable for complex engineering tasks, 
+        others can be more approximate emphasising creative
+        free form modelling`,
+        "1B": `Scanning data. 3D scanning is the action of 
+        using active sensors (e.g., laser) to record three-dimentional
+        data concerning objects and places. The usual
+        outcome is a point cloud that can then be further
+        processed.`,
+        "1C": `From photos to 3D. Photogrammetry and structure
+        from motion (3D models from 2D images) techniques
+        can be used to generate three-dimentional objects.
+        Because the do not use active sensors the 
+        are called passive mathods.`,
+        2: `3D data wrangling. The first product of active 
+        and passive data acquisition is normally a point
+        cloud. From the point cloud, different steps are
+        needed to clean and refine the model.`,
+        3: `Storing 3D data. 3D data tend to be very heavy and 
+        planning the long term storing of this material is a 
+        fundamental step in working with 3D data.`,
+        "4A": `3D Printing. 3D printing is creating 
+        three-dimentional objects starting from a digital model.
+        The practice has become much more affordable 
+        and accessible nowadays.`,
+        "4B": `Other 3d manufacture (cam). 
+        Like 3D printing, computer-aided manufacturing is
+        becoming a more affordable and accessible resource
+        nowadays.`,
+        "4C": `Othtophotos renders and simulations. 
+        3d objects can be used to produce measurable
+        profiles, photorealistic static or video visualizations
+        called renders. They can also be used 
+        to create proper simulations.`,
+
+        "0R": `outputs`,
+      };
+
+      const nodeLinks = {
+        "1A": "step1a.html",
+        "1B": "step1b.html",
+        "1C": "step1c.html",
+        2: "step2.html",
+        3: "step3.html",
+        "4A": "step4a.html",
+        "4B": "step4b.html",
+        "4C": "step4c.html",
+      };
+
+      const modalNodeTexts = {
+        "0X": `The University of Edinburgh has a series of facilities and workshops with a wide variety
+        of instrumentation that staff and students can access.`,
+        "0R": `From simple orthophotos and renders to 3D simulations and 3D printing the possible outputs of 
+        working with 3D data are vast and it is field in constant expansion. Depending on the research questions 
+        you were trying to answer two one of more of the options here presented can be a good option`,
+        "0L": `There are two main ways to generate 3D data. You can either start from scratch or you can 
+        record and process existing 3D objects. If you start from scratch you can either use technical drawing 
+        software like Autodesk Suite, Rhino and others or you can go through the modelling approach with software
+        like Blender, Maya, 3D Studio Max etc. If you want to start from real-word objects there are two main types 
+        of techniques you can use: active techniques that will require ad hoc instrumentation and passive technique 
+        like photogrammetry and Structure from Motion. Discover more about each technique by exploring steps 1A 1B and 1C.`,
+      };
+
+      const modalNodeHtml = {
+        "0X": `The University of Edinburgh has a series of facilities and workshops with a wide variety of instrumentation that staff and students can access. <a href="https://www.cdcs.ed.ac.uk/training/training-pathways/Working-with-3D-Data-Pathway/3D-Printing-at-UoE" target="_blank" rel="noopener noreferrer">Go to Setup</a>.`,
+      };
+
+      const nodeModal = document.getElementById("node-modal");
+      const nodeModalBody = document.getElementById("node-modal-body");
+      const nodeModalClose = document.getElementById("node-modal-close");
+
+      function openNodeLink(link) {
+        if (!link) return;
+        window.open(link, "_blank", "noopener,noreferrer");
+      }
+
+      function openNodeModal(nodeId) {
+        const html = modalNodeHtml[nodeId];
+        const text = modalNodeTexts[nodeId];
+        if (!text && !html) return;
+        if (html) {
+          nodeModalBody.innerHTML = html;
+        } else {
+          nodeModalBody.textContent = text;
+        }
+        nodeModal.classList.add("open");
+        nodeModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeNodeModal() {
+        nodeModal.classList.remove("open");
+        nodeModal.setAttribute("aria-hidden", "true");
+      }
+
+      nodeModalClose.addEventListener("click", closeNodeModal);
+      nodeModal.addEventListener("click", (event) => {
+        if (event.target === nodeModal) {
+          closeNodeModal();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && nodeModal.classList.contains("open")) {
+          closeNodeModal();
+        }
+      });
+
+      // -----------------------------------------------------
+      // TEXT WRAPPING
+      // -----------------------------------------------------
+
+      const measureText = svg
+        .append("text")
+        .attr("x", -9999)
+        .attr("y", -9999)
+        .attr("font-size", boxFontSize)
+        .attr("font-weight", boxFontWeight)
+        .attr("visibility", "hidden");
+
+      function getWrappedLines(value, maxWidth, fontWeight = boxFontWeight) {
+        const words = String(value).replace(/\s+/g, " ").trim().split(/\s+/);
+
+        measureText.attr("font-weight", fontWeight);
+
+        const lines = [];
+        let line = [];
+
+        for (const word of words) {
+          line.push(word);
+          measureText.text(line.join(" "));
+
+          if (
+            measureText.node().getComputedTextLength() > maxWidth &&
+            line.length > 1
+          ) {
+            line.pop();
+            lines.push(line.join(" "));
+            line = [word];
+          }
+        }
+
+        if (line.length) {
+          lines.push(line.join(" "));
+        }
+
+        return lines;
+      }
+
+      function splitHeadingAndBody(value) {
+        const normalized = String(value).replace(/\s+/g, " ").trim();
+
+        const delimiters = [",", ".", ":", ";"];
+
+        const splitIndex = Math.min(
+          ...delimiters
+            .map((d) => normalized.indexOf(d))
+            .filter((d) => d !== -1),
+        );
+
+        return {
+          heading: normalized.slice(0, splitIndex).trim(),
+          body: normalized.slice(splitIndex + 1).trim(),
+        };
+      }
+
+      // -----------------------------------------------------
+      // BOX POSITIONS
+      // -----------------------------------------------------
+
+      const nodeBoxes = nodes
+        .filter((node) => boxTexts[node.id])
+        .map((node) => {
+          const parsed = splitHeadingAndBody(boxTexts[node.id] || "");
+
+          let headingLines = getWrappedLines(
+            parsed.heading.toUpperCase(),
+            boxWidth - 20,
+            700,
+          );
+
+          let bodyLines = getWrappedLines(parsed.body, boxWidth - 20);
+
+          let lineCount = headingLines.length + bodyLines.length;
+
+          let boxHeight = Math.max(
+            boxMinHeight,
+            lineCount * boxLineHeight + 40,
+          );
+
+          let x;
+          let y = node.y - boxHeight / 2;
+
+          // Left side text
+          if (node.id.startsWith("1")) {
+            x = node.x + 30;
+            y = node.y;
+          }
+
+          // Right side text
+          else if (node.id.startsWith("4")) {
+            x = node.x + 30;
+            y = node.y;
+
+            const node4MaxTextWidth = Math.max(60, boxWidth - 45);
+            headingLines = getWrappedLines(
+              parsed.heading.toUpperCase(),
+              node4MaxTextWidth,
+              700,
+            );
+            bodyLines = getWrappedLines(parsed.body, node4MaxTextWidth);
+            lineCount = headingLines.length + bodyLines.length;
+            boxHeight = Math.max(boxMinHeight, lineCount * boxLineHeight + 40);
+          } else if (node.id === "0X") {
+            x = node.x;
+            y = node.y + 36;
+
+            const node0XMaxTextWidth = 70;
+            headingLines = getWrappedLines(
+              parsed.heading.toUpperCase(),
+              node0XMaxTextWidth,
+              700,
+            );
+            bodyLines = getWrappedLines(parsed.body, node0XMaxTextWidth);
+            lineCount = headingLines.length + bodyLines.length;
+            boxHeight = Math.max(boxMinHeight, lineCount * boxLineHeight + 40);
+          } else if (node.id === "0L" || node.id === "0R") {
+            x = node.x + 30;
+            y = node.y;
+          }
+
+          // Center nodes
+          else if (node.id === "2") {
+            x = node.x;
+            y = node.y + 40;
+
+            const node2MaxTextWidth = Math.max(
+              60,
+              Math.min(boxWidth - 20, middleX - x) - 15,
+            );
+
+            headingLines = getWrappedLines(
+              parsed.heading.toUpperCase(),
+              node2MaxTextWidth,
+              700,
+            );
+            bodyLines = getWrappedLines(parsed.body, node2MaxTextWidth);
+            lineCount = headingLines.length + bodyLines.length;
+            boxHeight = Math.max(boxMinHeight, lineCount * boxLineHeight + 40);
+          } else if (node.id === "3") {
+            x = node.x;
+            y = node.y + 40;
+
+            const node3MaxTextWidth = Math.max(
+              60,
+              Math.min(boxWidth - 20, rightX - 40 - x),
+            );
+
+            headingLines = getWrappedLines(
+              parsed.heading.toUpperCase(),
+              node3MaxTextWidth,
+              700,
+            );
+            bodyLines = getWrappedLines(parsed.body, node3MaxTextWidth);
+            lineCount = headingLines.length + bodyLines.length;
+            boxHeight = Math.max(boxMinHeight, lineCount * boxLineHeight + 40);
+          } else {
+            x = node.x + 30;
+          }
+
+          return {
+            ...node,
+            x,
+            y,
+            boxHeight,
+            headingLines,
+            bodyLines,
+          };
+        });
+
+      measureText.remove();
+
+      // -----------------------------------------------------
+      // CONNECTOR PATHS
+      // -----------------------------------------------------
+
+      const topY = 70;
+
+      // left bracket
+      svg
+        .append("path")
+        .attr(
+          "d",
+          `
+    M ${leftX - 60} ${y1A - 2}
+    L ${leftX - 60} ${y1C + 2}
+    M ${leftX - 60} ${y1A}
+    L ${leftX - nodeRadius} ${y1A}
+    M ${leftX - 60} ${y1B}
+    L ${leftX - nodeRadius} ${y1B}
+    M ${leftX - 60} ${y1C}
+    L ${leftX - nodeRadius} ${y1C}
+  `,
+        )
+        .attr("fill", "none")
+        .attr("stroke", "#041d40")
+        .attr("stroke-width", 4);
+
+      // left -> 2
+      svg
+        .append("path")
+        .attr(
+          "d",
+          `
+    M ${centerX - 20} ${y1B}
+    L ${node2X - nodeRadius - 10} ${y1B}
+    L ${node2X - nodeRadius - 10} ${y2}
+    M ${centerX - 20} ${y1C}
+    L ${node2X - nodeRadius - 10} ${y1C}
+    L ${node2X - nodeRadius - 10} ${y2}
+    L ${node2X - nodeRadius} ${y2}
+  `,
+        )
+        .attr("fill", "none")
+        .attr("stroke", "#041d40")
+        .attr("stroke-width", 4);
+
+      // top spanning line
+      svg
+        .append("path")
+        .attr(
+          "d",
+          `
+    M ${centerX - 20} ${topY * 2}
+    L ${middleX} ${topY * 2}
+    L ${middleX} ${y3}
+  `,
+        )
+        .attr("fill", "none")
+        .attr("stroke", "#041d40")
+        .attr("stroke-width", 4);
+
+      // dashed connector from top span start -> 2
+      svg
+        .append("line")
+        .attr("x1", node2X)
+        .attr("y1", topY * 2)
+        .attr("x2", node2X)
+        .attr("y2", y2)
+        .attr("stroke", "#041d40")
+        .attr("stroke-width", 4)
+        .attr("stroke-dasharray", "4 4");
+
+      // 2 -> 3
+      svg
+        .append("line")
+        .attr("x1", node2X)
+        .attr("y1", y2)
+        .attr("x2", middleX)
+        .attr("y2", y3)
+        .attr("stroke", "#041d40")
+        .attr("stroke-width", 4);
+
+      // 3 -> right
+      svg
+        .append("path")
+        .attr(
+          "d",
+          `
+    M ${middleX + nodeRadius} ${y3}
+    L ${rightX - 40} ${y3}
+    M ${rightX - 40} ${y4A - 2}
+    L ${rightX - 40} ${y4C + 2}
+    M ${rightX - 40} ${y4A}
+    L ${rightX - nodeRadius} ${y4A}
+    M ${rightX - 40} ${y4B}
+    L ${rightX - nodeRadius} ${y4B}
+    M ${rightX - 40} ${y4C}
+    L ${rightX - nodeRadius} ${y4C}
+  `,
+        )
+        .attr("fill", "none")
+        .attr("stroke", "#041d40")
+        .attr("stroke-width", 4);
+
+      // -----------------------------------------------------
+      // CALLOUT ?
+      // -----------------------------------------------------
+
+      const calloutX = 880;
+      const calloutY = 240;
+
+      // -----------------------------------------------------
+      // TEXT BOXES
+      // -----------------------------------------------------
+
+      svg
+        .selectAll("text.node-box-label")
+        .data(nodeBoxes)
+        .join("text")
+        .attr("x", (d) => d.x)
+        .attr("y", (d) => d.y)
+        .attr("text-anchor", (d) => (d.id === "0X" ? "middle" : "start"))
+        .attr("font-size", boxFontSize)
+        .attr("fill", "#1f2937")
+        .each(function (d) {
+          const text = d3.select(this);
+          let y = d.y;
+
+          d.headingLines.forEach((line) => {
+            text
+              .append("tspan")
+              .attr("x", d.x)
+              .attr("y", y)
+              .attr("text-anchor", d.id === "0X" ? "middle" : "start")
+              .attr("font-weight", 700)
+              .text(line);
+            y += boxLineHeight;
+          });
+
+          y += 8;
+
+          d.bodyLines.forEach((line) => {
+            text
+              .append("tspan")
+              .attr("x", d.x)
+              .attr("y", y)
+              .attr("text-anchor", d.id === "0X" ? "middle" : "start")
+              .attr("font-weight", 400)
+              .text(line);
+            y += boxLineHeight;
+          });
+        });
+
+      // -----------------------------------------------------
+      // NODES
+      // -----------------------------------------------------
+
+      svg
+        .selectAll("circle.node")
+        .data(nodes)
+        .join("circle")
+        .attr("cx", (d) => d.x)
+        .attr("cy", (d) => d.y)
+        .attr("r", nodeRadius)
+        .attr("fill", (d) =>
+          d.id === "0X" || d.id === "0L" || d.id === "0R"
+            ? "#e7135d"
+            : "#ffffff",
+        )
+        .attr("stroke", "#e7135d")
+        .attr("stroke-width", 4)
+        .style("cursor", "pointer")
+        .on("click", (_, d) => {
+          if (modalNodeTexts[d.id]) {
+            openNodeModal(d.id);
+            return;
+          }
+          openNodeLink(nodeLinks[d.id]);
+        });
+
+      svg
+        .selectAll("text.node-label")
+        .data(nodes)
+        .join("text")
+        .attr("x", (d) => d.x)
+        .attr("y", (d) => d.y)
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "middle")
+        .attr("font-size", 13)
+        .attr("font-weight", 700)
+        .attr("fill", (d) =>
+          d.id === "0X" || d.id === "0L" || d.id === "0R"
+            ? "#ffffff"
+            : "#111827",
+        )
+        .style("pointer-events", "none")
+        .text((d) => d.number);
+    </script>
+  </body>
+</html>
