@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+    <title>Sentiment Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <style>
+      #visualization {
+        font-family: "Source Sans 3", sans-serif;
+        padding: 1rem;
+        background: #ebebeb;
+      }
+
+      #visualization svg {
+        display: block;
+        width: 100%;
+        height: 680px;
+        border: 1px solid #d0d7de;
+        overflow: visible;
+        border-radius: 5px;
+      }
+
+      #below-visualization-text {
+        font-family: "Source Sans 3", sans-serif;
+        width: 70vw;
+        margin: 1.5rem auto 2rem;
+        color: #1f2937;
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="top-menu" aria-label="Main navigation">
+      <div class="top-menu-home">
+         <a href="index.html">Home</a>
+         <a href="https://efi.ed.ac.uk/" class="logo-btn">
+      <img src="../../images/logo.png" alt="Site Logo">
+        </div>
+        <div class="top-menu-links">
+      <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+      <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+      <a href="../../pathways/pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+      <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+      <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+      </div>
+    </nav>
+
+    <div class="site-header">
+      <div class="site-header-title">Sentiment Analysis Pathway </div>
+    </div>
+
+    <div id="visualization">
+      <svg viewBox="0 0 960 700" aria-label="Visualization canvas"></svg>
+    </div>
+    <div id="below-visualization-text" style="width: 100%">
+      <p>
+        dam-di-dam
+      </p>
+    </div>
+    <div style="text-align: center; margin: 2rem 0">
+      <a
+        href="../pathway-home.html"
+        style="
+          display: inline-block;
+          padding: 0.75rem 2rem;
+          background: #e7135d;
+          color: #fff;
+          font-size: 1.1rem;
+          font-family: &quot;Montserrat&quot;, sans-serif;
+          border-radius: 5px;
+          text-decoration: none;
+        "
+      >
+        Back to the Pathways Homepage
+      </a>
+    </div>
+    <script>
+  const svg = d3.select("#visualization svg");
+  const width = 960;
+  const nodeCount = 6;
+  const nodeRadius = 18;
+  const bgColor      = "#ebebeb";
+  const mainLineColor = "#041d40";
+  const accentColor   = "#e7135d";   
+
+  // --- Data ---
+  const steps = [
+    {
+      num: "1",
+      title: "ACQUIRING, GATHERING AND CLEANING DATA",
+      body: "Where is the text you are going to conduct sentiment analysis with from? Which kind of text is it?",
+      subSteps: [
+        { num: "1.1", title: "DATA WRANGLING", body: "Rearrange your data with R or Python" },
+        { num: "1.2", title: "TIDYING DATA WITH OPENREFINE", body: "Learn how to tidy up your data with Open Refine" },
+      ],
+    },
+    {
+      num: "2",
+      title: "CLASSIFY THE TEXT INTO SUBJECTIVE AND OBJECTIVE",
+      body: "Does your chosen text include both subjective point of view and objective fact? If it does, split your text into subjective text and objective text.",
+      optional: true,
+    },
+    {
+      num: "3",
+      title: "PROCESS THE TEXT INTO SEGMENTS",
+      body: "Divide up your texts into words, sentences or chapters, reorganise your text to better conduct the analysis.",
+    },
+    {
+      num: "4",
+      title: "CHOOSE THE MOST SUITABLE SENTIMENT ANALYSIS TOOL",
+      body: "Choosing the most suitable sentiment analysis tool will depend on the type of texts you are going to use to conduct the analysis.",
+    },
+    {
+      num: "5",
+      title: "ANALYSE THE TEXT",
+      body: "Using the previous chosen tool, operate the methods or algorithms on the texts.",
+    },
+    {
+      num: "6",
+      title: "EVALUATE THE RESULT",
+      body: "The gold standard for measuring accuracy of the result still depends on human interpretation. Critically evaluate the results of the analysis based on your own understanding and the context of the text.",
+    },
+  ];
+
+  const nodeLinks = [
+    "step1.html", "step2.html", "step3.html",
+    "step4.html", "step5.html", "step6.html",
+  ];
+
+  const subStepLinks = [
+    "https://www.cdcs.ed.ac.uk/training/training-pathways/sentiment-analysis-pathway/data-wrangling",
+    "https://www.cdcs.ed.ac.uk/training/training-pathways/sentiment-analysis-pathway/tidying-data-openrefine",
+  ];
+
+  function openLink(url) {
+    if (url) window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  // --- Layout ---
+  const boxFontSize = 13;
+  const boxLineHeight = 17;
+  const boxTextPaddingX = 10;
+  const boxGap = 14;
+  const boxWidth = (width - boxGap * (nodeCount + 1)) / nodeCount;
+  const nodeInset = boxGap + boxWidth / 2;
+
+  const xScale = d3.scaleLinear()
+    .domain([0, nodeCount - 1])
+    .range([nodeInset, width - nodeInset]);
+
+  // Text measurement helper (removed after use)
+  const measureText = svg.append("text")
+    .attr("x", -9999).attr("y", -9999)
+    .attr("font-size", boxFontSize)
+    .attr("visibility", "hidden");
+
+  function getWrappedLines(str, maxWidth, fontWeight) {
+    const words = String(str).replace(/\s+/g, " ").trim().split(/\s+/).filter(Boolean);
+    if (!words.length) return [];
+    measureText.attr("font-weight", fontWeight ?? 500);
+    const lines = [];
+    let line = [];
+    for (const word of words) {
+      line.push(word);
+      measureText.text(line.join(" "));
+      if (measureText.node().getComputedTextLength() > maxWidth && line.length > 1) {
+        line.pop();
+        lines.push(line.join(" "));
+        line = [word];
+      }
+    }
+    if (line.length) lines.push(line.join(" "));
+    return lines;
+  }
+
+  // Compute box heights
+  const maxTW = boxWidth - boxTextPaddingX * 2;
+  const lineY      = 280;            // y of main horizontal line
+  const nodeData = steps.map((step, i) => {
+    const titleLines = getWrappedLines(step.title, maxTW, 700);
+    const bodyLines  = getWrappedLines(step.body,  maxTW, 500);
+    const lineCount  = titleLines.length + bodyLines.length + (titleLines.length && bodyLines.length ? 0.4 : 0);
+    const boxHeight  = Math.max(180, lineCount * boxLineHeight + boxTextPaddingX * 2 + 36);
+    const y = i === 1 ? lineY + 50 : lineY;
+    return { step, i, x: xScale(i), y, titleLines, bodyLines, boxHeight };
+  });
+  measureText.remove();
+
+  // Heights / vertical layout
+  const boxOffsetFromNode = 20;
+  const totalH = d3.max(nodeData, d => d.y + nodeRadius + boxOffsetFromNode + d.boxHeight) + 40;
+
+  // Sub-step branch (node 0 only): rises above the main line
+  const subStepY1  = lineY - 90;    // lower sub-node (1.1)
+  const subStepY2  = lineY - 165;   // upper sub-node (1.2)
+  const subNodeR   = 18;
+
+  svg.attr("viewBox", `0 0 ${width} ${totalH}`)
+     .style("height", `${totalH}px`);
+
+  // Background
+  svg.append("rect")
+    .attr("width", width).attr("height", totalH)
+    .attr("fill", bgColor);
+
+  // === OPTIONAL badge for step 2 ===
+  const optX = xScale(1);
+  const optBadgeW = 130, optBadgeH = 38;
+  const optG = svg.append("g").attr("transform",
+    `translate(${optX - optBadgeW / 2}, ${lineY - optBadgeH / 2})`);
+  optG.append("rect")
+    .attr("width", optBadgeW).attr("height", optBadgeH)
+    .attr("rx", 5).attr("fill", accentColor);
+  optG.append("text")
+    .attr("x", optBadgeW / 2).attr("y", optBadgeH / 2)
+    .attr("text-anchor", "middle").attr("dominant-baseline", "middle")
+    .attr("font-size", 11).attr("font-weight", 700).attr("fill", "#fff")
+    .attr("pointer-events", "none")
+    .selectAll("tspan")
+    .data(["THIS STEP IS NOT", "MANDATORY"])
+    .join("tspan")
+      .attr("x", optBadgeW / 2)
+      .attr("dy", (_, i) => i === 0 ? "-0.35em" : "1.2em")
+      .text(d => d);
+
+  // === SUB-STEPS branch off node 0 ===
+  // Vertical stem up from node 0
+  svg.append("line")
+    .attr("x1", xScale(0)).attr("y1", lineY - nodeRadius)
+    .attr("x2", xScale(0)).attr("y2", subStepY2 - subNodeR)
+    .attr("stroke", accentColor).attr("stroke-width", 4)
+    .attr("stroke-linecap", "round");
+
+  // Horizontal arm to sub-step labels
+  const subLabelX = xScale(0) + 48;
+  [subStepY1, subStepY2].forEach((sy, si) => {
+    const subLink = subStepLinks[si];
+
+    svg.append("line")
+      .attr("x1", xScale(0)).attr("y1", sy)
+      .attr("x2", subLabelX).attr("y2", sy)
+      .attr("stroke", accentColor).attr("stroke-width", 4)
+      .attr("stroke-linecap", "round");
+
+    // Sub-node circle
+    svg.append("circle")
+      .attr("cx", xScale(0)).attr("cy", sy).attr("r", subNodeR)
+      .attr("fill", accentColor).attr("stroke", "none")
+      .attr("cursor", "pointer")
+      .attr("role", "link").attr("tabindex", 0)
+      .on("click", () => openLink(subLink))
+      .on("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openLink(subLink);
+        }
+      });
+
+    // Sub-node label (1.1 / 1.2)
+    svg.append("text")
+      .attr("x", xScale(0)).attr("y", sy)
+      .attr("text-anchor", "middle").attr("dominant-baseline", "middle")
+      .attr("font-size", 11).attr("font-weight", 700).attr("fill", "#fff")
+      .attr("pointer-events", "none")
+      .text(si === 0 ? "1.1" : "1.2");
+
+    // Sub-step text label to the right
+    const sub = steps[0].subSteps[si];
+    const subG = svg.append("text")
+      .attr("x", subLabelX + 8).attr("y", sy - 10)
+      .attr("font-size", 12).attr("fill", mainLineColor);
+    subG.append("tspan")
+      .attr("x", subLabelX + 8).attr("dy", "1em")
+      .attr("font-weight", 700).text(sub.title);
+    subG.append("tspan")
+      .attr("x", subLabelX + 8).attr("dy", "1.3em")
+      .attr("font-weight", 400).text(sub.body);
+  });
+
+  // Red vertical line from sub-step area down to main line (between nodes 1 and 2)
+  const redDropX = nodeData[2].x;
+  svg.append("line")
+    .attr("x1", redDropX).attr("y1", subStepY2)
+    .attr("x2", redDropX).attr("y2", lineY)
+    .attr("stroke", accentColor).attr("stroke-width", 4)
+    .attr("stroke-linecap", "round");
+
+  // Path from between nodes 1.1 and 1 to node 3: right, then down
+  const bridgeStartY = (subStepY1 + nodeData[0].y) / 2;
+  const bridgePathPoints = [
+    { x: nodeData[0].x, y: bridgeStartY },
+    { x: nodeData[2].x, y: bridgeStartY },
+    { x: nodeData[2].x, y: nodeData[2].y },
+  ];
+
+  svg.append("path")
+    .attr(
+      "d",
+      d3.line()
+        .x(d => d.x)
+        .y(d => d.y)(bridgePathPoints)
+    )
+    .attr("fill", "none")
+    .attr("stroke", accentColor)
+    .attr("stroke-width", 4)
+    .attr("stroke-linecap", "round")
+    .attr("stroke-linejoin", "miter");
+
+  // === MAIN HORIZONTAL LINE ===
+  const saddleHalfWidth = 80;
+  const saddleLeftX = nodeData[1].x - saddleHalfWidth;
+  const saddleRightX = nodeData[1].x + saddleHalfWidth;
+  const mainPathPoints = [
+    { x: nodeData[0].x, y: nodeData[0].y },
+    { x: saddleLeftX, y: nodeData[0].y },
+    { x: saddleLeftX, y: nodeData[1].y },
+    { x: nodeData[1].x, y: nodeData[1].y },
+    { x: saddleRightX, y: nodeData[1].y },
+    { x: saddleRightX, y: nodeData[2].y },
+    { x: nodeData[nodeCount - 1].x, y: nodeData[2].y },
+  ];
+
+  svg.append("path")
+    .attr(
+      "d",
+      d3.line()
+        .x(d => d.x)
+        .y(d => d.y)(mainPathPoints)
+    )
+    .attr("fill", "none")
+    .attr("stroke", mainLineColor).attr("stroke-width", 4)
+    .attr("stroke-linecap", "round")
+    .attr("stroke-linejoin", "miter");
+
+  // === TEXT BOXES ===
+  nodeData.forEach(d => {
+    const bx = d.x - boxWidth / 2;
+    const by = d.y + nodeRadius + boxOffsetFromNode;
+
+    svg.append("rect")
+      .attr("x", bx).attr("y", by)
+      .attr("width", boxWidth).attr("height", d.boxHeight)
+      .attr("rx", 8).attr("fill", "#fff");
+
+    const tg = svg.append("text")
+      .attr("font-size", boxFontSize).attr("fill", mainLineColor);
+
+    let cy = by + boxTextPaddingX + boxFontSize;
+
+    d.titleLines.forEach(line => {
+      tg.append("tspan")
+        .attr("x", bx + boxTextPaddingX).attr("y", cy)
+        .attr("font-weight", 700).text(line);
+      cy += boxLineHeight;
+    });
+
+    if (d.titleLines.length && d.bodyLines.length) cy += 4;
+
+    d.bodyLines.forEach(line => {
+      tg.append("tspan")
+        .attr("x", bx + boxTextPaddingX).attr("y", cy)
+        .attr("font-weight", 400).text(line);
+      cy += boxLineHeight;
+    });
+  });
+
+  // === NODE CIRCLES ===
+  svg.selectAll("circle.node")
+    .data(nodeData)
+    .join("circle")
+      .attr("class", "node")
+      .attr("cx", d => d.x).attr("cy", d => d.y)
+      .attr("r", nodeRadius)
+      .attr("fill", "#ffffff")
+      .attr("stroke", accentColor)
+      .attr("stroke-width", 4)
+      .attr("cursor", "pointer")
+      .attr("role", "link").attr("tabindex", 0)
+      .on("click", (_, d) => openLink(nodeLinks[d.i]))
+      .on("keydown", (event, d) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openLink(nodeLinks[d.i]);
+        }
+      });
+
+  svg.selectAll("text.node-label")
+    .data(nodeData)
+    .join("text")
+      .attr("class", "node-label")
+      .attr("x", d => d.x).attr("y", d => d.y)
+      .attr("text-anchor", "middle").attr("dominant-baseline", "middle")
+      .attr("font-size", 14).attr("font-weight", 600)
+      .attr("fill", mainLineColor).attr("pointer-events", "none")
+      .text(d => d.step.num);
+</script>
+
+  </body>
+</html>
