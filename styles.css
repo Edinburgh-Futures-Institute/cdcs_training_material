@@ -12,7 +12,7 @@ body {
 
 body {
   line-height: 1.6;
-  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-family: "Source Sans Pro", Arial, sans-serif;
 }
 
 /* =========================
@@ -165,8 +165,7 @@ p {
 
   min-height: 220px;
 
-  background: url("images/BannerImage.png")
-    center center / cover no-repeat;
+  background: url("images/BannerImage.png") center center / cover no-repeat;
 
   display: flex;
   align-items: center;
@@ -218,6 +217,8 @@ p {
   margin: 0.5rem 0 1rem 0;
 
   background: #fff;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* =========================
@@ -269,9 +270,9 @@ select:focus {
 ========================= */
 
 .row {
-  display: flex;
+  display: grid;
 
-  flex-wrap: wrap;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
   gap: 1.5rem;
 
@@ -281,9 +282,9 @@ select:focus {
 }
 
 .column {
-  background: #fff;
+  background: #f3f3f3;
 
-  border: 2px solid #000;
+  /* border: 2px solid #000; */
 
   border-radius: 10px;
 
@@ -291,18 +292,26 @@ select:focus {
 
   box-sizing: border-box;
 
-  flex: 1 1 300px;
+  min-width: 0;
 
-  max-width: 32%;
-  min-width: 250px;
-
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* =========================
    RESPONSIVE DESIGN
 ========================= */
 
+@media (max-width: 1200px) {
+  .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
 
 /*@media (max-width: 900px) {
 
