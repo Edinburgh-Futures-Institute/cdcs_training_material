@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scanning Data (Active Methods)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        table tr:first-child {
+            background-color: #f2f2f2;
+            font-weight: 700;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="top-menu" aria-label="Main navigation">
+        <div class="top-menu-home">
+            <a href="../../index.html">Home</a>
+            <a href="https://efi.ed.ac.uk/" class="logo-btn">
+                <img src="../../images/logo.png" alt="Site Logo">
+            </a>
+        </div>
+
+        <div class="top-menu-links">
+            <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+            <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+            <a href="../pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+            <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+            <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="site-header">
+            <div class="site-header-title">EFI Data-led Research Methods</div>
+        </div>
+
+        <h1>Scanning Data (Active Methods)</h1>
+
+        <p>3D scanning is the action of using active sensors, such as lasers, to record three-dimensional data concerning objects and places. The usual outcome is a point cloud that can then be further processed.</p>
+
+        <p>The methodologies available are different and work on different principles. They have quite different costs, both in terms of time and required machinery. Additionally, depending on the target you aim to shoot, certain techniques can be better than others. For example, if your target is underwater you will have to use sonograms while laser scanners will not work.</p>
+
+        <h2>Time of Flight</h2>
+
+        <p>Time-of-flight (ToF) laser scanners are used to capture three-dimensional spatial data of objects and environments.</p>
+
+        <p>These scanners operate on the principle of measuring the time it takes for a laser pulse to travel to a target surface and back to the sensor.</p>
+
+        <p>By calculating the round-trip time, ToF scanners can determine the distance between the scanner and the object, creating a depth map that accurately represents the shape and contours of the scene. Various types of signals, also called carriers, can be used with the Time-of-Flight principle, the most common being sound and light.</p>
+
+        <p>Of the different techniques, TOF laser scanners have a longer reach, so they are mostly used for recording buildings and environments.</p>
+
+        <p>One type of TOF scanner is a Lidar scanner. With this type of scanner it is possible to analyse beyond what the human eye can see, as they emit multiple laser/light beams.</p>
+
+        <p>For example, Lidar scanner technologies were used to detect archaeological remains hidden in tropical forests by removing the noise created by the trees.</p>
+
+        <h2>Triangulation and structured light scanner</h2>
+
+        <p>Triangulation laser scanners are used for precise 3D spatial measurements. These scanners employ the principle of triangulation to determine the distance to an object by measuring the angle between a projected laser beam and its reflection off the object's surface. By using trigonometric calculations, the scanner can accurately calculate the distance based on the angle and known parameters of the laser's projection.</p>
+
+        <p>Structured light scanners project a structured pattern, such as a grid or a series of lines, onto the surface of the target object. By analysing the deformation of the projected pattern caused by the object's shape, the scanner can precisely calculate the object's depth and create a detailed 3D model.</p>
+
+        <p>The advantage of using these techniques is the ability to capture intricate details of complex surfaces, but they have a shorter range than the TOF instruments. They are normally used to record medium to small-scale objects. Structured light scanners have slower speed of measurement, but they work very well with complicated structures.</p>
+
+        <h2>Comparison and other Techniques</h2>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><p><strong>Type</strong></p></td>
+                    <td><p><strong>Principle</strong></p></td>
+                    <td><p><strong>Accuracy and Range</strong></p></td>
+                    <td><p><strong>Speed of Measurement</strong></p></td>
+                </tr>
+                <tr>
+                    <td><p><em>TOF Scanners</em></p></td>
+                    <td><p>Measure the time it takes for a laser pulse to travel to a target and back. The distance is calculated using the time and the speed of light.</p></td>
+                    <td><p>Moderate accuracy and are suitable for short to medium-range measurements</p></td>
+                    <td><p>Provide real-time measurements due to the time-based measurement principle</p></td>
+                </tr>
+                <tr>
+                    <td><p><em>Triangulation</em></p></td>
+                    <td><p>Project a laser beam onto the object's surface, and the angle between the projected and reflected beams is used to calculate the distance.</p></td>
+                    <td><p>High accuracy and can be used for various ranges depending on the specific scanner's design</p></td>
+                    <td><p>Real-time or relatively rapid data acquisition, depending on the scanner's design</p></td>
+                </tr>
+                <tr>
+                    <td><p><em>Structured Light</em></p></td>
+                    <td><p>Project a pattern, such as a grid or series of lines, onto the object's surface. The deformation of the pattern on the object is analysed to determine its shape and depth.</p></td>
+                    <td><p>High accuracy and are effective for capturing detailed surfaces, but their range might be limited</p></td>
+                    <td><p>Take longer for data acquisition due to the complexity of analysing the projected pattern on the object's surface</p></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>There are other techniques that can be used for specific tasks and targets, such as sonar scanners, for example for underwater surveys, and CT (Computed Tomography) scanners for cross-sectional analysis.</p>
+
+        <p>The choice of the instrument to use is determined by the target, availability of instrumentation, costs and location of the target. Before planning a 3D acquisition project all of these variables need to be carefully considered and a detailed plan of action needs to be drawn.</p>
+
+        <h2>Where to find more information</h2>
+
+        <div class="row">
+            <div class="column">
+                <h3>Our Tutorials</h3>
+                <img src="../../images/Class black and white.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://github.com/DCS-training/Digital-Method-of-the-Month/blob/main/DMM%20Docs/3DScanning.md" target="_blank" rel="noopener noreferrer">DMM 3D Scanning</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>UoE Resources</h3>
+                <img src="../../images/Playfair Header.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://www.ucreatestudio.is.ed.ac.uk/trainings_calendar" target="_blank" rel="noopener noreferrer">Check UCreate upcoming training</a></li>
+                    <li><a href="https://www.ucreate.is.ed.ac.uk/search_equipment" target="_blank" rel="noopener noreferrer">Discover UCreate bookable equipment</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>Self-Guided Learning</h3>
+                <img src="../../images/Group with basket sepia.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://youtu.be/865IqPfPWcM" target="_blank" rel="noopener noreferrer">Brief intro video to Time of Flight Sensing</a></li>
+                    <li><a href="https://www.aniwaa.com/guide/3d-scanners/3d-scanning-technologies-and-the-3d-scanning-process" target="_blank" rel="noopener noreferrer">Contact vs remote scanning</a></li>
+                    <li><a href="https://www.nrcan.gc.ca/maps-tools-publications/satellite-imagery-air-photos/remote-sensing-tutorials/introduction/passive-vs-active-sensing/14639" target="_blank" rel="noopener noreferrer">Active vs Passive Scanning</a></li>
+                    <li><a href="https://www.terabee.com/time-of-flight-principle" target="_blank" rel="noopener noreferrer">TOF (Time of Flight)</a></li>
+                    <li><a href="https://www.3dnatives.com/en/3d-scanner-laser-triangulation080920174-99/" target="_blank" rel="noopener noreferrer">Triangulation</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Structured-light_3D_scanner" target="_blank" rel="noopener noreferrer">Structured Light Scanner</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="3D-data-home-page.html"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #e7135d;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+               ">
+                Back to the Working with 3D Data Pathway Homepage
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>From Photos to 3D (Passive Methods)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        table tr:first-child {
+            background-color: #f2f2f2;
+            font-weight: 700;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="top-menu" aria-label="Main navigation">
+        <div class="top-menu-home">
+            <a href="../../index.html">Home</a>
+            <a href="https://efi.ed.ac.uk/" class="logo-btn">
+                <img src="../../images/logo.png" alt="Site Logo">
+            </a>
+        </div>
+
+        <div class="top-menu-links">
+            <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+            <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+            <a href="../pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+            <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+            <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="site-header">
+            <div class="site-header-title">EFI Data-led Research Methods</div>
+        </div>
+
+        <h1>From Photos to 3D (Passive Methods)</h1>
+
+        <p>Passive methods for scanning 3D data, such as photogrammetry, Structure from Motion (SfM), and Neural Radiance Fields (NeRF), are used to reconstruct three-dimensional environments from 2D images or image sequences. Photogrammetry involves capturing multiple images of an object or scene from different angles and then using triangulation to calculate the 3D coordinates of points. Structure from Motion takes this further by not only estimating 3D points but also recovering camera poses from unorganised image sets. NeRF utilises deep learning to infer the volumetric representation of a scene by learning the appearance and geometry from a collection of images. These passive methods offer advantages like non-invasiveness, wide application domains, and the potential for accurate, high-fidelity 3D reconstruction, making them popular tools in fields like archaeology, architecture, virtual reality, and entertainment.</p>
+
+        <h2>Ideal Subject requirements</h2>
+
+        <ul>
+            <li>Non-reflective surfaces</li>
+            <li>Surface texture visible</li>
+            <li>The subject must remain perfectly still</li>
+            <li>Subject accessible from multiple angles</li>
+            <li>Reference of measurements
+                <ul>
+                    <li><a href="https://www.hammermissions.com/post/ground-control-points" target="_blank" rel="noopener noreferrer">Ground control points</a> for environment shoots</li>
+                    <li>Ruler to scale objects</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Traditional Photogrammetry</h2>
+
+        <p>Traditional photogrammetry is not a new technique and it has been used in cartography to generate accurate maps since the 20th century.</p>
+
+        <p>It creates accurate 3D representations of objects and environments by analysing multiple 2D images taken from different viewpoints.</p>
+
+        <p>This method relies on the principles of triangulation, where the positions of corresponding points in the images are used to calculate their 3D coordinates.</p>
+
+        <p>By accurately measuring the angles and distances between these points, photogrammetry creates a detailed and spatially accurate 3D model.</p>
+
+        <p>To be performed it needs advanced equipment like metric cameras and fixed bars. This is because in order to work you need to know the position and specification of the cameras used to produce the images.</p>
+
+        <p>Traditional photogrammetry finds applications in fields like surveying, cartography, architecture, and cultural heritage preservation.</p>
+
+        <p>Despite advancements in technology, its principles remain at the base of newer techniques such as SfM (Structure from Motion).</p>
+
+        <h2>Structure from Motion</h2>
+
+        <p>Structure from Motion (SfM) is a computer vision and photogrammetry technique used to create 3D models of objects, scenes, or environments from a set of 2D images or video frames. It aims to recover the 3D structure and camera motion information of a scene by analysing the apparent motion of objects between different viewpoints or frames.</p>
+
+        <p>The basic idea behind SfM is to use the changes in perspective and parallax between images taken from different angles to infer the relative positions of 3D points, representing features in the scene, and the cameras capturing those images. Contrary to traditional photogrammetry, you will not need any metric camera to generate the models; a good quality camera would be more than enough.</p>
+
+        <p>The software will both calculate the 3D shape of the objects from a photo and estimate the camera location. To do that it will put the two sets of unknowns, x, y, z of a feature in the photo and x, y, z of the camera location, in an equation system and it will identify the best match. The final product will be a point cloud, a collection of points of data plotted in 3D space.</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><h3><strong>Software</strong></h3></td>
+                    <td><h3><strong>Link</strong></h3></td>
+                    <td><h3><strong>Type</strong></h3></td>
+                </tr>
+                <tr>
+                    <td><p>Agisoft Metashape*</p></td>
+                    <td><p><a href="https://www.agisoft.com/" target="_blank" rel="noopener noreferrer">https://www.agisoft.com/</a></p></td>
+                    <td><p>Proprietary software available on some university computers</p></td>
+                </tr>
+                <tr>
+                    <td><p>Reality Capture*</p></td>
+                    <td><p><a href="https://www.capturingreality.com/" target="_blank" rel="noopener noreferrer">https://www.capturingreality.com/</a></p></td>
+                    <td><p>Proprietary software with an alternative credits system</p></td>
+                </tr>
+                <tr>
+                    <td><p>3DF Zephyr*</p></td>
+                    <td><p><a href="https://www.3dflow.net/3df-zephyr-photogrammetry-software/" target="_blank" rel="noopener noreferrer">https://www.3dflow.net/3df-zephyr-photogrammetry-software/</a></p></td>
+                    <td><p>Proprietary software with a free basic version</p></td>
+                </tr>
+                <tr>
+                    <td><p>Pix4D</p></td>
+                    <td><p><a href="https://www.pix4d.com/" target="_blank" rel="noopener noreferrer">https://www.pix4d.com/</a></p></td>
+                    <td><p>Proprietary software</p></td>
+                </tr>
+                <tr>
+                    <td><p>Meshroom</p></td>
+                    <td><p><a href="https://alicevision.org/#meshroom" target="_blank" rel="noopener noreferrer">https://alicevision.org/#meshroom</a></p></td>
+                    <td><p>Open source</p></td>
+                </tr>
+                <tr>
+                    <td><p>Colmap</p></td>
+                    <td><p><a href="https://colmap.github.io/" target="_blank" rel="noopener noreferrer">https://colmap.github.io/</a></p></td>
+                    <td><p>Open source</p></td>
+                </tr>
+                <tr>
+                    <td><p>MicMac</p></td>
+                    <td><p><a href="https://micmac.ensg.eu/index.php/Accueil" target="_blank" rel="noopener noreferrer">https://micmac.ensg.eu/index.php/Accueil</a></p></td>
+                    <td><p>Open source</p></td>
+                </tr>
+                <tr>
+                    <td><p>OpenDroneMap</p></td>
+                    <td><p><a href="https://www.opendronemap.org/" target="_blank" rel="noopener noreferrer">https://www.opendronemap.org/</a></p></td>
+                    <td><p>Open source</p></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>*<a href="https://sketchfab.com/blogs/community/zephyr-metashape-reality-capture-time-and-quality-comparison/" target="_blank" rel="noopener noreferrer">Comparison of 3DF Zephyr, Metashape, Reality Capture</a></p>
+
+        <h2>NeRF</h2>
+
+        <p>Neural Radiance Fields (NeRF) is a computer graphics and computer vision technique that renders complex 3D scenes from limited 2D images.</p>
+
+        <p>It uses neural networks to model the scene's volumetric structure and appearance.</p>
+
+        <p>NeRF can synthesise high-quality images from any viewpoint.</p>
+
+        <p>Unlike traditional methods that rely on explicit 3D reconstructions, NeRF represents scenes as continuous fields of radiance values, allowing for smooth interpolation and realistic rendering.</p>
+
+        <p>This innovation has wide-ranging implications for fields such as virtual reality, gaming, and cinematography.</p>
+
+        <h2>Where to find more information</h2>
+
+        <div class="row">
+            <div class="column">
+                <h3>Our Tutorials</h3>
+                <img src="../../images/Class black and white.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://github.com/DCS-training/Digital-Method-of-the-Month/blob/main/DMM%20Docs/3DScanning.md" target="_blank" rel="noopener noreferrer">DMM 3D Scanning</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>UoE Resources</h3>
+                <img src="../../images/Playfair Header.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://media.ed.ac.uk/media/1_4qufs5bo" target="_blank" rel="noopener noreferrer">Training video on 3DF Zephyr</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>Self-Guided Learning</h3>
+                <img src="../../images/Group with basket sepia.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://datagen.tech/guides/synthetic-data/neural-radiance-field-nerf/" target="_blank" rel="noopener noreferrer">How NeRF works</a></li>
+                    <li><a href="https://github.com/CambridgeDH/DH-RSE-Summer-School-2023/tree/main/Day4" target="_blank" rel="noopener noreferrer">3D Data and Structure from Motion tutorial</a></li>
+                    <li><a href="https://researchguides.case.edu/c.php?g=1278037" target="_blank" rel="noopener noreferrer">Photogrammetry Demo in 3DF Zephyr Free</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=SQ10wYirvn8" target="_blank" rel="noopener noreferrer">3DF Zephyr Video Tutorial</a></li>
+                    <li><a href="https://pdfs.semanticscholar.org/abf9/23fd07ad9e8197ac8bb276c7862c94e15cc5.pdf" target="_blank" rel="noopener noreferrer">NeRF vs Structure from Motion</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Structure_from_motion" target="_blank" rel="noopener noreferrer">Wiki on Structure from Motion</a></li>
+                    <li><a href="https://www.isprs.org/tc2-symposium2018/images/ISPRS-Interview-Fraser.pdf" target="_blank" rel="noopener noreferrer">SfM vs Photogrammetry</a></li>
+                    <li><a href="https://www.sciencedirect.com/science/article/pii/S0169555X12004217" target="_blank" rel="noopener noreferrer">SfM research example</a></li>
+                    <li><a href="https://www.youtube.com/playlist?list=PLYqCeHIaz7Pi2jpqsROsk064vmOsMPz9v" target="_blank" rel="noopener noreferrer">Structure from Motion video course</a></li>
+                    <li><a href="https://www.sciencedirect.com/science/article/pii/B9780444532602100031" target="_blank" rel="noopener noreferrer">Theory of Photogrammetry</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=je79gV8HsZI" target="_blank" rel="noopener noreferrer">Metashape workflow video</a></li>
+                    <li><a href="https://link.springer.com/book/10.1007/978-1-4471-4063-4" target="_blank" rel="noopener noreferrer">3D Imaging Analysis and Applications</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="3D-data-home-page.html"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #e7135d;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+               ">
+                Back to the Working with 3D Data Pathway Homepage
+            </a>
+        </div>
+    </div>
+</body>
+</html>

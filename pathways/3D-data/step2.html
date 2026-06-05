@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Wrangling</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        table tr:first-child {
+            background-color: #f2f2f2;
+            font-weight: 700;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="top-menu" aria-label="Main navigation">
+        <div class="top-menu-home">
+            <a href="../../index.html">Home</a>
+            <a href="https://efi.ed.ac.uk/" class="logo-btn">
+                <img src="../../images/logo.png" alt="Site Logo">
+            </a>
+        </div>
+
+        <div class="top-menu-links">
+            <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+            <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+            <a href="../pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+            <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+            <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="site-header">
+            <div class="site-header-title">EFI Data-led Research Methods</div>
+        </div>
+
+        <h1>Data Wrangling</h1>
+
+        <p>The first product of active and passive data acquisition is normally a point cloud. From the point cloud, different steps are needed to clean and refine the model. Depending on the intended use of the model, you can decide which wrangling steps are required.</p>
+
+        <h2>Point Cloud</h2>
+
+        <p>The initial point cloud you are going to have will look different depending on which data wrangling stage you begin at, i.e. “Scanning Data” or “From Photos to 3D”.</p>
+
+        <p>If you are working with data obtained through a scanner, you will already have a dense point cloud. A dense point cloud means that by looking at the point cloud you will be able to see the structure of the object in detail. This cloud may or may not contain colour information depending on the instrument you used.</p>
+
+        <p>If you are working with data obtained through photogrammetry/SfM, the initial point cloud will be a sparse point cloud. The sparse point cloud is the representation of every single point on the object for which the algorithm was able to accurately make an assumption on its position in space. In a way, this is the truest representation of the surface but may have holes or gaps where elevation data may be missing due to sparse alignment between photos. A dense point cloud contains a much larger number of data points that are densely sampled across the scene. These point clouds capture intricate details and more accurately represent the surfaces of objects and structures in the scene. Because the starting data are photos, the sparse and dense point clouds contain colour information.</p>
+
+        <p><a href="https://en.wikipedia.org/wiki/Point_cloud" target="_blank" rel="noopener noreferrer">More on Point clouds</a></p>
+
+        <h2>Polygon Mesh</h2>
+
+        <p>A mesh is the standard final product of scanning and photogrammetry and it is a way to represent the surface or boundary of a 3D object or scene. It consists of interconnected vertices, edges, and faces that collectively define the shape and structure of the object. Vertices are points in 3D space, edges connect pairs of vertices, and faces are flat polygons formed by connecting three vertices. The algorithms behind this are more complicated than that, but to picture it you can imagine it as a massive connect-the-dots game starting from the point cloud.</p>
+
+        <p>Meshes are used to digitally represent a wide range of objects, from simple geometric shapes to complex organic structures. They play a crucial role in various applications like computer-aided design (CAD), video games, animation, virtual reality, and simulations, enabling the creation, manipulation, and rendering of 3D objects in a digital environment.</p>
+
+        <p>The same object can be represented by different levels of precision meshes and often you will need to “decimate” your mesh because these are very heavy objects and different software will have different limits on the number of polygons they will be able to handle. In virtual reality environments, 3D objects are often “pyramidal” objects. This means that the same object will actually be a collection of views of the same object at different levels of decimation. If the object is in the background it will be shown at a certain resolution, and the nearer you get to the object, the more detailed it will be.</p>
+
+        <p><strong>Main Mesh extensions</strong></p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><p>File Extension</p></td>
+                    <td><p>Description</p></td>
+                </tr>
+                <tr>
+                    <td><p>OBJ (.obj)</p></td>
+                    <td><p>The Wavefront OBJ format is a widely used text-based format that supports both geometry and material information. It is a common choice for exchanging 3D models between different software applications.</p></td>
+                </tr>
+                <tr>
+                    <td><p>STL (.stl)</p></td>
+                    <td><p>The STL (STereoLithography) format is often used for 3D printing and rapid prototyping. It represents the geometry of the mesh using triangles and can be either binary or ASCII-encoded.</p></td>
+                </tr>
+                <tr>
+                    <td><p>FBX (.fbx)</p></td>
+                    <td><p>Developed by Autodesk, the FBX format is a versatile file format that supports various types of data, including mesh geometry, textures, animations, and more. It is commonly used in the entertainment industry, especially for games and animations.</p></td>
+                </tr>
+                <tr>
+                    <td><p>PLY (.ply)</p></td>
+                    <td><p>The Polygon File Format (PLY) is used to store a variety of 3D data, including meshes with vertex coordinates, normals, colours, and other attributes. It is used in both research and industry applications.</p></td>
+                </tr>
+                <tr>
+                    <td><p>Collada (.dae)</p></td>
+                    <td><p>The Collada format is an XML-based format designed to facilitate the exchange of 3D content between different software applications.</p></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><a href="https://en.wikipedia.org/wiki/Polygon_mesh" target="_blank" rel="noopener noreferrer">More on Polygon Meshes</a></p>
+
+        <h2>Colour and Texture</h2>
+
+        <p>Not all the data collected through scanners will have colour information. However, there are certain steps that can be performed on software like Meshlab to <a href="https://vcg.isti.cnr.it/Publications/2008/CCCS08/CG_textailor.pdf" target="_blank" rel="noopener noreferrer">reconstruct colour information afterwards</a>.</p>
+
+        <p>When the data has colour information, these can be subdivided into two types: colour by vertex and proper textures.</p>
+
+        <p>The colour by vertex option is the easier one. Basically, each vertex on the mesh will contain an associated RGB value that will be used similarly to a pixel in 2D images to represent the colour of the object. The quality of a colour by vertex representation is directly connected to how dense the mesh is and it can lead to grainy results.</p>
+
+        <p>The texturisation approach will be way less dependent on the number of polygons. To simplify, starting from the 3D model, the software programmes will be able to stitch together the different photos into a “blanket” that will drape perfectly on top of the mesh. Some SfM software, like Metashape, offers really good texturising algorithms that generate incredibly good results even with sub-optimal photos.</p>
+
+        <h2>Where to find more information</h2>
+
+        <div class="row">
+            <div class="column">
+                <h3>Our Tutorials</h3>
+                <img src="../../images/Class black and white.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://github.com/DCS-training/Digital-Method-of-the-Month/blob/main/DMM%20Docs/3DScanning.md" target="_blank" rel="noopener noreferrer">DMM on 3D Scanning</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>UoE Resources</h3>
+                <img src="../../images/Playfair Header.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://www.ucreatestudio.is.ed.ac.uk/trainings_calendar" target="_blank" rel="noopener noreferrer">Check UCreate upcoming training</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>Self-Guided Learning</h3>
+                <img src="../../images/Group with basket sepia.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://www.youtube.com/@MrPMeshLabTutorials" target="_blank" rel="noopener noreferrer">MisterP Meshlab tutorials</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=je79gV8HsZI" target="_blank" rel="noopener noreferrer">Meshlab Workflow Video</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=RmMDFydHeso" target="_blank" rel="noopener noreferrer">Photogrammetry in Meshroom &amp; Blender Video</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=WGHWXtf4es8" target="_blank" rel="noopener noreferrer">Metashape Demo Video</a></li>
+                    <li><a href="https://github.com/terrielsimmons/Processing_Scans_in_Meshlab" target="_blank" rel="noopener noreferrer">Process scans in Meshlab</a></li>
+                    <li><a href="https://www.instructables.com/Using-Meshlab-to-Clean-and-Assemble-Laser-Scan-Dat/" target="_blank" rel="noopener noreferrer">Using Meshlab to process and assemble laser scanning data</a></li>
+                    <li><a href="https://www.meshlab.net/" target="_blank" rel="noopener noreferrer">Meshlab homepage</a></li>
+                    <li><a href="https://www.researchgate.net/publication/228451494_From_Point_Cloud_to_Textured_Model_the_Zamani_Laser_Scanning_Pipeline_in_Heritage_Documentation" target="_blank" rel="noopener noreferrer">From point cloud to textured model pipeline example</a></li>
+                    <li><a href="https://link.springer.com/book/10.1007/978-1-4471-4063-4" target="_blank" rel="noopener noreferrer">3D Imaging Analysis and Applications</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="3D-data-home-page.html"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #e7135d;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+               ">
+                Back to the Working with 3D Data Pathway Homepage
+            </a>
+        </div>
+    </div>
+</body>
+</html>
