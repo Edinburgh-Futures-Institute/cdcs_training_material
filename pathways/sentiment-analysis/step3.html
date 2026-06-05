@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Process your text into segments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body>
+    <nav class="top-menu" aria-label="Main navigation">
+        <div class="top-menu-home">
+            <a href="../../index.html">Home</a>
+            <a href="https://efi.ed.ac.uk/" class="logo-btn">
+                <img src="../../images/logo.png" alt="Site Logo">
+            </a>
+        </div>
+
+        <div class="top-menu-links">
+            <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+            <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+            <a href="../pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+            <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+            <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="site-header">
+            <div class="site-header-title">EFI Data-led Research Methods</div>
+        </div>
+
+        <h1>Process your text into segments</h1>
+
+        <p>At present, text sentiment analysis is mainly divided into three types. The first is done by sentiment lexicons and syntactic structure, the second is done based on machine learning, such as Bayes and SVM, and the third is done by deep learning, such as LSTM, CNN, LSTM+CNN, BERT+CNN, etc.</p>
+
+        <p>Among the three methods, the second and third methods require manual annotating of large amounts of data and then supervised training. Only the first type does not require manual annotating and does not require training.</p>
+
+        <p>In this section, the first method and its related content will be introduced. In order to better conduct the sentiment analysis, you may need to divide your data by the granularities of the text.</p>
+
+        <h2>Divide your data by the granularities of the text</h2>
+
+        <p>Sentiment analysis mainly has five elements: entity, aspect, opinion, holder, and time. Among these, the combination of entity and aspect is called the target. The goal of sentiment analysis is to extract these five elements from unstructured text. The sentiment analysis results under the various granularities of the text need to be integrated, combined with the context and domain knowledge base, to make judgements.</p>
+
+        <p>According to the granularity of the text, text sentiment analysis can be divided into three levels of recognition and analysis: words, sentences, and texts. The sentiment analysis of words is not only the basis of judging the sentiment of the text but also the premise of sentiment analysis of sentences and texts.</p>
+
+        <p>Among them, the analysis objects at the word level and sentence level are the positive and negative emotions of a word and the entire sentence, and do not distinguish the specific goals in the sentence, such as entities or attributes, which is equivalent to ignoring the two elements of the five elements of entities and attributes. Word-level sentiment analysis, that is, the construction of sentiment dictionaries, studies how to give sentiment information to words. Sentence-level/document-level sentiment analysis studies how to tag the entire sentence or document with the sentiment. The target-level sentiment analysis considers specific goals, which can be entities, aspects of an entity, or a combination of entities and aspects.</p>
+
+        <ul>
+            <li><a href="https://dl.acm.org/doi/pdf/10.5555/2002669.2002712" target="_blank" rel="noopener noreferrer">Granularity in natural language discourse</a></li>
+            <li><a href="https://link.springer.com/chapter/10.1007/978-3-319-75487-1_39" target="_blank" rel="noopener noreferrer">Identity and Granularity of Events in Text</a></li>
+        </ul>
+
+        <h2>The word-level analysis and sentiment lexicons</h2>
+
+        <p>The sentiment analysis of words is not only the basis of judging the sentiment of the text but also the premise of sentiment analysis of sentences and texts.</p>
+
+        <p>The word-level analysis is to construct sentiment lexicons, which aims to give emotional information to words. The first thing to determine here is how to express emotions. Common methods of expressing emotions include discrete representation and multi-dimensional representation. Discrete representation methods use positive, negative, and neutral to describe emotions. Multi-dimensional representations include models such as the Valence-Arousal-Dominance (VAD) model and the Evaluation-Potency-Activity (EPA) model.</p>
+
+        <ul>
+            <li><a href="https://www.researchgate.net/figure/The-VAD-Valence-Arousal-Dominance-model-spanned-across-the-six-basic-emotions_fig1_338118399" target="_blank" rel="noopener noreferrer">The VAD (Valence-Arousal-Dominance) model spanned across the six basic emotions</a></li>
+        </ul>
+
+        <h2>Where to find more information</h2>
+
+        <div class="row">
+            <div class="column">
+                <h3>Our Tutorials</h3>
+                <img src="../../images/Class black and white.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://github.com/DCS-training/Comparing-Sentiment-Analysis-Models-in-R" target="_blank" rel="noopener noreferrer">Comparing Sentiment Analysis Methods in R</a></li>
+                    <li><a href="https://github.com/DCS-training/SentimentAnalysis" target="_blank" rel="noopener noreferrer">Sentiment Analysis</a></li>
+                    <li><a href="https://github.com/DCS-training/SentimentAnalysistimes" target="_blank" rel="noopener noreferrer">Sentiment analysis of articles from The Times Archive</a></li>
+                    <li><a href="https://github.com/DCS-training/Text-Analysis-and-the-Humanities" target="_blank" rel="noopener noreferrer">Text Analysis and the Humanities</a></li>
+                    <li><a href="https://github.com/DCS-training/IntroToTextAnalysis" target="_blank" rel="noopener noreferrer">Intro To Text Analysis</a></li>
+                    <li><a href="https://github.com/DCS-training/PolarisationWithR" target="_blank" rel="noopener noreferrer">Polarisation With R</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>UoE Resources</h3>
+                <img src="../../images/Playfair Header.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://media.ed.ac.uk/media/FNLP%203c/1_0s6261bo" target="_blank" rel="noopener noreferrer">Text Corpora: Tokenisation</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>Self-Guided Learning</h3>
+                <img src="../../images/Group with basket sepia.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://www.researchgate.net/figure/The-VAD-Valence-Arousal-Dominance-model-spanned-across-the-six-basic-emotions_fig1_338118399" target="_blank" rel="noopener noreferrer">Valence-Arousal-Dominance (VAD) model</a></li>
+                    <li><a href="https://link.springer.com/article/10.1007/s11042-020-09030-1" target="_blank" rel="noopener noreferrer">Automatic Construction of Sentiment Lexicons</a></li>
+                    <li><a href="https://www.cs.cornell.edu/people/pabo/movie-review-data/" target="_blank" rel="noopener noreferrer">Cornell Movie-review Datasets</a></li>
+                    <li><a href="http://ir.dcs.gla.ac.uk/test_collections/blog06info.html" target="_blank" rel="noopener noreferrer">Blog06 Lexicon</a></li>
+                    <li><a href="https://www.aclweb.org/anthology/L10-1531/" target="_blank" rel="noopener noreferrer">SentiWordNet</a></li>
+                    <li><a href="https://www.analyticsvidhya.com/blog/2020/05/what-is-tokenization-nlp/" target="_blank" rel="noopener noreferrer">What is tokenisation</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=KrEhmADXTr8" target="_blank" rel="noopener noreferrer">Tokenization and Stop Words</a></li>
+                    <li><a href="https://www.lexalytics.com/lexablog/text-analytics-functions-explained" target="_blank" rel="noopener noreferrer">The 7 Basic Functions of Text Analytics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="sentiment-analysis-home-page.html"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #e7135d;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+               ">
+                Back to the Sentiment Analysis Pathway Homepage
+            </a>
+        </div>
+    </div>
+</body>
+</html>

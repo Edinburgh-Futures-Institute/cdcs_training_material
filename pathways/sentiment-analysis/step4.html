@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose the most suitable sentiment analysis tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body>
+    <nav class="top-menu" aria-label="Main navigation">
+        <div class="top-menu-home">
+            <a href="../../index.html">Home</a>
+            <a href="https://efi.ed.ac.uk/" class="logo-btn">
+                <img src="../../images/logo.png" alt="Site Logo">
+            </a>
+        </div>
+
+        <div class="top-menu-links">
+            <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+            <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+            <a href="../pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+            <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+            <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="site-header">
+            <div class="site-header-title">EFI Data-led Research Methods</div>
+        </div>
+
+        <h1>Choose the most suitable sentiment analysis tool</h1>
+
+        <p>With the growing capabilities of machine learning and natural language processing, many sentiment analysis tools are popping up. There are various sentiment analysis tools for different types of text, including social media sentiment analysis tools, text analysis software and tools for voice sentiment analysis, such as tone analysers.</p>
+
+        <h2>Online sentiment tools</h2>
+
+        <p>To choose a sentiment analysis tool for your project, the first thing you need to think about is whether you prefer using existing online tools or writing code to conduct the analysis.</p>
+
+        <p>If you hope to avoid coding, you can check these online sentiment analysis tools: MonkeyLearn, Tone Analyzer, and MeaningCloud. These tools all have freemium versions of their plans. However, these may have limited features.</p>
+
+        <p>Here are some sentiment analysis tools with more advanced features: Qualaroo, Lexalytics, Critical Mention, Social Mention, and Sentiment Analyzer. These tools all have premium plans. You can choose them purposefully for your text.</p>
+
+        <p>If you are a student/staff member of the University of Edinburgh you can access a ready-to-go tool to do Sentiment Analysis via the <a href="https://go-gale-com.ezproxy.is.ed.ac.uk/ps/start.do?p=DSLAB&u=ed_itw" target="_blank" rel="noopener noreferrer">GALE Scholar Lab</a>. NB: you will need to log in via EASE to access the pages.</p>
+
+        <ul>
+            <li><a href="https://www.rosette.com/capability/sentiment-analyzer/" target="_blank" rel="noopener noreferrer">Sentiment Analyzer</a></li>
+            <li><a href="https://mention.com/en/sentiment-analysis/" target="_blank" rel="noopener noreferrer">Social Mention</a></li>
+            <li><a href="https://www.criticalmention.com/media-monitoring/" target="_blank" rel="noopener noreferrer">Critical Mention</a></li>
+            <li><a href="https://www.lexalytics.com/?r=cxl-sat" target="_blank" rel="noopener noreferrer">Lexalytics</a></li>
+            <li><a href="https://qualaroo.com/" target="_blank" rel="noopener noreferrer">Qualaroo</a></li>
+            <li><a href="https://monkeylearn.com/sentiment-analysis/" target="_blank" rel="noopener noreferrer">MonkeyLearn</a></li>
+            <li><a href="https://go.gale.com/ps/helpCenter?userGroupName=ed_itw&amp;inPS=true&amp;nspage=true&amp;prodId=DSLAB&amp;docId=UEVEZF894752122" target="_blank" rel="noopener noreferrer">Gale Scholar Lab</a></li>
+        </ul>
+
+        <h2>Sentiment analysis within programming languages</h2>
+
+        <p>If you’re comfortable with coding, you can try using programming languages like Python or R to conduct the sentiment analysis.</p>
+
+        <p>If you prefer to use Python, you can use the <strong>NLTK Library</strong>.</p>
+
+        <p>NLTK is a platform for working with human language data. It provides easy-to-use interfaces to <a href="https://www.nltk.org/nltk_data/" target="_blank" rel="noopener noreferrer">over 50 corpora and lexical resources</a>, such as WordNet, along with a suite of text processing libraries for classification, tokenisation, stemming, tagging, parsing, and semantic reasoning, wrappers for industrial-strength NLP libraries.</p>
+
+        <p>If you prefer to use R, you can use the <strong>Quanteda</strong> or <strong>Tidytext</strong> libraries.</p>
+
+        <p>The <a href="https://quanteda.io/" target="_blank" rel="noopener noreferrer">Quanteda</a> package is an R package for managing and analysing textual data.</p>
+
+        <p><a href="https://www.geeksforgeeks.org/r-language/sentiment-analysis-using-quanteda-in-r/" target="_blank" rel="noopener noreferrer">Sentiment analysis</a> using dictionaries can be applied to any text, tokens, or dfm using <code>textstat_polarity()</code> or <code>textstat_valence()</code>. This function takes the <strong>quanteda</strong> object as an input, along with a dictionary whose valence or polarity has been set. The two ways of setting dictionary values allow a user to weigh each <em>key</em> with a polarity weight, or each <em>value</em> within keys with a <em>valence</em> weight.</p>
+
+        <p>The Tidytext package provides access to several sentiment lexicons. Three general-purpose lexicons are:</p>
+
+        <ul>
+            <li>AFINN from <a href="http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010" target="_blank" rel="noopener noreferrer">Finn Årup Nielsen</a></li>
+            <li><code>BING</code> from <a href="https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html" target="_blank" rel="noopener noreferrer">Bing Liu and collaborators</a></li>
+            <li>NRC from <a href="http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm" target="_blank" rel="noopener noreferrer">Saif Mohammad and Peter Turney</a></li>
+        </ul>
+
+        <p>All three of these lexicons are based on unigrams, i.e. single words.</p>
+
+        <ul>
+            <li><a href="https://www.nltk.org/" target="_blank" rel="noopener noreferrer">Sentiment Analysis with NLTK</a></li>
+            <li><a href="https://www.tidytextmining.com/tidytext.html" target="_blank" rel="noopener noreferrer">Sentiment Analysis with TidyText</a></li>
+            <li><a href="https://www.geeksforgeeks.org/r-language/sentiment-analysis-using-quanteda-in-r/" target="_blank" rel="noopener noreferrer">Quanteda.Sentiment</a></li>
+        </ul>
+
+        <h2>Where to find more information</h2>
+
+        <div class="row">
+            <div class="column">
+                <h3>Our Tutorials</h3>
+                <img src="../../images/Class black and white.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://github.com/DCS-training/Comparing-Sentiment-Analysis-Models-in-R" target="_blank" rel="noopener noreferrer">Comparing Sentiment Analysis Methods in R</a></li>
+                    <li><a href="https://github.com/DCS-training/SentimentAnalysis" target="_blank" rel="noopener noreferrer">Sentiment Analysis</a></li>
+                    <li><a href="https://github.com/DCS-training/SentimentAnalysistimes" target="_blank" rel="noopener noreferrer">Sentiment analysis of articles from The Times Archive</a></li>
+                    <li><a href="https://github.com/DCS-training/Text-Analysis-and-the-Humanities" target="_blank" rel="noopener noreferrer">Text Analysis and the Humanities</a></li>
+                    <li><a href="https://github.com/DCS-training/IntroToTextAnalysis" target="_blank" rel="noopener noreferrer">Intro To Text Analysis</a></li>
+                    <li><a href="https://github.com/DCS-training/PolarisationWithR" target="_blank" rel="noopener noreferrer">Polarisation With R</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>UoE Resources</h3>
+                <img src="../../images/Playfair Header.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://media.ed.ac.uk/media/IDS%20-%20Week%2011%20-%2002%20-%20Text%20analysis/1_fde8volk" target="_blank" rel="noopener noreferrer">Wrangling text data, tokenization, and sentiment analysis</a></li>
+                    <li><a href="https://go-gale-com.ezproxy.is.ed.ac.uk/ps/start.do?p=DSLAB&u=ed_itw" target="_blank" rel="noopener noreferrer">Gale Scholar Lab</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>Self-Guided Learning</h3>
+                <img src="../../images/Group with basket sepia.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="http://librarycarpentry.org/lc-tdm/" target="_blank" rel="noopener noreferrer">Text &amp; Data Mining</a></li>
+                    <li><a href="https://www.kaggle.com/rtatman/tutorial-sentiment-analysis-in-r" target="_blank" rel="noopener noreferrer">Sentiment Analysis with R</a></li>
+                    <li><a href="https://www.datacamp.com/community/tutorials/simplifying-sentiment-analysis-python" target="_blank" rel="noopener noreferrer">Sentiment Analysis with Python</a></li>
+                    <li><a href="https://realpython.com/python-nltk-sentiment-analysis/" target="_blank" rel="noopener noreferrer">Sentiment Analysis with NLTK</a></li>
+                    <li><a href="https://www.digitalocean.com/community/tutorials/how-to-perform-sentiment-analysis-in-python-3-using-the-natural-language-toolkit-nltk" target="_blank" rel="noopener noreferrer">How To Perform Sentiment Analysis in Python 3 Using the Natural Language Toolkit</a></li>
+                    <li><a href="https://www.tidytextmining.com/sentiment.html" target="_blank" rel="noopener noreferrer">Sentiment analysis with tidy data</a></li>
+                    <li><a href="https://www.tidytextmining.com/tidytext.html" target="_blank" rel="noopener noreferrer">Text Mining with R: A Tidy Approach</a></li>
+                    <li><a href="https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html" target="_blank" rel="noopener noreferrer">Introduction to tidytext</a></li>
+                    <li><a href="https://www.linkedin.com/learning/data-science-foundations-data-mining-in-python/python-for-data-mining?u=50251009" target="_blank" rel="noopener noreferrer">Data Science Foundations: Data Mining in Python</a></li>
+                    <li><a href="https://www.linkedin.com/learning/text-analytics-and-predictions-with-r-essential-training/the-need-for-text-analytics?u=50251009" target="_blank" rel="noopener noreferrer">Text Analytics and Predictions with R Essential Training</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="sentiment-analysis-home-page.html"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #e7135d;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+               ">
+                Back to the Sentiment Analysis Pathway Homepage
+            </a>
+        </div>
+    </div>
+</body>
+</html>

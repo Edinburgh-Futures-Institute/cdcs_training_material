@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analyse the text</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body>
+    <nav class="top-menu" aria-label="Main navigation">
+        <div class="top-menu-home">
+            <a href="../../index.html">Home</a>
+            <a href="https://efi.ed.ac.uk/" class="logo-btn">
+                <img src="../../images/logo.png" alt="Site Logo">
+            </a>
+        </div>
+
+        <div class="top-menu-links">
+            <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+            <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+            <a href="../pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+            <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+            <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="site-header">
+            <div class="site-header-title">EFI Data-led Research Methods</div>
+        </div>
+
+        <h1>Analyse the text</h1>
+
+        <p>Now that you've got most of the work done, and your data have been cleaned, sorted and modified, you can finally proceed to analyse the sentiment of your data.</p>
+
+        <p>If you have finished your data wrangling in either Python or R, you will have automatically retained all steps that have been conducted, and therefore it will be easy to go back and check each stage and also demonstrate your steps if required by publishers or reviewers.</p>
+
+        <h2>Assessment for sentiment analysis</h2>
+
+        <ul>
+            <li><strong>Polarity:</strong> is the statement positive, negative, or neutral?</li>
+            <li><strong>Intensity:</strong> if you are looking for negations, amplifiers, diminishers, or other things that make something more negative or more positive.</li>
+            <li><strong>Scaling:</strong> scaling the emotions. For example, from the most negative up to zero to plus ten, for the most positive.</li>
+            <li><strong>Discrete emotions:</strong> is this person happy, sad, angry or frustrated?</li>
+        </ul>
+
+        <p>It is worth noticing that anything beyond polarity will become a lot more complicated to code. Therefore, polarity is the fastest to implement and easiest to interpret.</p>
+
+        <h2>Sentiment analysis algorithms approaches</h2>
+
+        <p>There are different algorithms you can implement in sentiment analysis models, depending on the amount of data you want to analyse, and to what extent you need accuracy in your model.</p>
+
+        <ul>
+            <li><strong>Rule-based Approaches:</strong> systems automatically conduct sentiment analysis based on manually crafted rules. 
+                These rules include various NLP techniques developed in computational linguistics, such as tokenisation, stemming, and lexicons, previously mentioned in <a href="step3.html"  target="_blank" rel="noopener noreferrer">step 3: Process your text into segments</a>.</li>
+            <li><strong>Automatic methods:</strong> mainly rely on machine learning techniques. You do not necessarily need to speak the language of your text, but an external evaluative measure is needed. Here, a sentiment analysis task is modelled as a classification problem, whereby a classifier is fed a text and returns a category, for example star ratings. In this process, you can use a statistical model like Naïve Bayes, Logistic Regression, or Support Vector Machines. You need to look for the association between features or characteristics in the text, and these external evaluations.</li>
+            <li><strong>Hybrid approaches:</strong> combine elements of rule-based and automatic methods into one system. One huge advantage is that results are often more accurate.</li>
+        </ul>
+
+        <h2>Where to find more information</h2>
+
+        <div class="row">
+            <div class="column">
+                <h3>Our Tutorials</h3>
+                <img src="../../images/Class black and white.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://github.com/DCS-training/Comparing-Sentiment-Analysis-Models-in-R" target="_blank" rel="noopener noreferrer">Comparing Sentiment Analysis Methods in R</a></li>
+                    <li><a href="https://github.com/DCS-training/SentimentAnalysis" target="_blank" rel="noopener noreferrer">Sentiment Analysis</a></li>
+                    <li><a href="https://github.com/DCS-training/SentimentAnalysistimes" target="_blank" rel="noopener noreferrer">Sentiment analysis of articles from The Times Archive</a></li>
+                    <li><a href="https://github.com/DCS-training/Text-Analysis-and-the-Humanities" target="_blank" rel="noopener noreferrer">Text Analysis and the Humanities</a></li>
+                    <li><a href="https://github.com/DCS-training/IntroToTextAnalysis" target="_blank" rel="noopener noreferrer">Intro To Text Analysis</a></li>
+                    <li><a href="https://github.com/DCS-training/PolarisationWithR" target="_blank" rel="noopener noreferrer">Polarisation With R</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>UoE Resources</h3>
+                <img src="../../images/Playfair Header.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://media.ed.ac.uk/media/IDS%20-%20Week%2011%20-%2002%20-%20Text%20analysis/1_fde8volk" target="_blank" rel="noopener noreferrer">Wrangling text data, tokenization, and sentiment analysis</a></li>
+                    <li><a href="https://go-gale-com.ezproxy.is.ed.ac.uk/ps/start.do?p=DSLAB&u=ed_itw" target="_blank" rel="noopener noreferrer">Gale Scholar Lab</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>Self-Guided Learning</h3>
+                <img src="../../images/Group with basket sepia.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://www.linkedin.com/learning/text-analytics-and-predictions-with-python-essential-training/preparing-data-for-sentiment-analysis?u=69919578" target="_blank" rel="noopener noreferrer">Sentiment Analysis with Python Essential Training</a></li>
+                    <li><a href="https://www.linkedin.com/learning/machine-learning-with-ml-dot-net/build-an-ml-model-for-sentiment-analysis?u=69919578" target="_blank" rel="noopener noreferrer">Build a machine learning model for sentiment analysis</a></li>
+                    <li><a href="https://www.tidytextmining.com/sentiment.html" target="_blank" rel="noopener noreferrer">Sentiment analysis with tidy data in R (NLP)</a></li>
+                    <li><a href="https://www.datacamp.com/community/tutorials/simplifying-sentiment-analysis-python" target="_blank" rel="noopener noreferrer">Python Sentiment Analysis Tutorial (NLP)</a></li>
+                    <li><a href="https://scikit-learn.org/stable/modules/naive_bayes.html" target="_blank" rel="noopener noreferrer">Naive Bayes (ML)</a></li>
+                    <li><a href="https://scikit-learn.org/stable/modules/svm.html" target="_blank" rel="noopener noreferrer">Support Vector Machines (ML)</a></li>
+                    <li><a href="https://www.sciencedirect.com/topics/computer-science/polarity-classification" target="_blank" rel="noopener noreferrer">Polarity Classification</a></li>
+                    <li><a href="https://www.sciencedirect.com/science/article/pii/S0268401219311181" target="_blank" rel="noopener noreferrer">Comparative assessment of sentiment analysis and star ratings for consumer reviews</a></li>
+                    <li><a href="http://librarycarpentry.org/lc-tdm/" target="_blank" rel="noopener noreferrer">Text &amp; Data Mining</a></li>
+                    <li><a href=" https://programminghistorian.org/en/lessons/text-mining-youtube-comments" target="_blank" rel="noopener noreferrer">Text Mining YouTube Comment Data with Wordfish in R</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="sentiment-analysis-home-page.html"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #e7135d;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+               ">
+                Back to the Sentiment Analysis Pathway Homepage
+            </a>
+        </div>
+    </div>
+</body>
+</html>

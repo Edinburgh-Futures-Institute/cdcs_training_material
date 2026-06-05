@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Acquiring, gathering and cleaning the data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body>
+    <nav class="top-menu" aria-label="Main navigation">
+        <div class="top-menu-home">
+            <a href="../../index.html">Home</a>
+            <a href="https://efi.ed.ac.uk/" class="logo-btn">
+                <img src="../../images/logo.png" alt="Site Logo">
+            </a>
+        </div>
+
+        <div class="top-menu-links">
+            <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+            <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+            <a href="../pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+            <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+            <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="site-header">
+            <div class="site-header-title">EFI Data-led Research Methods</div>
+        </div>
+
+        <h1>Acquiring, gathering and cleaning the data</h1>
+
+        <p>The first and most important step you will need to take is to identify, collect, and clean your data.</p>
+
+        <p>The type of text plays a decisive role in the subsequent tool selection. Some tools are specialised in certain types of texts such as tweets or long-form writing like a novel, others are designed for texts that talk about certain types of industries and therefore have a specialist vocabulary.</p>
+
+        <p>Using uncleaned data will skew the results of the analysis, so this step needs to be very accurate and you will need to keep a record of all the cleaning steps you performed on the data.</p>
+
+        <h2>Gather your data</h2>
+
+        <p>Before you get started, you need to think about the goal you want to achieve, and in what ways you want to gather your data.</p>
+
+        <p>If you want to do text mining on social media like Twitter, for example to analyse the sentiment of different tweets about certain topics, 
+            you may want to gather the tweets by searching them by queries or gathering them from certain users. 
+            Gathering this type of dataused to be very straightforward using social media provided API but in the last years social media companies have changed the way these tools can be accessed/used by researchers.
+            Twitter has canceled the research API that was given researchers with legitimate research questions the options of collecting data for free and it is now charging researchers the same way they charge private companies.
+            Meta has now a <a href="https://transparency.meta.com/researchtools/meta-content-library/" target="_blank" rel="noopener noreferrer">Meta Content Library and API </a> that gives access to "pubblic" data stored in the various meta.
+            There are also tools like the <a href="https://www.southampton.ac.uk/~lac/WebDataResearchAssistant/">The Web Data Research Assistant (aka WebDataRA)</a> or the <a href="https://github.com/digitalmethodsinitiative/zeeschuimer"> Zeeschuimer plugin </a> that will allow you scrape various platforms. 
+            Tools like that are incredibly useful but you will need to clear out your research proposal with your Ethics commitee because it may do so in breach of the platforms TOC.</p>
+
+        <p>If you want to do text mining on other forms of text, such as news, customer reviews or comments from blogs, you can use web scrapers that crawl web data and gather specified information.
+           To do so you you would normally write a script in either Python or R (there are many libraries that you can use) but you need to use the same care mentioned above for social media data harvesting. 
+           When it comes to standard website what you are allowed to do or not when it come to automatically scraping is normally stored in the "robots.txt" file. 
+           To access it just type the website homepage followed by /robot.txt: 
+           e.g. if you want to explore what can you scrape from the Guardian website you need to access <a href="https://www.theguardian.com/robots.txt" target="_blank" rel="noopener noreferrer">https://www.theguardian.com/robots.txt</a>
+        </p>
+        </p></a>
+
+        <p>You also need to consider in what format to store the data after collecting it. 
+            You can use web browser plugins with which users can extract information from any public website using HTML and export the data to the desired file format.</p>
+        
+        <p><a href="https://medium.com/analytics-vidhya/data-collection-and-annotation-measures-for-sentiment-analysis-767da1dd4272" target="_blank" rel="noopener noreferrer">Data Collection for Sentiment Analysis</a></p>
+
+       <div style="text-align: center; margin: 2rem 0;">
+            <a href="../../workflows/workflow1.html"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #e7135d;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+               ">
+                Explore our Workflow on Webscraping
+            </a>
+        </div>
+        <h2>Data cleaning</h2>
+
+        <p>Data cleaning is an important step that will take more time than any other step in text mining. It is vital because we want to remove words and symbols that do not have any impact on meaning. For example, if you want to analyse the sentiment of a novel, you need to remove content that has nothing to do with the main text of the plot, such as stop words. Then you need to convert the data into a structured data format that programmes or tools can directly use for sentiment analysis.</p>
+
+        <ul>
+            <li><a href="../../pathways/data-visualisation/step2.html" target="_blank" rel="noopener noreferrer">Go to Step 1.1 Tidy Data with OpenRefine</a></li>
+            <li><a href="../../pathways/data-visualisation/step5.html" target="_blank" rel="noopener noreferrer">Go to Step 1.2 Data wrangling with Python and R</a></li>
+        </ul>
+
+        <h2>Where to find more information</h2>
+
+        <div class="row">
+            <div class="column">
+                <h3>Our Tutorials</h3>
+                <img src="../../images/Class black and white.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://github.com/DCS-training/APIs_For_Research_2025"  target="_blank" rel="noopener noreferrer">API for research</a></li>
+                    <li><a href="https://github.com/DCS-training/legal-ethical-issues-webscraping"  target="_blank" rel="noopener noreferrer">Legal & Ethical Issues in Web Scraping</a></li>
+                    <li><a href="https://github.com/DCS-training/Webscraping-News-Sites-With-Python"  target="_blank" rel="noopener noreferrer">Webscraping Newsites With Python</a></li>
+                    <li><a href="https://github.com/DCS-training/Web-Scraping"  target="_blank" rel="noopener noreferrer">Collecting Data from the Web: Foundation of Webscraping</a></li>
+                    <li><a href="https://github.com/DCS-training/web-scraping-R-2024"  target="_blank" rel="noopener noreferrer">Scraping Websites with R </a></li>
+                    <li><a href="https://media.ed.ac.uk/media/t/1_orzqd7vf" target="_blank">Working with OpenRefine (Video)</a></li>
+                    <li><a href="https://github.com/DCS-training/Data-Wrangling-And-Vis-Pandas" target="_blank">Data Wrangling And Vis Pandas </a></li>
+                    <li><a href="https://github.com/DCS-training/A-Pipeline-for-Data-Wrangling-and-Manipulation-with-R" target="_blank">A Pipeline for Data Wrangling and Manipulation with R </a></li>
+                    <li><a href="https://github.com/DCS-training/Data-Science-in-the-Wild" target="_blank">Data Science in the Wild </a></li>
+                    <li><a href="https://github.com/DCS-training/Much-ado-about-nothing-missing-data-in-research" target="_blank"> Much Ado About Nothing. Missing Data in Research </a></li>
+                    <li><a href="https://github.com/DCS-training/IntroToPython" target="_blank"> Intro to Python</a></li>
+                    <li><a href="https://github.com/DCS-training/IntroToRAndRStudio" target="_blank">Intro to R and RStudio </a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>UoE Resources</h3>
+                <img src="../../images/Playfair Header.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://media.ed.ac.uk/media/IDS%20-%20Week%2006%20-%2003%20-%20Scraping%20IMDB%20Top%20250/1_5qf90v3o" target="_blank" rel="noopener noreferrer">Scraping IMDB top 250 Movies</a></li>
+                    <li><a href="https://media.ed.ac.uk/media/IDS%20-%20Week%2006%20-%2004%20-%20Web%20scraping%20considerations/1_brmywhm0" target="_blank" rel="noopener noreferrer">Web Scraping considerations</a></li>
+                    <li><a href="https://media.ed.ac.uk/media/IDS%20-%20Week%2006%20-%2002%20-%20Web%20scraping/1_vxsk6ib7" target="_blank" rel="noopener noreferrer">Web Scraping</a></li>
+                    <li><a href="https://media.ed.ac.uk/media/IDS%20-%20Week%2003%20-%2003%20-%20Grammar%20of%20data%20wrangling/1_meyz4shf" target="_blank" rel="noopener noreferrer">Grammar of Data Wrangling</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>Self-Guided Learning</h3>
+                <img src="../../images/Group with basket sepia.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://programminghistorian.org/en/lessons/intro-to-beautiful-soup" target="_blank" rel="noopener noreferrer">Web scraping with Beautiful Soup</a></li>
+                    <li><a href="https://programminghistorian.org/en/lessons/fetch-and-parse-data-with-openrefine" target="_blank" rel="noopener noreferrer">Fetching and Parsing Data from the Web with OpenRefine</a></li>
+                    <li><a href="https://programminghistorian.org/en/lessons/working-with-web-pages" target="_blank" rel="noopener noreferrer">Downloading Web Pages with Python</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=O0gTv9VGRig" target="_blank" rel="noopener noreferrer">How to Search Twitter with R: search, filter, and sort tweets</a></li>
+                    <li><a href="https://zzhu17.medium.com/web-scraping-yahoo-finance-news-a18f9b20ee8a" target="_blank" rel="noopener noreferrer">Web scraping Yahoo Finance News</a></li>
+                    <li><a href="https://www.google.com.hk/search?q=stop+word+data+cleaning&amp;oq=stop+word+data+cleaning&amp;aqs=chrome..69i57.8849j0j4&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="noopener noreferrer">How to Clean Text for Machine Learning with Python</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=lcgqP8g6i84" target="_blank" rel="noopener noreferrer">Cleaning Text for Natural Language Processing (NLP) with Python</a></li>
+                    <li><a href="https://towardsdatascience.com/cleaning-preprocessing-text-data-for-sentiment-analysis-382a41f150d6" target="_blank" rel="noopener noreferrer">Cleaning &amp; Preprocessing Text Data for Sentiment Analysis in R</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=Y87TPjaDcbk" target="_blank" rel="noopener noreferrer">R Tutorial: Tokenizing and cleaning</a></li>
+                    <li><a href="https://www.linkedin.com/learning/r-for-data-science-lunchbreak-lessons/nlp-packages-tidytext?u=69919578" target="_blank" rel="noopener noreferrer">NLP packages in R: Tidytext</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="sentiment-analysis-home-page.html"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #e7135d;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+               ">
+                Back to the Sentiment Analysis Pathway Homepage
+            </a>
+        </div>
+    </div>
+</body>
+</html>
