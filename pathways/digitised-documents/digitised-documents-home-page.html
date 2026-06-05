@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles.css">
+    <title>Managing Digitised Documents</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <style>
+      #visualization {
+        font-family: "Source Sans 3", sans-serif;
+        padding: 1rem;
+        background: #ebebeb;
+      }
+
+      #visualization svg {
+        display: block;
+        width: 100%;
+        height: 680px;
+        border: 1px solid #d0d7de;
+        overflow: visible;
+        border-radius: 5px;
+      }
+
+      #below-visualization-text {
+        font-family: "Source Sans 3", sans-serif;
+        width: 70vw;
+        margin: 1.5rem auto 2rem;
+        color: #1f2937;
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+
+      #node-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(15, 23, 42, 0.45);
+        z-index: 1000;
+      }
+
+      #node-modal.open {
+        display: flex;
+      }
+
+      #node-modal-content {
+        font-family: "Source Sans 3", sans-serif;
+        position: relative;
+        width: min(560px, 90vw);
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.25);
+        color: #1f2937;
+        line-height: 1.6;
+      }
+
+      #node-modal-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        border-radius: 999px;
+        background: #e5e7eb;
+        color: #111827;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      #node-modal-close:hover {
+        background: #d1d5db;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="top-menu" aria-label="Main navigation">
+      <div class="top-menu-home">
+         <a href="index.html">Home</a>
+         <a href="https://efi.ed.ac.uk/" class="logo-btn">
+      <img src="../../images/logo.png" alt="Site Logo">
+        </div>
+        <div class="top-menu-links">
+      <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+      <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+      <a href="../../pathways/pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+      <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+      <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+      </div>
+    </nav>
+
+    <div class="site-header">
+      <div class="site-header-title">Managing Digitised Documents</div>
+    </div>
+    <div id="visualization">
+      <svg viewBox="0 0 960 700" aria-label="Visualization canvas"></svg>
+    </div>
+    <div id="below-visualization-text">
+      <h4>Author: Lucia Michielin</h4>
+    </div>
+    <div id="node-modal" aria-hidden="true">
+      <div id="node-modal-content" role="dialog" aria-modal="true">
+        <button id="node-modal-close" aria-label="Close">X</button>
+        <p id="node-modal-body"></p>
+      </div>
+    </div>
+    <script>
+    const svg = d3.select("#visualization svg");
+    const width = 960;
+    const height = 700;
+    const nodeCount = 4;
+    const nodeRadius = 18;
+    const pathDrop = 0;
+    const reservedBottomSpace = 250;
+    const visualizationOffsetY = -70;
+    const branchOffsetY = 140;
+
+    const boxGap = 24;
+    const boxMinHeight = 110;
+    const boxWidth = 180;
+    const nodeInset = boxGap + boxWidth / 2;
+    const boxTextPaddingX = 10;
+    const boxTextPaddingY = 20;
+    const boxLineHeight = 18;
+    const boxFontSize = 14;
+    const boxFontWeight = 500;
+    const nodeBoxTextOffsetY = -20;
+
+    const yBottom = height - reservedBottomSpace + visualizationOffsetY;
+    const yTop = yBottom;
+
+    const yUpper = yTop - 170;
+
+    const xScale = d3
+      .scaleLinear()
+      .domain([0, nodeCount - 1])
+      .range([nodeInset, width - nodeInset - boxWidth * 0.5]);
+
+    const nodes = d3.range(nodeCount).map((index) => ({
+      index,
+      x: xScale(index),
+      y: yTop,
+    }));
+
+    const linearNodes = nodes.slice(0, 4);
+
+    const branchCorridorGap = 36;
+    const branchSplitX = nodes[3].x + boxWidth / 2 + branchCorridorGap;
+    const splitX = branchSplitX + 72;
+
+    const branchNodes = [
+      {
+        index: 4,
+        label: 5,
+        x: splitX,
+        y: yTop - branchOffsetY,
+        link: "step5.html",
+      },
+      {
+        index: 5,
+        label: 6,
+        x: splitX,
+        y: yTop + branchOffsetY,
+        link: "step6.html",
+      },
+    ];
+
+    const pathPoints = [
+      { x: nodes[0].x, y: yTop },
+      { x: branchSplitX, y: yTop },
+    ];
+
+    const branchPathPoints = branchNodes.map((node) => [
+      { x: branchSplitX, y: yTop },
+      { x: branchSplitX, y: node.y },
+      { x: node.x, y: node.y },
+    ]);
+
+    // upper connector: node 2 up to callout level, across to above node 5, down
+    const connectorPoints = [
+      { x: nodes[1].x, y: nodes[1].y },
+      { x: nodes[1].x, y: yUpper },
+      { x: branchNodes[0].x, y: yUpper },
+      { x: branchNodes[0].x, y: branchNodes[0].y - nodeRadius },
+    ];
+
+    const connectorMid = {
+      x: (nodes[1].x + branchNodes[0].x) / 2,
+      y: yUpper,
+    };
+
+    const upperNodeModalText = "IF YOU DO NOT NEED TO EXTRACT TEXT FROM YOUR DIGITAL DOCUMENTS GO TO STEP 5 OR 6";
+
+    const boxTexts = [
+      `Establish Permissions & Copyright.
+      Do you have permission to use or share the data for your intended purpose? 
+      Get help with understanding copyright and licensing for different materials and uses.`,
+      `Managing Digital Files.
+      Plan organising and managing your data from the start, including your required file formats, long-term storage and metadata for research accessibility in future.`,
+      `Digitise Documents.
+      Learn how to digitise documents effectively and consistently with different types of equipment and consider how lighting and colour standards may impact how you use your documents.`,
+      `Text Extraction & Preparation.
+      How do you convert digitised images to text? Learn how to extract your text using OCR, process it for analysis and the challenges to be aware of.`,
+      `Digitised Material as Text.
+      What can you achieve in your research methods and outputs with extracted text? Discover the research opportunities that text analysis offers, and how to create digital textual editions.`,
+      `Digitised Material as Images.
+      Learn about different platforms to host your digitised images, both for public access and private use.`,
+    ];
+
+    const nodeLinks = [
+      "step1.html",
+      "step2.html",
+      "step3.html",
+      "step4.html",
+    ];
+
+    function openNodeLink(link) {
+      if (!link) return;
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+
+    const nodeModal = document.getElementById("node-modal");
+    const nodeModalBody = document.getElementById("node-modal-body");
+    const nodeModalClose = document.getElementById("node-modal-close");
+
+    function openNodeModal(text) {
+      if (!text) return;
+      nodeModalBody.textContent = text;
+      nodeModal.classList.add("open");
+      nodeModal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeNodeModal() {
+      nodeModal.classList.remove("open");
+      nodeModal.setAttribute("aria-hidden", "true");
+    }
+
+    nodeModalClose.addEventListener("click", closeNodeModal);
+    nodeModal.addEventListener("click", (event) => {
+      if (event.target === nodeModal) {
+        closeNodeModal();
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nodeModal.classList.contains("open")) {
+        closeNodeModal();
+      }
+    });
+
+    const measureText = svg
+      .append("text")
+      .attr("x", -9999)
+      .attr("y", -9999)
+      .attr("font-size", boxFontSize)
+      .attr("font-weight", boxFontWeight)
+      .attr("visibility", "hidden");
+
+    function getWrappedLines(value, maxWidth, fontWeight) {
+      const words = String(value)
+        .replace(/\s+/g, " ")
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+      if (!words.length) return [];
+
+      const fw = fontWeight ?? boxFontWeight;
+      measureText.attr("font-weight", fw);
+      const lines = [];
+      let line = [];
+
+      for (const word of words) {
+        line.push(word);
+        measureText.text(line.join(" "));
+        if (
+          measureText.node().getComputedTextLength() > maxWidth &&
+          line.length > 1
+        ) {
+          line.pop();
+          lines.push(line.join(" "));
+          line = [word];
+        }
+      }
+      if (line.length) lines.push(line.join(" "));
+
+      measureText.attr("font-weight", boxFontWeight);
+      return lines;
+    }
+
+    function splitHeadingAndBody(value) {
+      const normalized = String(value).replace(/\s+/g, " ").trim();
+      if (!normalized) return { heading: "", body: "" };
+      const delimiters = [",", ".", ":", ";"];
+      const delimiterIndexes = delimiters
+        .map((d) => normalized.indexOf(d))
+        .filter((i) => i !== -1);
+      if (!delimiterIndexes.length) return { heading: normalized, body: "" };
+      const splitIndex = Math.min(...delimiterIndexes);
+      return {
+        heading: normalized.slice(0, splitIndex).trim(),
+        body: normalized.slice(splitIndex + 1).trim(),
+      };
+    }
+
+    // Branch nodes get boxes to the RIGHT of the circle
+    const branchBoxWidth = 200;
+    const branchBoxTextPaddingX = 10;
+    const branchBoxTextPaddingY = 12;
+    const branchBoxLineHeight = 17;
+    const branchBoxFontSize = 13;
+
+    const allNodesWithTextBoxes = linearNodes;
+
+    const nodeBoxes = allNodesWithTextBoxes.map((node) => {
+      const parsed = splitHeadingAndBody(boxTexts[node.index]);
+      const maxTextWidth = boxWidth - boxTextPaddingX * 2;
+      const headingLines = getWrappedLines(parsed.heading.toUpperCase(), maxTextWidth, 700);
+      const bodyLines = getWrappedLines(parsed.body, maxTextWidth, boxFontWeight);
+      const headingGap = headingLines.length && bodyLines.length ? 5 : 0;
+      const lineCount = headingLines.length + bodyLines.length;
+      const textHeight = lineCount * boxLineHeight + headingGap + boxTextPaddingY * 2;
+      return {
+        node,
+        x: node.x - boxWidth / 2,
+        y: node.y + nodeRadius + 10,
+        headingLines,
+        bodyLines,
+        headingGap,
+        boxHeight: Math.max(boxMinHeight, textHeight),
+      };
+    });
+
+    // Branch node text boxes (to the right)
+    const branchBoxes = branchNodes.map((node) => {
+      const parsed = splitHeadingAndBody(boxTexts[node.index]);
+      const maxTextWidth = branchBoxWidth - branchBoxTextPaddingX * 2;
+      const headingLines = getWrappedLines(parsed.heading.toUpperCase(), maxTextWidth, 700);
+      const bodyLines = getWrappedLines(parsed.body, maxTextWidth, boxFontWeight);
+      const headingGap = headingLines.length && bodyLines.length ? 5 : 0;
+      const lineCount = headingLines.length + bodyLines.length;
+      const textHeight = lineCount * branchBoxLineHeight + headingGap + branchBoxTextPaddingY * 2;
+      const boxHeight = Math.max(90, textHeight);
+      return {
+        node,
+        x: node.x + nodeRadius + 10,
+        y: node.y - boxHeight / 2,
+        headingLines,
+        bodyLines,
+        headingGap,
+        boxHeight,
+        boxWidth: branchBoxWidth,
+      };
+    });
+
+    measureText.remove();
+
+    const calloutBoxWidth = 360;
+    const calloutBoxHeight = 56;
+    const calloutBoxX = connectorMid.x - calloutBoxWidth / 2;
+    const calloutBoxY = connectorMid.y + 28;
+
+    const contentLeft = d3.min([
+      ...nodeBoxes.map((d) => d.x),
+      ...branchBoxes.map((d) => d.x),
+      ...linearNodes.map((d) => d.x - nodeRadius),
+      ...branchNodes.map((d) => d.x - nodeRadius),
+      calloutBoxX,
+      connectorMid.x - 20,
+    ]);
+    const contentRight = d3.max([
+      ...nodeBoxes.map((d) => d.x + boxWidth),
+      ...branchBoxes.map((d) => d.x + d.boxWidth),
+      ...linearNodes.map((d) => d.x + nodeRadius),
+      ...branchNodes.map((d) => d.x + nodeRadius),
+      calloutBoxX + calloutBoxWidth,
+      connectorMid.x + 20,
+    ]);
+    const maxBoxBottom = d3.max([
+      ...nodeBoxes.map((d) => d.y + d.boxHeight),
+      ...branchBoxes.map((d) => d.y + d.boxHeight),
+    ]);
+    const contentHeight = Math.max(height, maxBoxBottom + 20);
+    const horizontalPadding = 40;
+    svg
+      .attr(
+        "viewBox",
+        `${contentLeft - horizontalPadding} 0 ${contentRight - contentLeft + horizontalPadding * 2} ${contentHeight}`
+      )
+      .attr("preserveAspectRatio", "xMidYMid meet");
+    svg.style("height", `${contentHeight}px`);
+
+    // draw main horizontal path
+    svg
+      .append("path")
+      .attr("d", d3.line().x((d) => d.x).y((d) => d.y)(pathPoints))
+      .attr("fill", "none")
+      .attr("stroke", "#041d40")
+      .attr("stroke-width", 4)
+      .attr("stroke-linecap", "round");
+
+    // draw branch paths to nodes 5 and 6
+    svg
+      .selectAll("path.branch-path")
+      .data(branchPathPoints)
+      .join("path")
+      .attr("class", "branch-path")
+      .attr("d", (points) => d3.line().x((d) => d.x).y((d) => d.y)(points))
+      .attr("fill", "none")
+      .attr("stroke", "#041d40")
+      .attr("stroke-width", 4)
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round");
+
+    // draw upper connector path (pink)
+    svg
+      .append("path")
+      .attr("d", d3.line().x((d) => d.x).y((d) => d.y)(connectorPoints))
+      .attr("fill", "none")
+      .attr("stroke", "#e7135d")
+      .attr("stroke-width", 4)
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round");
+
+    // upper ? circle
+    svg
+      .append("circle")
+      .attr("cx", connectorMid.x)
+      .attr("cy", connectorMid.y)
+      .attr("r", 20)
+      .attr("fill", "#ffffff")
+      .attr("stroke", "#e7135d")
+      .attr("stroke-width", 4)
+      .attr("cursor", "pointer")
+      .attr("role", "button")
+      .attr("tabindex", 0)
+      .on("click", () => openNodeModal(upperNodeModalText))
+      .on("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openNodeModal(upperNodeModalText);
+        }
+      });
+
+    svg
+      .append("text")
+      .attr("x", connectorMid.x)
+      .attr("y", connectorMid.y)
+      .attr("text-anchor", "middle")
+      .attr("dominant-baseline", "middle")
+      .attr("font-size", 18)
+      .attr("font-weight", 700)
+      .attr("fill", "#e7135d")
+      .attr("pointer-events", "none")
+      .text("?");
+
+    // callout box (pink filled rectangle)
+    svg
+      .append("rect")
+      .attr("x", calloutBoxX)
+      .attr("y", calloutBoxY)
+      .attr("width", calloutBoxWidth)
+      .attr("height", calloutBoxHeight)
+      .attr("rx", 4)
+      .attr("fill", "#e7135d");
+
+    const calloutLabel = svg
+      .append("text")
+      .attr("text-anchor", "middle")
+      .attr("font-size", 13)
+      .attr("font-weight", 700)
+      .attr("fill", "#ffffff");
+
+    calloutLabel
+      .append("tspan")
+      .attr("x", connectorMid.x)
+      .attr("y", calloutBoxY + 20)
+      .text("IF YOU DO NOT NEED TO EXTRACT TEXT FROM");
+
+    calloutLabel
+      .append("tspan")
+      .attr("x", connectorMid.x)
+      .attr("y", calloutBoxY + 38)
+      .text("YOUR DIGITAL DOCUMENTS GO TO STEP 5 OR 6");
+
+    // text boxes under linear nodes
+    svg
+      .selectAll("rect.node-box")
+      .data(nodeBoxes)
+      .join("rect")
+      .attr("class", "node-box")
+      .attr("x", (d) => d.x)
+      .attr("y", (d) => d.y)
+      .attr("width", boxWidth)
+      .attr("height", (d) => d.boxHeight)
+      .attr("rx", 10)
+      .attr("fill", "#ffffff");
+
+    const nodeBoxLabels = svg
+      .selectAll("text.node-box-label")
+      .data(nodeBoxes)
+      .join("text")
+      .attr("class", "node-box-label")
+      .attr("x", (d) => d.x + boxTextPaddingX)
+      .attr("y", (d) => d.y + boxTextPaddingY)
+      .attr("text-anchor", "start")
+      .attr("font-size", boxFontSize)
+      .attr("font-weight", boxFontWeight)
+      .attr("fill", "#1f2937");
+
+    nodeBoxLabels.each(function (d) {
+      const text = d3.select(this);
+      const leftX = d.x + boxTextPaddingX;
+      const lineCount = d.headingLines.length + d.bodyLines.length;
+      const textBlockHeight = lineCount * boxLineHeight + d.headingGap;
+      const startY =
+        d.y + (d.boxHeight - textBlockHeight) / 2 + boxFontSize + nodeBoxTextOffsetY;
+      let cursorY = startY;
+      text.text(null);
+      d.headingLines.forEach((line) => {
+        text.append("tspan").attr("x", leftX).attr("y", cursorY + 10).attr("font-weight", 700).text(line);
+        cursorY += boxLineHeight;
+      });
+      if (d.headingLines.length && d.bodyLines.length) cursorY += d.headingGap;
+      d.bodyLines.forEach((line) => {
+        text.append("tspan").attr("x", leftX).attr("y", cursorY + 10).attr("font-weight", boxFontWeight).text(line);
+        cursorY += boxLineHeight;
+      });
+    });
+
+    // text boxes to right of branch nodes
+    svg
+      .selectAll("rect.branch-box")
+      .data(branchBoxes)
+      .join("rect")
+      .attr("class", "branch-box")
+      .attr("x", (d) => d.x)
+      .attr("y", (d) => d.y)
+      .attr("width", (d) => d.boxWidth)
+      .attr("height", (d) => d.boxHeight)
+      .attr("rx", 6)
+      .attr("fill", "#ffffff");
+
+    const branchBoxLabels = svg
+      .selectAll("text.branch-box-label")
+      .data(branchBoxes)
+      .join("text")
+      .attr("class", "branch-box-label")
+      .attr("text-anchor", "start")
+      .attr("font-size", branchBoxFontSize)
+      .attr("font-weight", boxFontWeight)
+      .attr("fill", "#1f2937");
+
+    branchBoxLabels.each(function (d) {
+      const text = d3.select(this);
+      const leftX = d.x + branchBoxTextPaddingX;
+      const lineCount = d.headingLines.length + d.bodyLines.length;
+      const textBlockHeight = lineCount * branchBoxLineHeight + d.headingGap;
+      const startY = d.y + (d.boxHeight - textBlockHeight) / 2 + branchBoxFontSize;
+      let cursorY = startY;
+      text.text(null);
+      d.headingLines.forEach((line) => {
+        text.append("tspan").attr("x", leftX).attr("y", cursorY).attr("font-weight", 700).text(line);
+        cursorY += branchBoxLineHeight;
+      });
+      if (d.headingLines.length && d.bodyLines.length) cursorY += d.headingGap;
+      d.bodyLines.forEach((line) => {
+        text.append("tspan").attr("x", leftX).attr("y", cursorY).attr("font-weight", boxFontWeight).text(line);
+        cursorY += branchBoxLineHeight;
+      });
+    });
+
+    // linear node circles
+    svg
+      .selectAll("circle.node")
+      .data(linearNodes)
+      .join("circle")
+      .attr("class", "node")
+      .attr("cx", (d) => d.x)
+      .attr("cy", (d) => d.y)
+      .attr("r", nodeRadius)
+      .attr("fill", "#041d40")
+      .attr("stroke", "#041d40")
+      .attr("stroke-width", 4)
+      .attr("cursor", "pointer")
+      .attr("role", "link")
+      .attr("tabindex", 0)
+      .on("click", (event, d) => openNodeLink(nodeLinks[d.index]))
+      .on("keydown", (event, d) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openNodeLink(nodeLinks[d.index]);
+        }
+      });
+
+    // branch node circles
+    svg
+      .selectAll("circle.branch-node")
+      .data(branchNodes)
+      .join("circle")
+      .attr("class", "branch-node")
+      .attr("cx", (d) => d.x)
+      .attr("cy", (d) => d.y)
+      .attr("r", nodeRadius)
+      .attr("fill", "#041d40")
+      .attr("stroke", "#041d40")
+      .attr("stroke-width", 4)
+      .attr("cursor", "pointer")
+      .attr("role", "link")
+      .attr("tabindex", 0)
+      .on("click", (event, d) => openNodeLink(d.link))
+      .on("keydown", (event, d) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openNodeLink(d.link);
+        }
+      });
+
+    // linear node number labels (white text on dark circle)
+    svg
+      .selectAll("text.node-label")
+      .data(linearNodes)
+      .join("text")
+      .attr("class", "node-label")
+      .attr("x", (d) => d.x)
+      .attr("y", (d) => d.y)
+      .attr("text-anchor", "middle")
+      .attr("dominant-baseline", "middle")
+      .attr("font-size", 14)
+      .attr("font-weight", 600)
+      .attr("fill", "#ffffff")
+      .attr("pointer-events", "none")
+      .text((d, i) => i + 1);
+
+    // branch node labels
+    svg
+      .selectAll("text.branch-node-label")
+      .data(branchNodes)
+      .join("text")
+      .attr("class", "branch-node-label")
+      .attr("x", (d) => d.x)
+      .attr("y", (d) => d.y)
+      .attr("text-anchor", "middle")
+      .attr("dominant-baseline", "middle")
+      .attr("font-size", 14)
+      .attr("font-weight", 600)
+      .attr("fill", "#ffffff")
+      .attr("pointer-events", "none")
+      .text((d) => d.label);
+  </script>
+
+      </body>
+</html>
