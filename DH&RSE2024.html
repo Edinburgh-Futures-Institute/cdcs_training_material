@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Humanities and Research Software Engineering Summer School 2024</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #000;
+}
+
+table th,
+table td {
+    border: 1px solid #000;
+    padding: 0.75rem;
+    vertical-align: top;
+    text-align: left;
+}
+</style>
+</head>
+
+<body>
+    <nav class="top-menu" aria-label="Main navigation">
+        <div class="top-menu-home">
+            <a href="index.html">Home</a>
+            <a href="https://efi.ed.ac.uk/" class="logo-btn">
+                <img src="images/logo.png" alt="Site Logo">
+            </a>
+        </div>
+
+        <div class="top-menu-links">
+            <a href="Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+            <a href="SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+            <a href="pathways/pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+            <a href="research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+            <a href="workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="site-header">
+            <div class="site-header-title">EFI Data-led Research Methods</div>
+        </div>
+
+        <h1>Digital Humanities and Research Software Engineering Summer School 2024</h1>
+
+        <p><strong>02–05 July 2024</strong></p>
+        <p><strong>Venue: Edinburgh Futures Institute</strong></p>
+
+        <p>CDCS is delighted to announce the Digital Humanities and Research Software Engineering Summer School 2024. 
+            The Summer School was co-organised by the Edinburgh Centre for Data, Culture and Society, Cambridge Digital Humanities, King’s Digital Lab and The Alan Turing Institute.</p>
+
+        <p>Since 2021, a partnership of UK institutions has been involved in the creation and delivery of a summer school aimed at researchers in the digital humanities who intend 
+            to professionalise their software engineering skills.</p>
+
+        <p>The event was co-organised by the Edinburgh Centre for Data, Culture and Society, 
+            represented by <a href="https://efi.ed.ac.uk/people/lucia-michielin/" target="_blank" rel="noopener noreferrer">Lucia Michielin</a>; Cambridge Digital Humanities, represented by <a href="https://www.cdh.cam.ac.uk/about/people/dr-mary-chester-kadwell/" target="_blank" rel="noopener noreferrer">Mary Chester-Kadwell</a> and <a href="https://www.cdh.cam.ac.uk/about/people/jonathan-blaney/" target="_blank" rel="noopener noreferrer">Jonathan Blaney</a>; King’s Digital Lab, represented by <a href="https://kdl.kcl.ac.uk/about/people/neil-jakeman/" target="_blank" rel="noopener noreferrer">Neil Jakeman</a>; and The Alan Turing Institute, represented by <a href="https://www.turing.ac.uk/people/researchers/federico-nanni" target="_blank" rel="noopener noreferrer">Federico Nanni</a>. It was supported by the Data/Culture Project, AHRC Grant Ref: AH/Y00745X/1, and the <a href="https://society-rse.org/" target="_blank" rel="noopener noreferrer">Society of Research Software Engineering</a>.</p>
+
+        <p>The event has previously been hosted by <a href="https://www.eventsforce.net/turingevents/frontend/reg/thome.csp?pageID=23222&amp;eventID=72&amp;language=1&amp;CSPCHD=001001000000phX1JcASaD6qcxQmnsWLV7r2WCp4WAp8MGRGpv" target="_blank" rel="noopener noreferrer">The Alan Turing Institute</a> and <a href="https://www.cdh.cam.ac.uk/events/36442/#description" target="_blank" rel="noopener noreferrer">Cambridge Digital Humanities</a>.</p>
+
+        <p>The 2024 Summer School, hosted at the Edinburgh Futures Institute, combined talks and practical activities and explored how the intersection of digital humanities and software engineering is shaped across different UK institutions. Participants had an opportunity to gain an invaluable insight into the roles and practices of Research Software Engineering in Digital Humanities research. Each day one of the partner institutions took the lead in showcasing the practicalities of working in the field. Mornings started with presentations on topics ranging from careers in RSE to project life cycles. Afternoon sessions consisted of hands-on activities spanning topics such as effective data visualisation, sustainable coding and peer programming.</p>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="https://www.cdcs.ed.ac.uk/files/2024-04/Terms%20and%20conditions_0.pdf"
+               target="_blank"
+               rel="noopener noreferrer"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #e7135d;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+                   margin: 0.25rem;
+               ">
+                Terms and Conditions
+            </a>
+
+            <a href="https://www.cdcs.ed.ac.uk/files/2024-06/DH%26RSEHandbook.pdf"
+               target="_blank"
+               rel="noopener noreferrer"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #041d40;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+                   margin: 0.25rem;
+               ">
+                Summer School Handbook
+            </a>
+        </div>
+
+        <div style="height: 2rem;"></div>
+        <h2>Audience and Prerequisites</h2>
+
+        <p>This event was aimed at those with an interest in becoming a Research Software Engineer in the humanities, or using research software engineering practices in their current or future role. It was ideal for those who already had a few years of experience in coding and may have been familiar with some computational methods within humanities projects.</p>
+
+        <p>It was designed to help prepare those who had worked in Digital Humanities for a few years to move into Research Software Engineering, or to adopt RSE practices more deeply into their technical research practice. Coding itself was not taught, and participants were expected to already be familiar with a programming language, preferably with some knowledge of Python.</p>
+
+        <h3>Code of Conduct and Inclusion</h3>
+
+        <p>The organisers were committed to creating a friendly and respectful place for learning, teaching and contributing for all. Participation by individuals from groups historically under-represented in the software engineering and data science sectors in the UK was strongly encouraged. All participants were expected to adhere to the Code of Conduct, set out as part of the Terms and Conditions document.</p>
+
+        <div style="height: 2rem;"></div>
+        <h2>Timeline</h2>
+
+        <ul>
+            <li><strong>15 April</strong> – Applications open</li>
+            <li><strong>17 May</strong> – Applications close</li>
+            <li><strong>24 May</strong> – Attendees are notified</li>
+            <li><strong>07 June</strong> – Deadline for confirmation of attendance</li>
+            <li><strong>02–05 July</strong> – Summer School takes place</li>
+        </ul>
+
+        <div style="height: 2rem;"></div>
+        <h2>Bursaries</h2>
+
+        <p>Thanks to the support of <a href="https://www.turing.ac.uk/" target="_blank" rel="noopener noreferrer">The Alan Turing Institute</a> and the <a href="https://society-rse.org/" target="_blank" rel="noopener noreferrer">Society of Research Software Engineering</a>, a limited number of bursaries were available to cover costs towards travel and accommodation. They were allocated based on the following criteria:</p>
+
+        <ol>
+            <li>To participants who would not receive financial support from their own institution to cover travel or accommodation.</li>
+            <li>To participants who self-defined as members of historically under-represented groups in software engineering or data science.</li>
+        </ol>
+
+        <p>If the number of bursary applications meeting the criteria exceeded the number of bursaries available, bursaries were assigned based on how well applications aligned with the target audience. Available funds did not cover travel for attendees arriving from outside the UK.</p>
+
+        <div style="height: 2rem;"></div>
+        <h2>How to Apply</h2>
+
+        <p>Thanks to the support of <a href="https://www.turing.ac.uk/" target="_blank" rel="noopener noreferrer">The Alan Turing Institute</a>, through the <a href="https://www.turing.ac.uk/research/research-projects/dataculture-building-sustainable-communities-around-arts-and-humanities" target="_blank" rel="noopener noreferrer">Sustainable Communities Around Arts and Humanities Datasets and Tools Project</a>, participation was free for those who were offered a place on the course.</p>
+
+        <p>Applicants were asked to fill out a form, providing general information about themselves, including email and affiliation, and answering three questions used as part of the selection process. The Summer School had a limited number of places available. Candidates were assessed based on both their application and how well they aligned with the target audience.</p>
+
+        <div style="height: 2rem;"></div>
+        <h2>Schedule</h2>
+
+        <p>The schedule below summarises the Summer School programme.</p>
+
+        <div class="table-wrapper">
+            <table class="programme-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Tuesday</th>
+                        <th colspan="2">Wednesday</th>
+                        <th colspan="2">Thursday</th>
+                        <th colspan="2">Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2"><strong>Centre for Data, Culture and Society</strong></td>
+                        <td colspan="2"><strong>Cambridge Digital Humanities</strong></td>
+                        <td colspan="2"><strong>King’s Digital Lab</strong></td>
+                        <td colspan="2"><strong>The Alan Turing Institute</strong></td>
+                    </tr>
+                    <tr>
+                        <td>08:40–09:10</td>
+                        <td>Registration</td>
+                        <td>09:00–09:15</td>
+                        <td>Introduction and Society of RSE presentation</td>
+                        <td>09:00–09:30</td>
+                        <td>Introduction and SSI talk</td>
+                        <td>09:00–09:30</td>
+                        <td>Introduction and DHRSE IEUK network talk</td>
+                    </tr>
+                    <tr>
+                        <td>09:10–09:30</td>
+                        <td>Welcome and Introduction</td>
+                        <td>09:15–10:30</td>
+                        <td>DH and RSE at Cambridge</td>
+                        <td>09:30–10:30</td>
+                        <td>Digital creative approaches for research and engagement</td>
+                        <td>09:30–10:30</td>
+                        <td>MapReader: open-source software library for analysing large map collections</td>
+                    </tr>
+                    <tr>
+                        <td>09:30–10:30</td>
+                        <td>Project Deep Dive</td>
+                        <td>10:30–11:00</td>
+                        <td>Coffee Break</td>
+                        <td>10:30–11:00</td>
+                        <td>Coffee Break</td>
+                        <td>10:30–11:00</td>
+                        <td>Coffee Break</td>
+                    </tr>
+                    <tr>
+                        <td>10:30–11:00</td>
+                        <td>Coffee Break</td>
+                        <td>11:00–12:30</td>
+                        <td>Sustainable code for research</td>
+                        <td>11:00–12:30</td>
+                        <td>Digital creative approaches for research and engagement</td>
+                        <td>11:00–11:45</td>
+                        <td>DH and RSE practices: the Seshat Project</td>
+                    </tr>
+                    <tr>
+                        <td>11:00–12:30</td>
+                        <td>DH and RSE at Edinburgh</td>
+                        <td>12:30–13:30</td>
+                        <td>Lunch</td>
+                        <td>12:30–13:30</td>
+                        <td>Lunch</td>
+                        <td>11:45–12:30</td>
+                        <td>DH and RSE practices: Living with Machines</td>
+                    </tr>
+                    <tr>
+                        <td>12:30–13:30</td>
+                        <td>Lunch</td>
+                        <td>13:30–15:00</td>
+                        <td>Applying Best Practices for Sustainable Code</td>
+                        <td>13:30–15:00</td>
+                        <td>Constructing an immersive experience from a research scenario</td>
+                        <td>12:30–13:30</td>
+                        <td>Lunch</td>
+                    </tr>
+                    <tr>
+                        <td>13:30–15:00</td>
+                        <td>Data visualisation with R</td>
+                        <td>15:00–15:30</td>
+                        <td>Coffee Break</td>
+                        <td>15:00–15:30</td>
+                        <td>Coffee Break</td>
+                        <td>13:30–15:00</td>
+                        <td>Collaborative coding</td>
+                    </tr>
+                    <tr>
+                        <td>15:00–15:30</td>
+                        <td>Coffee Break</td>
+                        <td>15:30–17:00</td>
+                        <td>Applying Best Practices for Sustainable Code</td>
+                        <td>15:30–17:00</td>
+                        <td>Constructing an immersive experience from a research scenario</td>
+                        <td>15:00–15:30</td>
+                        <td>Coffee Break</td>
+                    </tr>
+                    <tr>
+                        <td>15:30–17:00</td>
+                        <td>Custom data visualisation with D3</td>
+                        <td></td>
+                        <td></td>
+                        <td>17:30–19:00</td>
+                        <td>Reception</td>
+                        <td>15:30–17:00</td>
+                        <td>Collaborative coding</td>
+                    </tr>
+                    <tr>
+                        <td>20:00–22:00</td>
+                        <td>Ceilidh Club</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>17:30–19:00</td>
+                        <td>Drinks at the Pear Tree</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="height: 2rem;"></div>
+
+        <h2>Programme Overview</h2>
+
+        <p>The 2024 Summer School combined talks and practical activities and explored how the intersection of digital humanities and software engineering is shaped across different UK institutions. Participants gained insight into the roles and practices of Research Software Engineering in Digital Humanities research. Each day one of the partner institutions took the lead in showcasing the practicalities of working in the field.</p>
+
+        <hr>
+        <h3>Tuesday: Centre for Data, Culture and Society</h3>
+
+        <p><strong>Welcome and Introduction</strong></p>
+        <p><a href="https://efi.ed.ac.uk/people/lucia-michielin/" target="_blank" rel="noopener noreferrer">Lucia Michielin</a>, Digital Skills Training Manager, Edinburgh Futures Institute, and <a href="https://efi.ed.ac.uk/people/lisa-otty/" target="_blank" rel="noopener noreferrer">Lisa Otty</a>, Director, Edinburgh Centre for Data, Culture and Society.</p>
+
+        <p><strong>Project Deep Dive: Coding my way out of a box: Achieving emancipation and collaboration through the Digital Humanities</strong></p>
+        <p><a href="https://www.ed.ac.uk/profile/william-lamb" target="_blank" rel="noopener noreferrer">Professor Will Lamb</a>, Professor in Gaelic Ethnology and Linguistics, University of Edinburgh, explored the intersections between Celtic Studies and Digital Humanities at the University of Edinburgh, highlighting his transition from ethnology and linguistics to Natural Language Processing.</p>
+
+        <p><strong>DH and RSE at Edinburgh</strong></p>
+        <p>This panel explored what it means to work as a Research Software Engineer within the Humanities and Social Sciences College at the University of Edinburgh. Speakers included <a href="https://efi.ed.ac.uk/people/ed-mackenzie/" target="_blank" rel="noopener noreferrer">Ed MacKenzie</a>, <a href="https://efi.ed.ac.uk/people/alexis-pister/" target="_blank" rel="noopener noreferrer">Alexis Pister</a>, and <a href="https://www.designinformatics.org/person/evan-morgan/" target="_blank" rel="noopener noreferrer">Evan Morgan</a>.</p>
+
+        <p><strong>Data visualisation with R</strong></p>
+        <p>Lucia Michielin and <a href="https://aislinnkeogh.github.io/" target="_blank" rel="noopener noreferrer">Aislinn Keogh</a> guided participants from basic to advanced data visualisation techniques using RStudio and the ggplot2 package.</p>
+
+        <p><strong>Custom data visualisation with D3</strong></p>
+        <p><a href="https://sarahschoettler.com/" target="_blank" rel="noopener noreferrer">Sarah Schöttler</a> and Aislinn Keogh introduced custom data visualisations using D3.js and Observable.</p>
+
+       <hr>
+        <h3>Wednesday: Cambridge Digital Humanities</h3>
+
+        <p><strong>Welcome and Society of Research Software Engineering talk</strong></p>
+        <p><a href="https://www.cdh.cam.ac.uk/about/people/dr-mary-chester-kadwell/" target="_blank" rel="noopener noreferrer">Mary Chester-Kadwell</a>, Lead RSE, Cambridge Digital Humanities.</p>
+
+        <p><strong>DH and RSE in Cambridge: Encouraging Sustainability in Digital Humanities Projects</strong></p>
+        <p>Dr <a href="https://www.cdh.cam.ac.uk/about/people/dr-michael-hawkins/" target="_blank" rel="noopener noreferrer">Michael Hawkins</a>, Senior Developer, Cambridge University Library, discussed strategies for encouraging long-term sustainability in digital humanities projects.</p>
+
+        <p><strong>Bridging the Gap between Philology of Middle Eastern Texts and Data Science</strong></p>
+        <p>Dr <a href="https://www.lib.cam.ac.uk/collections/departments/taylor-schechter-genizah-research-unit/unit-staff/dr-estara-arrant" target="_blank" rel="noopener noreferrer">Estara Arrant</a>, Postdoctoral Research Associate, Cambridge University Library, described how data science tools and methods can support the linguistic and historical study of the Medieval Middle East.</p>
+
+        <p><strong>Careers Panel</strong></p>
+        <p>The panel included Mary Chester-Kadwell, <a href="https://www.cdh.cam.ac.uk/about/people/jonathan-blaney/" target="_blank" rel="noopener noreferrer">Jonathan Blaney</a>, Estara Arrant and Michael Hawkins.</p>
+
+        <p><strong>Sustainable code for research</strong></p>
+        <p>Mary Chester-Kadwell introduced best practices for sustainable code, including version control, dependency management, documentation, refactoring, testing, open source practice and publishing.</p>
+
+        <p><strong>Evaluating GitHub Repositories</strong></p>
+        <p>Jonathan Blaney led a session examining GitHub repositories to explore good and less effective practices for writing sustainable code.</p>
+
+        <p><strong>Applying Best Practices for Sustainable Code</strong></p>
+        <p>Dr <a href="https://www.cdh.cam.ac.uk/about/people/lidea-shahidi/" target="_blank" rel="noopener noreferrer">Lidea Shahidi</a>, RSE Methods Fellow, Cambridge Digital Humanities, led a hands-on session on coding design principles and preparing code for sharing.</p>
+
+        <hr>
+        <h3>Thursday: King’s Digital Lab</h3>
+
+        <p><strong>Introduction and SSI Talk</strong></p>
+        <p>Speakers included <a href="https://kdl.kcl.ac.uk/about/people/neil-jakeman/" target="_blank" rel="noopener noreferrer">Neil Jakeman</a>, <a href="https://kdl.kcl.ac.uk/about/people/elliott-hall/" target="_blank" rel="noopener noreferrer">Elliot Hall</a>, and <a href="https://www.software.ac.uk/our-people/oscar-seip" target="_blank" rel="noopener noreferrer">Oscar Seip</a>.</p>
+
+        <p><strong>Digital creative approaches for research and engagement</strong></p>
+        <p>Neil Jakeman and Elliot Hall introduced digital tools and creative methods for enhancing research and engagement strategies.</p>
+
+        <p><strong>Constructing an Immersive Experience from a Research Scenario</strong></p>
+        <p>This hands-on workshop asked participants to develop a strategy and implementation plan for a heritage organisation seeking to share collections more effectively through digital means.</p>
+
+        <hr>
+        <h3>Friday: The Alan Turing Institute</h3>
+
+        <p><strong>Introduction and DHRSE IEUK network talk</strong></p>
+        <p><a href="https://www.turing.ac.uk/people/researchers/federico-nanni" target="_blank" rel="noopener noreferrer">Federico Nanni</a>, Senior Research Data Scientist, The Alan Turing Institute, introduced the day.</p>
+
+        <p><strong>Research Software Engineering in the Arts and Humanities: a community-driven approach</strong></p>
+        <p><a href="https://www.maynoothuniversity.ie/people/stavros-angelis" target="_blank" rel="noopener noreferrer">Stavros Angelis</a>, Senior Technical Officer and Digital Officer, Arts and Humanities Institute, Maynooth University, discussed the need for RSE capability in the arts and humanities.</p>
+
+        <p><strong>MapReader, open-source software library for analysing large map collections</strong></p>
+        <p>Rosie Wood, Research Data Scientist, The Alan Turing Institute, discussed her work on MapReader, an end-to-end computer vision pipeline for image classification aimed at researchers working with historic maps.</p>
+
+        <p><strong>DH and RSE practices: the Seshat Project</strong></p>
+        <p><a href="https://www.turing.ac.uk/people/researchers/ed-chalstrey" target="_blank" rel="noopener noreferrer">Ed Chalstrey</a>, Research Data Scientist, The Alan Turing Institute, discussed work integrating historical geospatial data into the Seshat Global History Databank.</p>
+
+        <p><strong>DH and RSE practices: Living with Machines</strong></p>
+        <p><a href="https://www.sas.ac.uk/digital-humanities/dhrh/people/beelen" target="_blank" rel="noopener noreferrer">Kaspar Beelen</a>, Technical Lead, School of Advanced Study, discussed collaboration in large-scale digital humanities projects, focusing on Living with Machines.</p>
+
+        <p><strong>Collaborative Coding</strong></p>
+        <p>Federico Nanni led a hands-on workshop on collaboratively writing and reviewing code using GitHub Issues, Git branches and Pull Requests.</p>
+
+       <div style="height: 2rem;"></div>
+       
+        <h2>Practical Information</h2>
+
+        <p>The Summer School took place in central Edinburgh, close to many of the main attractions of the city. The venue was easily accessible by public transport, and a wide range of accommodation was available nearby.</p>
+
+        <h3>Social Programme</h3>
+
+        <div class="row">
+            <div class="column">
+                <h3>Tuesday: Ceilidh Club</h3>
+                <p>Participants were invited to a night of folk music and dancing at the Ceilidh Club hosted by Summerhall. No prior experience of ceilidh dancing was necessary, and a caller introduced the moves at the start of each dance.</p>
+                <p><strong>Time:</strong> 20:00–23:00</p>
+                <p>The Ceilidh Club cost £10 per person and was paid for at attendees’ own expense.</p>
+            </div>
+
+            <div class="column">
+                <h3>Thursday: Reception</h3>
+                <p>After the conclusion of teaching on Thursday, participants were invited to a drinks reception. This was a chance to meet and socialise with fellow Summer School attendees, lecturers and instructors in an informal setting.</p>
+                <p><strong>Time:</strong> 17:30–19:00</p>
+                <p>Attendance was free, with complimentary food and drinks available.</p>
+            </div>
+
+            <div class="column">
+                <h3>Friday: Pear Tree Garden Drinks</h3>
+                <p>To celebrate the end of the week, attendees were invited to the Pear Tree Beer Garden, weather permitting.</p>
+                <p><strong>Time:</strong> 17:30–19:00</p>
+                <p>Food and drink were available at attendees’ own expense.</p>
+                <p><a href="https://www.peartreeedinburgh.co.uk/" target="_blank" rel="noopener noreferrer">Pear Tree Pub</a></p>
+            </div>
+        </div>
+
+        <h3>Coffee Breaks and Lunches</h3>
+
+        <p>Lunches, mid-morning and mid-afternoon coffee breaks were provided for the whole duration of the Summer School. Attendees were asked to indicate food allergies or dietary requirements upon acceptance.</p>
+
+        <p>Nearby recommendations for coffee and treats included Uplands Roast, <a href="https://www.consideritchocolate.com/" target="_blank" rel="noopener noreferrer">Considerit Chocolate</a>, <a href="https://www.soderberg.uk/our-cafes" target="_blank" rel="noopener noreferrer">Söderberg The Meadows</a>, <a href="https://www.facebook.com/pages/Thomas-J-Walls/147270558642913" target="_blank" rel="noopener noreferrer">Thomas J Walls</a>, and The Coffee Mill Cafe.</p>
+
+        <h3>Dining Around the Venue</h3>
+
+        <p>The Central Campus area offers plenty of dining options, from quick bites to more relaxed meals. Recommended restaurants included <a href="https://tingthai-caravan.com/" target="_blank" rel="noopener noreferrer">Ting Thai Caravan</a>, <a href="https://elcartelmexicana.co.uk/" target="_blank" rel="noopener noreferrer">El Cartel</a>, <a href="https://www.motherindia.co.uk/restaurant/mother-india-edinburgh/" target="_blank" rel="noopener noreferrer">Mother India’s Café</a>, <a href="https://www.thecityrestaurant.co.uk/" target="_blank" rel="noopener noreferrer">City Restaurant</a>, <a href="https://www.mosquekitchen.com/" target="_blank" rel="noopener noreferrer">Mosque Kitchen</a>, <a href="https://pizzaposto.co.uk/" target="_blank" rel="noopener noreferrer">Pizza Posto</a>, <a href="https://10to10indelhitakeaway.com/contact" target="_blank" rel="noopener noreferrer">10 to 10 in Delhi</a>, <a href="https://www.makiramen.com/" target="_blank" rel="noopener noreferrer">Maki and Ramen</a>, Café Andaluz and Erbil.</p>
+
+        <p>Recommended pubs around campus included Doctor’s Pub, <a href="https://www.peartreeedinburgh.co.uk/" target="_blank" rel="noopener noreferrer">The Pear Tree</a>, The Dagda Bar, The Dog House, Bennet’s Bar, The Devil’s Advocate, The Ensign Ewart, <a href="https://www.cloistersbar.com/" target="_blank" rel="noopener noreferrer">Cloisters Bar</a>, <a href="https://captainsedinburgh.webs.com/" target="_blank" rel="noopener noreferrer">Captain’s Bar</a>, and <a href="https://www.theparadisepalms.com/" target="_blank" rel="noopener noreferrer">Paradise Palms</a>.</p>
+
+        <div style="height: 2rem;"></div>
+        <h2>Venue and Accommodation</h2>
+
+        <p>The venue for the Summer School was the newly refurbished Edinburgh Futures Institute building, centrally located close to the main attractions of the city. It is easily accessible by public transport, and a wide range of accommodation is available nearby. Hotels, bed and breakfasts, vacation apartments and hostels can be booked through services such as Booking or Airbnb.</p>
+
+        <p>Because the programme took place outside term time, attendees could also check accommodation facilities offered by the University of Edinburgh. Most University accommodation is located just to the east and south of the Central Campus area. More details are available from the <a href="https://www.uoecollection.com/" target="_blank" rel="noopener noreferrer">University of Edinburgh Hospitality and Events Collection</a>.</p>
+
+        <div style="height: 2rem;"></div>
+        <h2>Visiting Edinburgh</h2>
+
+        <p>If travelling to Edinburgh, participants may have wished to stay longer to visit the city. With classes finishing around 17:15, there were also opportunities to visit attractions in the evenings.</p>
+
+        <p>The Central Campus is around a 10-minute walk to Edinburgh Castle, and only around 5 minutes from the National Museum of Scotland. In around 15 minutes, visitors can reach the National Gallery of Scotland and Princes Street. After a slightly longer walk, visitors can climb Arthur’s Seat or visit the Palace of Holyroodhouse.</p>
+
+        <div style="height: 2rem;"></div>
+        <h2>How to Get Here</h2>
+
+        <div class="row">
+            <div class="column">
+                <h3>By Train</h3>
+                <p>Reaching Edinburgh by train is straightforward, with the main rail hub, Edinburgh Waverley, located in the heart of the city and around a 15-minute walk from the Summer School venue.</p>
+                <p>Approximate journey times include:</p>
+                <ul>
+                    <li>Aberdeen to Edinburgh – 2 hours 25 minutes</li>
+                    <li>Dundee to Edinburgh – 1 hour 20 minutes</li>
+                    <li>Glasgow to Edinburgh – 55 minutes</li>
+                    <li>London to Edinburgh – 4 hours 30 minutes</li>
+                </ul>
+                <p>The main companies operating at Edinburgh Waverley include LNER, ScotRail, Caledonian Sleeper, Avanti West Coast, CrossCountry and TransPennine Express.</p>
+            </div>
+
+            <div class="column">
+                <h3>Local Transport</h3>
+                <p>Classes took place in the Central Campus area of the University of Edinburgh, which is well connected to a reliable public transport network.</p>
+                <p><strong>Bus:</strong> the closest bus stops are Lauriston Place and Forrest Road, while the Surgeon’s Hall stop is within a short walking distance.</p>
+                <p><strong>Tram:</strong> the tram runs from the airport in the west to Ocean Terminal in Leith. The closest stop to the University is York Place, around a 20-minute walk from campus.</p>
+                <p>A route planner is available on the <a href="https://www.lothianbuses.com/live-travel-info/journey-planner/" target="_blank" rel="noopener noreferrer">Lothian Buses website</a>.</p>
+            </div>
+
+            <div class="column">
+                <h3>By Bus</h3>
+                <p>If travelling to Edinburgh by coach, there are plenty of affordable options. Coach companies operating to and from the city include:</p>
+                <ul>
+                    <li><a href="https://www.citylink.co.uk/" target="_blank" rel="noopener noreferrer">Citylink</a></li>
+                    <li><a href="https://uk.megabus.com/" target="_blank" rel="noopener noreferrer">Megabus UK</a></li>
+                    <li><a href="https://www.nationalexpress.com/en" target="_blank" rel="noopener noreferrer">National Express</a></li>
+                    <li><a href="https://global.flixbus.com/bus/edinburgh" target="_blank" rel="noopener noreferrer">FlixBus</a></li>
+                </ul>
+                <p>The coach station is located at St Andrew Square, close to Princes Street and right in the city centre. From there, it is around a 20-minute walk to the Summer School venue.</p>
+            </div>
+        </div>
+
+        <div style="height: 2rem;"></div>
+        <h2>Health and Accessibility</h2>
+
+        <p>The organisers were committed to providing the safest environment possible for attendees. Participants were asked to be considerate of others’ personal space and not to attend if they felt unwell. Ventilation was ensured in the rooms used, surfaces were regularly sanitised by staff and hand hygiene facilities were supplied.</p>
+
+        <h3>Accessibility</h3>
+
+        <p>Attendees with accessibility requirements were asked to contact the organisers in advance so that any necessary measures could be put in place. Edinburgh Futures Institute features accessible entrances, accessible WCs, braille on signage, and door handles at a level accessible for wheelchair users. There are lifts on all floors.</p>
+
+        <p>Further information about the accessibility of University of Edinburgh buildings can be found on the <a href="https://www.ed.ac.uk/estates/buildings-information/disability" target="_blank" rel="noopener noreferrer">University Estates accessibility information page</a>.</p>
+
+        <blockquote>
+            <p>The learning experience was great and I am very happy to have participated.</p>
+            <footer>Attendee 2023</footer>
+        </blockquote>
+
+        <div style="height: 2rem;"></div>
+        <h2>Summer School Organisers</h2>
+
+        <div class="row">
+            <div class="column">
+                <img src="images/lucia.png" alt="profile">
+                <h3><a href="https://www.ed.ac.uk/profile/dr-lucia-michielin" target="_blank" rel="noopener noreferrer">Lucia Michielin</a></h3>
+                <p>Lucia’s main responsibilities involve managing and developing the Centre for Data, Culture and Society Training Programme, which focuses on providing training in applied digital research across the College of Arts, Humanities and Social Science. Her research background in Digital Humanities has equipped her with experience in applying digital methods to research projects and supporting data-intensive projects.</p>
+            </div>
+
+            <div class="column">
+                <img src="images/mary.png" alt="profile">
+                <h3><a href="https://www.cdh.cam.ac.uk/about/people/dr-mary-chester-kadwell/" target="_blank" rel="noopener noreferrer">Mary Chester Kadwell</a></h3>
+                <p>Mary is a Senior Software Engineer at Cambridge University Library. Originally from a humanities background, she has a PhD in the landscape archaeology and material culture of early medieval England using computational methods. She advises researchers on technical project development, teaches coding and software engineering practices, and is a Trustee of the Society of Research Software Engineering.</p>
+            </div>
+
+            <div class="column">
+                <img src="images/Fede.png" alt="profile">
+                <h3><a href="https://www.turing.ac.uk/people/researchers/federico-nanni" target="_blank" rel="noopener noreferrer">Federico Nanni</a></h3>
+                <p>Federico is a Senior Research Data Scientist at The Alan Turing Institute, working as part of the Research Engineering Group. He has a background in Natural Language Processing and Information Retrieval in the context of Digital Humanities and Computational Social Science.</p>
+            </div>
+
+            <div class="column">
+                <img src="images/Neil.png" alt="profile">
+                <h3><a href="https://kdl.kcl.ac.uk/about/people/neil-jakeman/" target="_blank" rel="noopener noreferrer">Neil Jakeman</a></h3>
+                <p>Neil joined the Department of Digital Humanities as a Research Developer in 2011. His role within King’s Digital Lab has evolved to encompass cultivating new projects and relationships in the digital community and beyond. As a Project Analyst, he has particular responsibility for projects involving digital creative practice in emerging technologies.</p>
+            </div>
+
+            <div class="column">
+                <img src="images/jonathan.png" alt="profile">
+                <h3><a href="https://www.cdh.cam.ac.uk/about/people/jonathan-blaney/" target="_blank" rel="noopener noreferrer">Jonathan Blaney</a></h3>
+                <p>Jonathan is Digital Humanities Research Software Engineer at Cambridge Digital Humanities. Previously, he worked on Digital Humanities projects at the Institute of Historical Research, University of London, and at the Oxford Digital Library in the Bodleian. Earlier in his career, he worked as a lexicographer at Oxford University Press.</p>
+            </div>
+        </div>
+
+        <h2>Instructors and Speakers</h2>
+
+        <div class="row">
+            <div class="column">
+                <img src="images/instructors/Aislinn.png" alt="profile">
+                <h3><a href="https://aislinnkeogh.github.io/" target="_blank" rel="noopener noreferrer">Aislinn Keogh</a></h3><p><em>CDCS Training Fellow</em></p></div>
+            <div class="column">
+                <img src="images/instructors/Alexis.png" alt="profile">
+                <h3><a href="https://efi.ed.ac.uk/people/alexis-pister/" target="_blank" rel="noopener noreferrer">Alexis Pister</a></h3><p><em>Data Visualisation Engineer at the Edinburgh Futures Institute</em></p></div>
+            <div class="column">
+                <img src="images/instructors/EdC.png" alt="profile">
+                <h3><a href="https://www.turing.ac.uk/people/researchers/ed-chalstrey" target="_blank" rel="noopener noreferrer">Ed Chalstrey</a></h3><p><em>Research Data Scientist, The Alan Turing Institute</em></p></div>
+            <div class="column">
+                <img src="images/instructors/EdM.png" alt="profile">
+                <h3><a href="https://efi.ed.ac.uk/people/ed-mackenzie/" target="_blank" rel="noopener noreferrer">Ed MacKenzie</a></h3><p><em>Research Technologist at the Edinburgh Futures Institute</em></p></div>
+            <div class="column">
+                <img src="images/instructors/elliott.png" alt="profile">
+                <h3><a href="https://kdl.kcl.ac.uk/about/people/elliott-hall/" target="_blank" rel="noopener noreferrer">Elliot Hall</a></h3><p><em>Senior Research Software Engineer, King’s Digital Lab</em></p></div>
+            <div class="column">
+                <img src="images/instructors/estara.png" alt="profile">
+                <h3><a href="https://www.lib.cam.ac.uk/collections/departments/taylor-schechter-genizah-research-unit/unit-staff/dr-estara-arrant" target="_blank" rel="noopener noreferrer">Estara Arrant</a></h3><p><em>Postdoctoral Research Associate, Cambridge University Library</em></p></div>
+            <div class="column">
+                <img src="images/instructors/Evan.png" alt="profile">
+                <h3><a href="https://www.designinformatics.org/person/evan-morgan/" target="_blank" rel="noopener noreferrer">Evan Morgan</a></h3><p><em>Research Software Engineer at Design Informatics</em></p></div>
+            <div class="column">
+                <img src="images/Fede.png" alt="profile">
+                <h3><a href="https://www.turing.ac.uk/people/researchers/federico-nanni" target="_blank" rel="noopener noreferrer">Federico Nanni</a></h3><p><em>Senior Research Data Scientist at The Alan Turing Institute</em></p></div>
+            <div class="column">
+                <img src="images/jonathan.png" alt="profile">
+                <h3><a href="https://www.cdh.cam.ac.uk/about/people/jonathan-blaney/" target="_blank" rel="noopener noreferrer">Jonathan Blaney</a></h3><p><em>Digital Humanities Research Software Engineer at Cambridge Digital Humanities</em></p></div>
+                        <div class="column">
+                <img src="images/instructors/blank.png" alt="profile">
+                <h3><a href="https://www.turing.ac.uk/people/researchers/kalle-westerling" target="_blank" rel="noopener noreferrer">Kalle Westerling</a></h3><p><em>Research Application Manager, The Alan Turing Institute</em></p></div>
+                <div class="column">
+                <img src="images/instructors/Kaspar.png" alt="profile">
+                <h3><a href="https://www.sas.ac.uk/digital-humanities/dhrh/people/beelen" target="_blank" rel="noopener noreferrer">Kaspar Beelen</a></h3><p><em>Technical Lead, Digital Humanities at the School of Advanced Study, University of London</em></p></div>
+            <div class="column">
+                <img src="images/instructors/lidea.png" alt="profile">
+                <h3><a href="https://www.cdh.cam.ac.uk/about/people/lidea-shahidi/" target="_blank" rel="noopener noreferrer">Lidea Shahidi</a></h3><p><em>RSE Methods Fellow, Cambridge Digital Humanities</em></p></div>
+            <div class="column">
+                <img src="images/instructors/Lisa.png" alt="profile">
+                <h3><a href="https://efi.ed.ac.uk/people/lisa-otty/" target="_blank" rel="noopener noreferrer">Lisa Otty</a></h3><p><em>Director, Edinburgh Centre for Data, Culture and Society</em></p></div>
+            <div class="column">
+                <img src="images/lucia.png" alt="profile">
+                <h3><a href="https://efi.ed.ac.uk/people/lucia-michielin/" target="_blank" rel="noopener noreferrer">Lucia Michielin</a></h3><p><em>EFI Digital Skills Training Manager</em></p></div>
+            <div class="column">
+                <img src="images/mary.png" alt="profile">
+                <h3><a href="https://www.cdh.cam.ac.uk/about/people/dr-mary-chester-kadwell/" target="_blank" rel="noopener noreferrer">Mary Chester Kadwell</a></h3><p><em>Senior Software Engineer at Cambridge University Library</em></p></div>
+            <div class="column">
+                <img src="images/instructors/blank.png" alt="profile">
+                <h3><a href="https://www.cdh.cam.ac.uk/about/people/dr-michael-hawkins/" target="_blank" rel="noopener noreferrer">Michael Hawkins</a></h3><p><em>Senior Developer, Cambridge University Library</em></p></div>
+            <div class="column">
+                <img src="images/Neil.png" alt="profile">
+                <h3><a href="https://kdl.kcl.ac.uk/about/people/neil-jakeman/" target="_blank" rel="noopener noreferrer">Neil Jakeman</a></h3><p><em>Senior Research Software Analyst at King’s Digital Lab</em></p></div>
+            <div class="column">
+                <img src="images/instructors/oscar.png" alt="profile">
+                <h3><a href="https://www.software.ac.uk/our-people/oscar-seip" target="_blank" rel="noopener noreferrer">Oscar Seip</a></h3><p><em>Research Software Community Officer</em></p></div>
+            <div class="column">
+                <img src="images/instructors/blank.png" alt="profile">
+                <h3>Rosie Wood</h3><p><em>Research Data Scientist, The Alan Turing Institute</em></p></div>
+            <div class="column">
+                <img src="images/instructors/Sarah.png" alt="profile">
+                <h3><a href="https://sarahschoettler.com/" target="_blank" rel="noopener noreferrer">Sarah Schoettler</a></h3><p><em>CDCS Training Fellow</em></p></div>
+            <div class="column">
+                <img src="images/instructors/stavros.png" alt="profile">
+                <h3><a href="https://www.maynoothuniversity.ie/people/stavros-angelis" target="_blank" rel="noopener noreferrer">Stavros Angelis</a></h3><p><em>Senior Technical Officer, Arts and Humanities Institute, Maynooth University</em></p></div>
+            <div class="column">
+                <img src="images/instructors/Will.png" alt="profile">
+                <h3><a href="https://www.ed.ac.uk/profile/william-lamb" target="_blank" rel="noopener noreferrer">Will Lamb</a></h3><p><em>Professor in Gaelic Ethnology and Linguistics</em></p></div>
+        </div>
+    </div>
+</body>
+</html>
