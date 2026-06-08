@@ -221,6 +221,58 @@ p {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
+/* Training Fellows section */
+
+.training-fellows-section {
+    margin: 3rem 0;
+}
+
+.training-fellows-section h2 {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.training-fellows-section .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.training-fellows-section .column {
+    flex: 1 1 calc(33.333% - 2rem);
+    box-sizing: border-box;
+    min-width: 260px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.training-fellows-section .column img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.training-fellows-section .column h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.35rem;
+}
+
+.training-fellows-section .column p {
+    margin-top: 0;
+    line-height: 1.55;
+}
+
+
+
+
 /* =========================
    INPUTS
 ========================= */
