@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Preprocess Text</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body>
+    <nav class="top-menu" aria-label="Main navigation">
+        <div class="top-menu-home">
+            <a href="../../index.html">Home</a>
+            <a href="https://efi.ed.ac.uk/" class="logo-btn">
+                <img src="../../images/logo.png" alt="Site Logo">
+            </a>
+        </div>
+
+        <div class="top-menu-links">
+            <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+            <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+            <a href="../pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+            <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+            <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="site-header">
+            <div class="site-header-title">EFI Data-led Research Methods</div>
+        </div>
+
+        <h1>Preprocess Text</h1>
+
+        <p>Preprocessing a corpus transforms the running text in your corpus into individual words and sentences in a standardised format, preparing the text for computational analysis.</p>
+
+        <p>Automated preprocessing tools will not be perfect, especially if your text has been digitised rather than being born-digital, but they are still a key resource for all text analysis work. Coding libraries, for example Python’s NLTK, and graphical user interface tools, for example AntConc and Voyant Tools, both provide preprocessing capabilities.</p>
+
+        <h2>Tokenisation and Word Segmentation</h2>
+
+        <p>The first step to preprocessing is segmenting your running text into words, a process called <em>tokenisation</em>.</p>
+
+        <p>Tokenisation will split each text in your corpus into lists of <em>tokens</em>, which can be words, numbers, or punctuation. If you would like to focus your analysis only on the tokens that are likely to be words, ignoring any numbers and punctuation marks, you can create lists of alphabetic tokens. Using the lists of tokens that word segmentation produces for your corpus, you can calculate word frequencies and lexical diversity. When using word segmentation in combination with sentence segmentation, more complex analyses become possible.</p>
+
+        <p>The second step to preprocessing is segmenting your running text into sentences. Your text analysis tool will use punctuation marks and capitalisation to estimate where sentences begin and end, transforming the running texts in your corpus into lists of sentences. Using the lists of sentences, combined with the lists of tokens, for your corpus, you can identify the parts of speech in each sentence, estimate the named people and places in your corpus, and much more.</p>
+
+        <h2>Further refine your text</h2>
+
+        <p>During preprocessing, you may wish to remove small, very frequent words such as “a”, “is”, and “the”, called <em>stop words</em>, along with other words or phrases that occur very frequently and will not add meaning to your analysis. For example, if the title of a book appears in every text file in your corpus, then you may want to remove all instances of the book title.</p>
+
+        <p>If you are interested in word frequencies, during preprocessing you may wish to reduce the words in your texts to their root form. To reduce words to their root form, you could <em>stem</em> your lists of tokens, replacing words with their stem, which may or may not be a true word; for example, flew as fl. Alternatively, you could <em>lemmatise</em> your lists of tokens, reducing each word to a root form that is itself a word; for example, flew as fly.</p>
+
+        <p>When studying word frequencies, you will generally want to casefold the texts in your corpus. <em>Casefolding</em> transforms all capitalised letters to lowercase, so a word that appears at the start and in the middle of two different sentences will be interpreted as the same word. If you are interested in identifying the people and places named in your texts, you will want to keep a version of your texts with their original capitalisation too, un-casefolded, because capitalisation helps text analysis tools identify people, places, and other named entities.</p>
+
+        <h2>Where to find more information</h2>
+
+        <div class="row">
+            <div class="column">
+                <h3>Our Tutorials</h3>
+                <img src="../../images/Class black and white.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://github.com/DCS-training/Text-Analysis-and-the-Humanities" target="_blank" rel="noopener noreferrer">Text Analysis and the Humanities</a></li>
+                    <li><a href="https://github.com/DCS-training/SDTextAnalysis" target="_blank" rel="noopener noreferrer">Intro to Text Analysis</a></li>
+                    <li><a href="https://github.com/DCS-training/IntroToTextAnalysis" target="_blank" rel="noopener noreferrer">Intro to Text Analysis with Python</a></li>
+                    <li><a href="https://github.com/DCS-training/nltk-intro-2025" target="_blank" rel="noopener noreferrer">Introduction to Text Analysis with NLTK</a></li>
+                    <li><a href="https://github.com/DCS-training/FurtherTextAnalysis" target="_blank" rel="noopener noreferrer">Further Text Analysis</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>UoE Resources</h3>
+                <img src="../../images/Playfair Header.png" alt="Image of University of Edinburgh building">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://media.ed.ac.uk/media/IDS%20-%20Week%2011%20-%2002%20-%20Text%20analysis/1_fde8volk" target="_blank" rel="noopener noreferrer">Text Analysis Class: Intro to Data Science Course</a></li>
+                    <li><a href="https://link.gale.com/apps/DSLAB?u=ed_itw" target="_blank" rel="noopener noreferrer">Gale Digital Scholar Lab Access: UoE login needed</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>Self-Guided Learning</h3>
+                <img src="../../images/Group with basket sepia.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://librarycarpentry.org/lc-tdm/" target="_blank" rel="noopener noreferrer">Library Carpentry Text Analysis</a></li>
+                    <li><a href="https://www.tidytextmining.com/index.html" target="_blank" rel="noopener noreferrer">Text Mining with R</a></li>
+                    <li><a href="https://programminghistorian.org/en/lessons/counting-frequencies" target="_blank" rel="noopener noreferrer">Programming Historian: Counting Word Frequencies with Python</a></li>
+                    <li><a href="https://programminghistorian.org/en/lessons/normalizing-data" target="_blank" rel="noopener noreferrer">Programming Historian: Normalising Textual Data with Python</a></li>
+                    <li><a href="https://programminghistorian.org/en/lessons/output-keywords-in-context-in-html-file" target="_blank" rel="noopener noreferrer">Programming Historian: Output Keywords in Context in an HTML File with Python</a></li>
+                    <li><a href="https://programminghistorian.org/en/lessons/working-with-text-files" target="_blank" rel="noopener noreferrer">Programming Historian: Working with Text Files in Python</a></li>
+                    <li><a href="https://data.nls.uk/tools/jupyter-notebooks/" target="_blank" rel="noopener noreferrer">NLS Data Foundry Tools: Jupyter Notebooks</a></li>
+                    <li><a href="https://www.coursera.org/learn/introduction-to-text-mining-with-r" target="_blank" rel="noopener noreferrer">Coursera: Introduction to Text Mining with R</a></li>
+                    <li><a href="https://www.coursera.org/specializations/natural-language-processing" target="_blank" rel="noopener noreferrer">Coursera: Natural Language Processing Specialization</a></li>
+                    <li><a href="https://port.sas.ac.uk/mod/book/view.php?id=583&amp;chapterid=445" target="_blank" rel="noopener noreferrer">An Introduction to Natural Language Processing</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=5BVebXXb2o4" target="_blank" rel="noopener noreferrer">Natural Language Processing Step by Step</a></li>
+                    <li><a href="https://www.tidytextmining.com/index.html" target="_blank" rel="noopener noreferrer">Text Mining with R: A Tidy Approach</a></li>
+                    <li><a href="https://cataloguelegacies.github.io/antconc.github.io/" target="_blank" rel="noopener noreferrer">Preprocessing with AntConc</a></li>
+                    <li><a href="https://github.com/miriamposner/voyant-workshop/blob/master/investigating-texts-with-voyant.md" target="_blank" rel="noopener noreferrer">Preprocessing with Voyant Tools</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="text-analysis-home-page.html"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #e7135d;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+               ">
+                Back to the Text Analysis Pathway Homepage
+            </a>
+        </div>
+    </div>
+</body>
+</html>

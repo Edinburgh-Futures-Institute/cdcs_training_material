@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Obtain your Corpus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body>
+    <nav class="top-menu" aria-label="Main navigation">
+        <div class="top-menu-home">
+            <a href="../../index.html">Home</a>
+            <a href="https://efi.ed.ac.uk/" class="logo-btn">
+                <img src="../../images/logo.png" alt="Site Logo">
+            </a>
+        </div>
+
+        <div class="top-menu-links">
+            <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
+            <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
+            <a href="../pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
+            <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
+            <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="site-header">
+            <div class="site-header-title">EFI Data-led Research Methods</div>
+        </div>
+
+        <h1>Obtain your Corpus</h1>
+
+        <p>A corpus is defined in linguistics as a language resource consisting of a large and structured set of texts.</p>
+
+        <p>This will constitute the dataset you are going to work on, and the structure and length of it will depend on what kind of research questions you are trying to answer.</p>
+
+        <p>If your corpus has been created by someone else, you can simply download it. If you are creating your corpus yourself, or would like to modify a corpus someone else created, there are several tools you can choose from to obtain the text files you need.</p>
+
+        <h2>Getting your corpus ready</h2>
+
+        <p>If you are modifying an existing corpus, you can use programming languages such as R and Python to make your modifications. Some modifications you might consider include:</p>
+
+        <ul>
+            <li>Changing the format of the files, for example, extracting information in Extensible Markup Language (XML) format and converting it to plain text (TXT) format.</li>
+            <li>Reorganising the files, for example, chronologically.</li>
+            <li>Filtering the files, for example, removing files that were not written by the particular author in whom you are interested.</li>
+        </ul>
+
+        <p><em>Check out the Data Wrangling page for more information on modifying data.</em></p>
+
+        <p><a href="../data-visualisation/step5.html" target="_blank" rel="noopener noreferrer">Data Wrangling</a></p>
+
+        <h2>Web scraping and other UoE resources</h2>
+
+        <p>If you are creating your own corpus, you can download, scrape, or harvest text available online. Be sure to comply with copyright restrictions for anything you find online.</p>
+
+        <p>Many data can be free to consult but not free to use for text analysis. Check the usage rules of your data, or contact your local librarian if in doubt.</p>
+        
+        <p>If you want to do text mining on social media like Twitter you may want to gather the tweets by searching them by queries or gathering them from certain users. 
+            Gathering this type of dataused to be very straightforward using social media provided API but in the last years social media companies have changed the way these tools can be accessed/used by researchers.
+            Twitter has canceled the research API that was given researchers with legitimate research questions the options of collecting data for free and it is now charging researchers the same way they charge private companies.
+            Meta has now a <a href="https://transparency.meta.com/researchtools/meta-content-library/" target="_blank" rel="noopener noreferrer">Meta Content Library and API </a> that gives access to "pubblic" data stored in the various meta.
+            There are also tools like the <a href="https://www.southampton.ac.uk/~lac/WebDataResearchAssistant/">The Web Data Research Assistant (aka WebDataRA)</a> or the <a href="https://github.com/digitalmethodsinitiative/zeeschuimer"> Zeeschuimer plugin </a> that will allow you scrape various platforms. 
+            Tools like that are incredibly useful but you will need to clear out your research proposal with your Ethics commitee because it may do so in breach of the platforms TOC.</p>
+
+        <p>If you want to do text mining on other forms of text, such as news, customer reviews or comments from blogs, you can use web scrapers that crawl web data and gather specified information.
+           To do so you you would normally write a script in either Python or R (there are many libraries that you can use) but you need to use the same care mentioned above for social media data harvesting. 
+           When it comes to standard website what you are allowed to do or not when it come to automatically scraping is normally stored in the "robots.txt" file. 
+           To access it just type the website homepage followed by /robot.txt: 
+           e.g. if you want to explore what can you scrape from the Guardian website you need to access <a href="https://www.theguardian.com/robots.txt" target="_blank" rel="noopener noreferrer">https://www.theguardian.com/robots.txt</a>
+        </p>
+        </p></a>
+        
+
+
+        <p>If you are familiar with coding, there are a series of packages that are being developed to do web scraping:</p>
+
+        <ul>
+            <li><a href="https://github.com/justinchuntingho/LIHKGr" target="_blank" rel="noopener noreferrer"><strong>LIHKGr</strong></a>: the goal of the LIHKGr R package is to scrape text data on LIHKG, the Hong Kong version of Reddit, for analysis.</li>
+            <li><a href="https://github.com/ScriptSmith/socialreaper" target="_blank" rel="noopener noreferrer"><strong>Socialreaper</strong></a>: a Python 3.6+ library that scrapes Facebook, Twitter, Reddit, YouTube, Pinterest, and Tumblr.</li>
+            <li><a href="https://github.com/JustAnotherArchivist/snscrape" target="_blank" rel="noopener noreferrer"><strong>Snscrape</strong></a>: a scraper for social networking services. It scrapes things like user profiles, hashtags, or searches and returns the discovered items, such as the relevant posts.</li>
+            <li><a href="https://rvest.tidyverse.org/" target="_blank" rel="noopener noreferrer"><strong>Rvest</strong></a>: helps you scrape or harvest data from web pages.</li>
+            <li><a href="https://github.com/SeleniumHQ/docker-selenium" target="_blank" rel="noopener noreferrer"><strong>RSelenium</strong></a>: uses the popular Selenium server to simulate an entire browser. This is more powerful but more complicated than rvest. You only really need to use it when interacting with websites that have dynamic content.</li>
+        </ul>
+
+        <p>If you are based at the University of Edinburgh, there are a series of tools and resources that you can use to create your corpus:</p>
+
+        <ul>
+            <li><a href="https://about.proquest.com/products-services/TDM-Studio.html?sessionGUID=8b025c44-b292-42f2-9283-c63751f9844d&amp;webSyncID=e6669489-6928-4721-90ba-51fdd591354d" target="_blank" rel="noopener noreferrer"><strong>ProQuest Workbench</strong></a>: ProQuest TDM Studio is a web-based platform that allows researchers to access and analyse large-scale textual data from ProQuest’s collections. Researchers can work together in a coding workbench in a Jupyter Notebook environment, building a project corpus and conducting data analysis, text mining, and visualisation. CDCS manages the University of Edinburgh’s ProQuest Workbench: please get in touch with us via email to discuss access.</li>
+            <li><a href="https://go.gale.com/ps/start.do?p=DSLAB&amp;u=ed_itw" target="_blank" rel="noopener noreferrer"><strong>Gale Digital Scholar Lab</strong></a>: Gale Digital Scholar Lab is an online tool for collecting datasets comprising content from the University of Edinburgh’s Gale Primary Sources purchases. These datasets can be analysed using open-source text analysis and visualisation tools built into the Digital Scholar Lab. Tools included are Ngram, Topic Modelling (Mallet), Named Entity Recognition, Parts of Speech (SpaCy), Sentiment Analysis (OpenNLP), Clustering (SciKit), and Term Frequencies (Lucene).</li>
+        </ul>
+
+        <!-- <p>You can also find more available datasets on our data page.</p>
+
+        <p><a href="../../data.html" target="_blank" rel="noopener noreferrer">Data</a></p> -->
+
+        <h2>Where to find more information</h2>
+
+        <div class="row">
+            <div class="column">
+                <h3>Our Tutorials</h3>
+                <img src="../../images/Class black and white.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://github.com/DCS-training/APIs_For_Research_2025"  target="_blank" rel="noopener noreferrer">API for research</a></li>
+                    <li><a href="https://github.com/DCS-training/legal-ethical-issues-webscraping"  target="_blank" rel="noopener noreferrer">Legal & Ethical Issues in Web Scraping</a></li>
+                    <li><a href="https://github.com/DCS-training/Webscraping-News-Sites-With-Python"  target="_blank" rel="noopener noreferrer">Webscraping Newsites With Python</a></li>
+                    <li><a href="https://github.com/DCS-training/Web-Scraping"  target="_blank" rel="noopener noreferrer">Collecting Data from the Web: Foundation of Webscraping</a></li>
+                    <li><a href="https://github.com/DCS-training/web-scraping-R-2024"  target="_blank" rel="noopener noreferrer">Scraping Websites with R </a></li>
+                    <li><a href="https://media.ed.ac.uk/media/t/1_orzqd7vf" target="_blank">Working with OpenRefine (Video)</a></li>
+                    <li><a href="https://github.com/DCS-training/Data-Wrangling-And-Vis-Pandas" target="_blank">Data Wrangling And Vis Pandas </a></li>
+                    <li><a href="https://github.com/DCS-training/A-Pipeline-for-Data-Wrangling-and-Manipulation-with-R" target="_blank">A Pipeline for Data Wrangling and Manipulation with R </a></li>
+                    <li><a href="https://github.com/DCS-training/Data-Science-in-the-Wild" target="_blank">Data Science in the Wild </a></li>
+                    <li><a href="https://github.com/DCS-training/Much-ado-about-nothing-missing-data-in-research" target="_blank"> Much Ado About Nothing. Missing Data in Research </a></li>
+                    <li><a href="https://github.com/DCS-training/IntroToPython" target="_blank"> Intro to Python</a></li>
+                    <li><a href="https://github.com/DCS-training/IntroToRAndRStudio" target="_blank">Intro to R and RStudio </a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>UoE Resources</h3>
+                <img src="../../images/Playfair Header.png" alt="Image of University of Edinburgh building">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://media.ed.ac.uk/media/IDS%20-%20Week%2006%20-%2002%20-%20Web%20scraping/1_vxsk6ib7" target="_blank" rel="noopener noreferrer">Web scraping with R</a></li>
+                    <li><a href="https://media.ed.ac.uk/media/IDS%20-%20Week%2006%20-%2003%20-%20Scraping%20IMDB%20Top%20250/1_5qf90v3o" target="_blank" rel="noopener noreferrer">Web scraping IMDB Top 250</a></li>
+                    <li><a href="https://blogs.ed.ac.uk/mnaylor/2018/10/07/web-scraping-in-python/" target="_blank" rel="noopener noreferrer">Web Scraping with Python</a></li>
+                    <li><a href="https://media.ed.ac.uk/media/FNLP%203a/1_ow05pwnu" target="_blank" rel="noopener noreferrer">Text Corpora: Motivations</a></li>
+                    <li><a href="https://media.ed.ac.uk/media/FNLP%203b/1_6k3mu3qr" target="_blank" rel="noopener noreferrer">Text Corpora: basic principles and experimental design</a></li>
+                    <li><a href="https://media.ed.ac.uk/media/(PG)%20How%20to%20use%20the%20Centre%20for%20Research%20Collections/1_4qf08wp4" target="_blank" rel="noopener noreferrer">How to Use the Centre for Research Collections</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h3>Self-Guided Learning</h3>
+                <img src="../../images/Group with basket sepia.png" alt="Image of group in workshop">
+                <ul style="padding-left: 1em; margin-left: 0;">
+                    <li><a href="https://data.nls.uk/tools/" target="_blank" rel="noopener noreferrer">NLS Data Foundry Tools</a></li>
+                    <li><a href="https://github.com/justinchuntingho/Introduction-to-Computational-Text-Analysis-and-Social-Media-Research-using-R" target="_blank" rel="noopener noreferrer">Computational Text Analysis and Social Media Research Using R</a></li>
+                     <li><a href="https://programminghistorian.org/en/lessons/intro-to-beautiful-soup" target="_blank" rel="noopener noreferrer">Web scraping with Beautiful Soup</a></li>
+                    <li><a href="https://programminghistorian.org/en/lessons/fetch-and-parse-data-with-openrefine" target="_blank" rel="noopener noreferrer">Fetching and Parsing Data from the Web with OpenRefine</a></li>
+                    <li><a href="https://programminghistorian.org/en/lessons/working-with-web-pages" target="_blank" rel="noopener noreferrer">Downloading Web Pages with Python</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=O0gTv9VGRig" target="_blank" rel="noopener noreferrer">How to Search Twitter with R: search, filter, and sort tweets</a></li>
+                    <li><a href="https://zzhu17.medium.com/web-scraping-yahoo-finance-news-a18f9b20ee8a" target="_blank" rel="noopener noreferrer">Web scraping Yahoo Finance News</a></li>
+                    <li><a href="https://www.google.com.hk/search?q=stop+word+data+cleaning&amp;oq=stop+word+data+cleaning&amp;aqs=chrome..69i57.8849j0j4&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="noopener noreferrer">How to Clean Text for Machine Learning with Python</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=lcgqP8g6i84" target="_blank" rel="noopener noreferrer">Cleaning Text for Natural Language Processing (NLP) with Python</a></li>
+                    <li><a href="https://towardsdatascience.com/cleaning-preprocessing-text-data-for-sentiment-analysis-382a41f150d6" target="_blank" rel="noopener noreferrer">Cleaning &amp; Preprocessing Text Data for Sentiment Analysis in R</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=Y87TPjaDcbk" target="_blank" rel="noopener noreferrer">R Tutorial: Tokenizing and cleaning</a></li>
+                    <li><a href="https://www.linkedin.com/learning/r-for-data-science-lunchbreak-lessons/nlp-packages-tidytext?u=69919578" target="_blank" rel="noopener noreferrer">NLP packages in R: Tidytext</a></li>
+                     </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="text-analysis-home-page.html"
+               style="
+                   display: inline-block;
+                   padding: 0.75rem 2rem;
+                   background: #e7135d;
+                   color: #fff;
+                   font-size: 1.1rem;
+                   font-family: 'Montserrat', sans-serif;
+                   border-radius: 5px;
+                   text-decoration: none;
+               ">
+                Back to the Text Analysis Pathway Homepage
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
