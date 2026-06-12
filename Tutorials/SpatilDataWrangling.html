@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spatial Data Wrangling in QGIS</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; display: flex; margin: 0; color: #24292f; background-color: #ffffff; }
+        #sidebar { width: 280px; background: #f6f8fa; border-right: 1px solid #d0d7de; height: 100vh; position: fixed; padding: 30px 20px; overflow-y: auto; }
+        #sidebar h2 { font-size: 1.1rem; color: #1a7f37; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        #sidebar ul { list-style: none; padding: 0; }
+        #sidebar li { margin: 12px 0; border-bottom: 1px solid #eeeeee; padding-bottom: 8px; }
+        #sidebar a { text-decoration: none; color: #1f2328; font-weight: 500; font-size: 0.95rem; }
+        #sidebar a:hover { color: #1a7f37; }
+        #content { margin-left: 320px; padding: 60px; max-width: 850px; line-height: 1.7; }
+        h1 { border-bottom: 2px solid #1a7f37; padding-bottom: 10px; color: #111; }
+        h2 { margin-top: 40px; color: #1a7f37; border-left: 4px solid #1a7f37; padding-left: 15px; }
+        .step-box { background: #f0fff4; border-left: 5px solid #2da44e; border-radius: 4px; padding: 20px; margin: 25px 0; }
+        .step-box strong { color: #1a7f37; display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 0.85rem; }
+        section { scroll-margin-top: 40px; }
+        pre { background: #f6f8fa; padding: 15px; border-radius: 6px; overflow-x: auto; font-size: 13px; border: 1px solid #d0d7de; }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<nav id="sidebar">
+    <h2>Tutorial Menu</h2>
+    <ul>
+        <li><a href="#goals">1. Lesson Goals</a></li>
+        <li><a href="#intro">2. Introduction</a></li>
+        <li><a href="#vector">3. Vector Aggregation</a></li>
+        <li><a href="#raster">4. Raster Aggregation</a></li>
+        <li><a href="#bins">5. Constructing Bins for Aggregation</a></li>
+        <li><a href="#exploration">6. Exploration of Spatial Relationship</a></li>
+        <li><a href="#notes">7. Notes</a></li>
+        <li><a href="#refs">8. References</a></li>
+    </ul>
+</nav>
+
+<main id="content">
+    <section id="goals">
+        <h1>Spatial Data Wrangling in QGIS</h1>
+
+        <h3>Author: Ki Tong</h3>
+
+
+        
+        <p>Many types of sources used by social scientists are inherently spatial where spatial data is treated as a primary variable. We could be interested in how for instance, tree density is associated with indicators of wellbeing; environmental injustice where poorer neighbourhoods are associated with worse environmental conditions such as noise. There are different methods looking at these research questions.</p>
+
+        <p>One of the methods is to ‘bin’ disparate spatial datasets into a uniform grids using QGIS. This process allows you to standardise geographic information, making it possible to compare variables that were originally collected in different formats and to perform further inferential analysis.</p>
+
+        <p>This tutorial is going to walk you through the steps to create these ‘bins’ and to perform relevant visualisation and preliminary statistics that hopefully could aid in performing your own research questions. Here are the lesson goals:</p>
+
+        <ul>
+            <li>To aggregate vector and raster information into polygons to aid in the visualisation of geospatial patterns.</li>
+            <li>To construct polygon bins and apply spatial join techniques, aggregating vector-based point data to create a multi-variable dataset.</li>
+            <li>To extract and align raster data with polygon bins using zonal operations to enhance multi-variable datasets.</li>
+            <li>To export aggregated datasets for further statistical analysis or rapid exploration using QGIS consoles.</li>
+        </ul>
+
+        <p>This tutorial forms part of the training in geospatial analysis and builds upon foundational skills in GIS, particularly adding layers and managing Coordinate Reference Systems (CRS).</p>
+
+        <p>Before beginning, please download <a href="https://github.com/DCS-training/SpatialDataWrangling_SD/blob/main/SilentDiscoGeo.zip">SilentDiscoGeo (.zip)</a>. This tutorial assumes you are working with this specific set of environmental data relating to the City of Edinburgh and wish to aggregate this information for statistical analysis.</p>
+
+        <p>After downloading the ZIP folder, please move it to your desktop for easy access and reference as you follow the tutorial. You will also need QGIS installed on your computer; please download the latest version from <a href="https://qgis.org/en/site/forusers/download.html" target="_blank">[here]</a>.</p>
+    </section>
+
+    <section id="intro">
+        <h2>Introduction</h2>
+        <p>What is spatial aggregation, and why do we aggregate spatial information?</p>
+        
+        <p>Spatial aggregation is the process of grouping individual data points—such as tree locations or noise sensor readings—into summarised geographic units. Unlike standard data grouping (such as sorting sales by month), spatial aggregation utilises locational relationships to reveal patterns, trends, and clusters that are invisible at the individual point level.</p>
+
+        <p>To put this into context, let’s open the folder you downloaded. Go to your desktop and open the unzipped <strong>SilentDiscoGeo</strong> folder. Inside, open <strong>ProjectGeo.qgz</strong> in QGIS (you should be able to open this by simply double-clicking the file if you have QGIS installed).</p>
+
+        <p>Once the project is open, follow these steps to add your layers:</p>
+
+        <div class="step-box">
+            <strong>Key Step: Adding Layers</strong> 
+            <p><strong>1. Add the Trees layer:</strong></p>
+            <ul>
+                <li>Go to Layer > Add Layer > Add Vector Layer.</li>
+                <li>Click the three dots (browse button) next to the "Source" box.</li>
+                <li>Navigate to the Vectors > Trees folder and select Tree.shp.</li>
+                <li>Click Open, then Add.</li>
+            </ul>
+
+            <p><strong>2. Add the Edinburgh Ward Boundaries:</strong></p>
+            <ul>
+                <li>To provide spatial context, go to Layer > Add Layer > Add Vector Layer.</li>
+                <li>Click the three dots next to the "Source" box.</li>
+                <li>Navigate to the Vectors folder and select Edinburgh_Ward_Boundaries.shp.</li>
+                <li>Click Open, then Add.</li>
+            </ul>
+        </div>
+
+        <p>When opening QGIS, you will see a warning sign that says something like the screenshot below,</p>
+        <img src="SpatialDataWranglingAssets/images/Picture15.png" alt="CRS warning in QGIS">
+        <p>This happens because Carto Light, the basemap, is WGS84 while the default in the current QGIS project for this tutorial is the British Grid. The QGIS project has been set to be at the right Coordinate Reference System (CRS) already. Therefore, please click 'OK' and continue.</p>
+        
+        <p>Your QGIS workspace should now look similar to the image below, with the points overlaid on the boundary map.</p>
+        <img src="SpatialDataWranglingAssets/images/Picture1.png" alt="tree location and ward boundaries">
+        
+
+        <p>What conclusions can you draw regarding the distribution of trees across Edinburgh’s ward boundaries? You will likely realise immediately that this is quite difficult to determine because the points overlap, making it nearly impossible to visualise patterns across the different boundaries. Therefore, we must find a more effective way to visualise the distribution of trees in Edinburgh, which is where spatial aggregation becomes essential.</p>
+
+        <p>It would be helpful if we could represent the number of trees within each ward boundary as a <u><strong>Choropleth Map</strong></u>, thereby identifying which areas have a higher tree count and which have fewer. This illustrates the primary reason we aggregate geographical data: <u>it helps us to visualise geospatial relationships better</u>.</p>
+    </section>
+
+    <section id="vector">
+        <h2>Vector Aggregation</h2>
+        <p>To create a Choropleth Map for the tree data relative to the Edinburgh ward boundaries, we first need to calculate the number of trees within each ward.</p>
+
+        <p>To determine the tree count for each ward, we will use a powerful QGIS tool called "Join attributes by location (summary)". To access this tool, you must first open the Processing Toolbox window. From the top menu bar, go to Processing > Toolbox.</p>
+        <img src="SpatialDataWranglingAssets/images/Picture2.png" alt="Processing Toolbox">
+        <img src="SpatialDataWranglingAssets/images/Picture3.png" alt="Join Attributes by Location (Summary)">
+        <div class="step-box">
+            <strong>Key Step: Aggregating Vector Point Data into Polygons</strong> 
+            <p>On the right-hand side of the interface, you should now see the Processing Toolbox window. In the search bar at the top of this window, type "location" and double-click <strong>Join attributes by location (summary)</strong>.</p>
+            <p>A new window will appear. Configure the following settings:</p>
+            <ul>
+                <li>Select Edinburgh_Ward_Boundaries for Join to features in.</li>
+                <li>Select Trees for By comparing to.</li>
+                <li>Fields to summarise: Click the three dots (...) on the right, check the box for ID, and click OK.</li>
+                <li>Summaries to calculate: Click the three dots (...), check the box for count, and click OK.</li>
+                <li>Click Run.</li>
+            </ul>
+        </div>
+        <img src="SpatialDataWranglingAssets/images/Picture4.png" alt="Joined Layer">
+        <p>A new layer named <strong>Joined layer</strong> will appear in your Layers panel. To display the number of trees per ward using a gradient, follow these steps:</p>
+        
+        <div class="step-box">
+            <strong>Key Step: Visualising the Count</strong> 
+            <ul>
+                <li>Right-click the Joined layer and select Properties.</li>
+                <li>On the left-hand side, select Symbology (1).</li>
+                <li>From the dropdown menu at the top, choose Graduated (2).</li>
+                <li>For Value, select OBJECTID_count (this represents the total count of unique trees) (3).</li>
+                <li>For the Color ramp, choose a shade of green so that darker tones represent higher values (4).</li>
+                <li>In the Classes section, keep the Mode as Equal Count (Quantile) (5) and the number of Classes as 5 (6).</li>
+                <li>Click Classify (7) to generate the brackets.</li>
+                <li>Click OK (8) to apply the changes.</li>
+            </ul>
+        </div>
+        <img src="SpatialDataWranglingAssets/images/Picture5.png" alt="Symbology for Joined Layer">
+        <img src="SpatialDataWranglingAssets/images/Picture6.png" alt="Aggregated Vector Output">
+
+        <p>When performing join attributes by location, you might get something like this below,</p>
+        <img src="SpatialDataWranglingAssets/images/Picture16.png" alt="Join attributes warning in QGIS">
+        <p>Don't worry! Keep going.
+        <br><br>
+        QGIS prefers references for joining. In other words, for the two layers of geoinformation that you are hoping to join with the function, QGIS is hoping each geo layer has its own id that corresponds to each other. We don't have this for the project. But because the scale is relatively small, we could accept a slight decrease in execution performance. Therefore, the red text is not important in this session.
+        <br><br>
+        Please continue.</p>
+    </section>
+
+<section id="raster">
+        <h2>Raster Aggregation</h2>
+        <p>It is intuitive to count the number of trees within each polygon because individual trees are countable vector points. However, how do we handle raster data? How can we create a Choropleth Map when our source data is a continuous grid?</p>
+        
+        <p>You may notice that if you attempt to use the "Join Attributes by Location (Summary)" tool, you cannot select raster data. Instead, we must use a different approach.</p>
+
+        <h3>Loading and Understanding the Noise Data</h3>
+        <p>The first step is to load the raster data for today’s tutorial: <code>HORE_CONSOLIDATED_LDEN.tif</code>. This dataset represents noise levels across Scotland.</p>
+
+        <div class="step-box">
+            <strong>Key Concept: What is \(L_{den}\)?</strong>
+            <p>The \(L_{den}\) (Level Day-Evening-Night) is a European standard for expressing noise levels over a 24-hour period. It is measured in decibels (dB) and applies specific "penalties" to evening and night-time noise to reflect the increased sensitivity of residents to disturbance during those hours. Essentially, it provides a weighted average that represents the total noise burden on a specific area.</p>
+        </div>
+
+        <div class="step-box">
+            <strong>Key Step: Loading the Data</strong>
+            <ul>
+                <li>At the top of the menu bar, go to Layer > Add Layer > Add Raster Layer.</li>
+                <li>Click the three dots (...) to the right of the "Source" box to browse.</li>
+                <li>Navigate to the tutorial folder: <code>Rasters > HORE_CONSOLIDATED_LDEN.tif</code>.</li>
+                <li>Select <code>HORE_CONSOLIDATED_LDEN.tif</code> and click Open, then Add.</li>
+            </ul>
+        </div>
+
+        <p>Once loaded, you will see in the Layers panel that the noise range varies from 0 to 87.98 dB. To help visualise the gradient across the map, we can adjust the symbology:</p>
+
+        <div class="step-box">
+            <strong>Key Step: Visualising the Noise Gradient</strong>
+            <ul>
+                <li>Right-click the layer and select Properties.</li>
+                <li>Select Symbology from the left-hand menu.</li>
+                <li>Change the Render type to Singleband pseudocolor.</li>
+                <li>Set the Min to 0 and change the Max to 90 to capture all possible values.</li>
+                <li>Set the Interpolation to Linear.</li>
+                <li>Choose an intuitive Colour ramp. Since loud noise is generally undesirable, a ramp ranging from blue (low noise) through green to red (high noise) is effective.</li>
+                <li>You can further refine the classification intervals in the window below to control the dB brackets. Once satisfied, click OK.</li>
+            </ul>
+        </div>
+        <img src="SpatialDataWranglingAssets/images/Picture7.png" alt="Symbology for Raster Data">
+
+        <h3>Calculating Mean Noise per Ward</h3>
+        <p>How can we determine a representative average noise value for each ward boundary? The most effective method for raster data is to calculate the mean of all cells falling within each boundary using Zonal Statistics.</p>
+
+        <div class="step-box">
+            <strong>Key Step: Zonal Statistics</strong>
+            <ul>
+                <li>Go to the Processing Toolbox and type "Zonal Statistics" in the search box.</li>
+                <li>Double-click Zonal Statistics.</li>
+                <li>Input layer: Choose Edinburgh_Ward_Boundaries.</li>
+                <li>Raster layer: Choose HORE_CONSOLIDATED_LDEN.</li>
+                <li>Statistics to calculate: Click the three dots and check mean.</li>
+                <li>Keep the remaining settings as default and click Run.</li>
+            </ul>
+        </div>
+        <img src="SpatialDataWranglingAssets/images/Picture8.png" alt="Zonal Statistics">
+
+        <div class="step-box">
+            <strong>Key Step: Styling the Aggregated Noise</strong>
+            <ul>
+                <li>Right-click the new layer and select Properties > Symbology.(1)</li>
+                <li>Select Graduated from the top dropdown menu.(2)</li>
+                <li>For Value, select _mean.(3)</li>
+                <li>Set the Mode to Equal Interval.(4)</li>
+                <li>Click Classify(5), then click OK.(6)</li>
+            </ul>
+        </div>
+        <img src="SpatialDataWranglingAssets/images/Picture9.png" alt="Symbology for Zonal Statistics">
+
+        <p>Your QGIS workspace should now clearly show which wards are noisier on average and which are quieter.</p>
+        <img src="SpatialDataWranglingAssets/images/Picture10.png" alt="Zonal Statistics Output">
+
+        <h3>Moving Toward Statistical Inference</h3>
+        <p>We now have a visual understanding of which wards have high tree counts and which suffer from higher noise levels. However, how do we move beyond visual patterns?</p>
+
+        <p>What if we want to know specifically if areas with more trees are associated with lower noise levels? To determine if this relationship is statistically significant—rather than just a coincidence—we need to perform an inferential statistical analysis. How can we quantify this association?</p>
+    </section>
+
+<section id="bins">
+        <h2>The Construction of Polygon Bins</h2>
+        <p>To perform our analysis, we need to construct small sample ‘bins’ and aggregate both the tree and noise data into them. As an analogy, you can think of each bin as an individual record for which you gather information to perform statistical analysis later.</p>
+
+        <div class="step-box">
+            <strong>Key Step: Creating the Hexagonal Grid</strong>
+            <ul>
+                <li>Go to Vector > Research Tools > Create Grid.</li>
+                <li>Grid Type: Choose Hexagon.</li>
+                <li>Grid extent: Click the dropdown arrow on the right and choose Calculate from Layer, then select Edinburgh_Ward_Boundaries.</li>
+                <li>Horizontal & Vertical Spacing: Input 500 for both (250m/500m are typically suitable for urban studies), ensuring the units are set to metres.</li>
+                <li>Grid CRS: Ensure this is set to EPSG:27700 (British National Grid).</li>
+                <li>Click Run.</li>
+            </ul>
+        </div>
+        <img src="SpatialDataWranglingAssets/images/Picture11.png" alt="Inputs for Create Grids">
+
+        <p>Because the extent is a large rectangle, the grid will include hexagons in the Firth of Forth or outside the city limits. We need to trim the layer to remove these unnecessary cells:</p>
+
+        <div class="step-box">
+            <strong>Key Step: Trimming the Grid</strong>
+            <ul>
+                <li>Go to Vector > Research Tools > Select by Location.</li>
+                <li>Select features from: Choose Grid.</li>
+                <li>By comparing to the features from: Choose Edinburgh_Ward_Boundaries.</li>
+                <li>Leave other settings as default and click Run.</li>
+            </ul>
+        </div>
+        <img src="SpatialDataWranglingAssets/images/Picture12.png" alt="Select by Location">
+
+        <p>The selected hexagons will turn yellow. To save only these relevant bins:</p>
+
+        <div class="step-box">
+            <strong>Key Step: Exporting the Trimmed Grid</strong>
+            <ul>
+                <li>Right-click the Grid layer and select Export > Save Selected Features As.</li>
+                <li>Format: Choose ESRI Shapefile.</li>
+                <li>File Name: Click the three dots, navigate to your folder, and name the layer Grids.</li>
+                <li>CRS: Ensure it is EPSG:27700.</li>
+                <li>Geometry type: Select Polygon and click OK.</li>
+            </ul>
+        </div>
+        <p>Now, you should have a layer like the following screenshot</p>
+        <img src="SpatialDataWranglingAssets/images/Picture13.png" alt="Grids Selected">
+
+        <p><strong>NOTE:</strong> by default, any new layer that is generated will be at the top. Therefore, this might cover anything underneath. In this case, to better visualise how the bins are related to the ward boundaries, it is worth moving your mouse to the Layers panel on the left-hand side, <strong>choose the ward boundary layer, click, hold and drag it to the top</strong> so that it sits above the bins layer, to get something like the image in the tutorial below.</p>
+
+        <h2>Aggregation of Data into Hexagonal Bins</h2>
+        <p>Now, let’s aggregate the data into these hexagonal bins. Since you have already learned how to aggregate vector and raster layers into ward boundaries, you can apply the same techniques here.</p>
+
+        <div class="step-box">
+            <strong>Step 1: Aggregate Vector Tree Data</strong>
+            <ul>
+                <li>Open the Processing Toolbox and find Join attributes by location (summary).</li>
+                <li>Join to features in: Choose Grids.</li>
+                <li>By comparing to: Choose Trees.</li>
+                <li>Fields to summarise: Click the three dots and check ID.</li>
+                <li>Summaries to calculate: Click the three dots, check count, and click OK.</li>
+                <li>Click Run.</li>
+                <li>Right-click the new layer to view the Attribute Table and verify the information has joined correctly.</li>
+            </ul>
+        </div>
+
+        <div class="step-box">
+            <strong>Step 2: Aggregate Raster Noise Data</strong>
+            <ul>
+                <li>In the Processing Toolbox, search for and select Zonal Statistics.</li>
+                <li>Input layer: Choose the Joined layer (the one containing your tree counts).</li>
+                <li>Raster layer: Choose HORE_CONSOLIDATED_LDEN.</li>
+                <li>Statistics to calculate: Click the three dots, check mean and click OK.</li>
+                <li>Click Run.</li>
+                <li>Open the attribute table of the resulting layer. You should see two key columns: OBJECTID_count and _mean.</li>
+            </ul>
+        </div>
+
+        <div class="step-box">
+            <strong>Step 3: Export the Final Aggregated Layer</strong>
+            <ul>
+                <li>Export this as a permanent layer named Grid_Aggregated.</li>
+                <li>Right-click the layer, select Export > Save Features As.</li>
+                <li>Format: ESRI Shapefile.</li>
+                <li>CRS: EPSG:27700.</li>
+            </ul>
+        </div>
+
+        <h2>Cleaning Data in QGIS</h2>
+        <p>You will notice many NULL values in the attribute table. In statistical software (such as R), NULL represents "unknown" or "missing" data, which can lead to unreliable conclusions. In this case, a NULL simply means "no trees were found in this hexagon," so we should convert these to 0.</p>
+
+        <div class="step-box">
+            <strong>Key Step: Fixing NULL Values</strong>
+            <ul>
+                <li>Right-click the Grid_Aggregated layer and open the Attribute Table.</li>
+                <li>Click the Pencil icon (top left) to toggle Editing Mode.</li>
+                <li>Open the Field Calculator (the abacus icon).</li>
+                <li>Check Update existing field and select OBJECTID_count.</li>
+                <li>In the Expression box, enter: <code>coalesce("OBJECTID_count", 0)</code>. This replaces any NULL with 0 while keeping existing numbers as they are.</li>
+                <li>Click OK (or Apply).</li>
+                <li>Click the Pencil icon again to save your changes and exit editing mode.</li>
+            </ul>
+        </div>
+        <img src="SpatialDataWranglingAssets/images/Picture14.png" alt="Codes">
+    </section>
+
+<section id="exploration">
+        <h2>Exploration of Spatial Relationship in QGIS</h2>
+        <p>There are many ways to run correlations between variables. You could export the aggregated layer as a CSV file to analyse it using external software. You can then use this file for further analysis in R, Python, or even SPSS.</p>
+
+        <div class="step-box">
+            <strong>Key Step: Exporting Data for External Analysis</strong>
+            <ul>
+                <li>Right-click the layer containing your aggregated data (Grid_Aggregated) and select Export > Save Features As.</li>
+                <li>For the format, choose Comma Separated Value [CSV].</li>
+                <li>Click the three dots next to the file name box, navigate to your desired folder path, and name the file Aggregated_Geographies.</li>
+            </ul>
+        </div>
+
+        <p>However, if you simply want a quick exploration of the correlation between these variables, you can utilise the Python console within QGIS.</p>
+
+        <div class="step-box">
+            <strong>Key Step: Using the Python Console</strong>
+            <ul>
+                <li>Press Ctrl + Alt + P to open the Python console window.</li>
+                <li>Copy and paste the code block below into the input line at the bottom of the console:</li>
+            </ul>
+        </div>
+
+        <pre><code>from qgis.core import QgsProject
+from scipy import stats
+
+# 1. Configuration - Matching your exact field names
+layer_name = 'Grid_Aggregated' 
+tree_field = 'OBJECTID_c' # Matched to your log output
+noise_field = '_mean'
+
+layers = QgsProject.instance().mapLayersByName(layer_name)
+
+if not layers:
+    print(f"ERROR: Layer '{layer_name}' not found.")
+else:
+    layer = layers[0]
+    fields = [field.name() for field in layer.fields()]
+    
+    if tree_field not in fields:
+        print(f"ERROR: Column '{tree_field}' not found. Available: {fields}")
+    else:
+        trees = []
+        noise = []
+
+        # 2. Extract and Clean Data
+        for f in layer.getFeatures():
+            t_val = f[tree_field] if f[tree_field] is not None else 0
+            n_val = f[noise_field]
+            
+            # Skip rows where noise is 0 or NULL
+            if n_val is not None and n_val > 0:
+                trees.append(t_val)
+                noise.append(n_val)
+
+        # 3. Calculate Correlation
+        if len(trees) > 5:
+            rho, p_val = stats.spearmanr(trees, noise)
+            
+            print("\n" + "="*45)
+            print("   EDINBURGH TREE & NOISE CORRELATION")
+            print("="*45)
+            print(f"Hexagons Sampled:   {len(trees)}")
+            print(f"Spearman's Rho (ρ): {rho:.4f}")
+            print(f"P-Value:            {p_val:.4e}")
+            print("-" * 45)
+            
+            if p_val < 0.05:
+                sig_status = "STATISTICALLY SIGNIFICANT"
+                direction = "NEGATIVE (Less noise where more trees)" if rho < 0 else "POSITIVE (More trees in noisy areas)"
+            else:
+                sig_status = "NOT STATISTICALLY SIGNIFICANT"
+                direction = "No reliable pattern found."
+                
+            print(f"Significance: {sig_status}")
+            print(f"Conclusion:   {direction}")
+            print("="*45)</code></pre>
+
+        <div class="step-box">
+            <strong>Key Step: Run the Script</strong>
+            <ul>
+                <li>After pasting the code, click the play button to run the script.</li>
+            </ul>
+        </div>
+
+        <p>Essentially, you are running a Spearman’s Rho correlation to see if hexagons with more trees tend to be noisier or quieter. To our surprise, the Spearman's Rho is 0.0587. This value represents the strength and direction of the relationship. Because the number is positive, it means that as one variable increases, the other tends to increase as well. In this context: hexagons with higher noise levels also tend to have a higher density of trees.</p>
+
+        <p>In terms of strength, on a scale of 0 to 1, 0.0587 is very weak. While the trend exists, it is not a "tight" relationship; there are plenty of noisy areas with few trees and quiet areas with many trees that don't fit this rule. The p-value is approximately 0.0427. In statistics, the standard threshold for "significance" is usually 0.05. Since 0.0427 is less than 0.05, the result is considered statistically significant. This means there is less than a 5% chance that this positive relationship happened by pure accident. The pattern, though weak, is "real" within your dataset of more than 1,000 hexagons.</p>
+    </section>
+
+<section id="notes">
+        <h2>Notes</h2>
+        <p>The conclusion "More trees in noisy areas" might seem like a mistake, but it reflects the urban reality of Edinburgh. This might be because of roadside planting. Specifically, many of Edinburgh’s noisiest areas are major arterial roads or "A-roads" which often have significant "street tree" planting or wooded verges specifically designed to shield nearby houses. Very quiet areas might be open paved squares or industrial zones with no trees, while the busier, noisier residential corridors often have mature private gardens or public parks nearby.</p>
+
+        <p>While the results of our Spearman analysis give us a fascinating starting point, it is important to treat these figures as an exploratory step rather than a final answer. The biggest challenge when using simple correlations for geography is a concept called spatial dependency (or spatial autocorrelation). Standard statistics assume that each of our 1,193 hexagons is an independent "island" that doesn't affect its neighbour. In reality, we know that if a hexagon covers a busy road like Princes Street, the hexagons next to it will also be noisy. This "bleeding" of data across boundaries violates the basic rules of standard correlation, which can sometimes make relationships look significant when they are actually just a byproduct of how the city is laid out.</p>
+
+        <p>To truly address these issues, more advanced spatial correlation methods are needed. Techniques such as Geographically Weighted Regression (GWR) or Bivariate Local Moran’s I allow the computer to look at how the relationship between trees and noise changes from one neighbourhood to another. Please refer to the references below for more information.</p>
+
+        <p>For students, the takeaway is clear: a Spearman correlation is a brilliant tool for "spotting" a pattern, but spatial tools are required to "prove" it by accounting for the complex, overlapping layers of a living city.</p>
+
+        <p>Please note that these are analysis in development by the training institute.</p>
+        
+        <p>Thank you for your time and we look forward to seeing you in future teaching sessions.</p>
+    </section>
+
+<section id="refs">
+        <h2>References</h2>
+        <p>Environmental data provided for the City of Edinburgh (SilentDiscoGeo). Analysis and geospatial training provided by the training institute.</p>
+
+        <p><strong>Bivariate Local Moran’s I</strong> is a spatial statistic used to measure spatial autocorrelation, helping to identify "hot spots" or clusters where the relationship between two variables (e.g., trees and noise) is non-random across space.</p>
+        <ul>
+            <li>Tutorials for Moran's I: <a href="https://mgimond.github.io/simple_moransI_example/" target="_blank">Introduction to Moran's I Example</a></li>
+        </ul>
+
+        <p><strong>Geographically Weighted Regression (GWR)</strong> is a local form of linear regression used to model spatially varying relationships, allowing the coefficients of the model to change across the study area rather than assuming a single global relationship.</p>
+        <ul>
+            <li>Tutorials for GWR: <a href="https://github.com/pysal/gwr" target="_blank">PySAL GWR Documentation and Tutorials</a></li>
+        </ul>
+    </section>
+</main>
+
+</body>
+</html>
