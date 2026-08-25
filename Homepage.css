@@ -2,7 +2,7 @@
   .site-header {
     width: 100%;
     min-height: 220px;
-    background: url("images/BannerImage.png") center center/cover no-repeat;
+    background: url("images/header.png") center center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;

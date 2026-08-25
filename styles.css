@@ -41,15 +41,11 @@ p {
 
 .top-menu {
   width: 100%;
-
   margin: 1rem 0 1.5rem 0;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   gap: 1rem;
-
   font-size: 1rem;
 }
 
@@ -57,34 +53,34 @@ p {
 
 .top-menu-left {
   display: flex;
-
   align-items: center;
-
   gap: 0.4rem;
-
   flex-wrap: nowrap;
-
   white-space: nowrap;
-
   flex-shrink: 0;
 }
 
 /* HOME BUTTON */
 
-.top-menu-home a {
-  display: inline-block;
+.top-menu-home {
+  --top-menu-home-height: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: var(--top-menu-home-height);
+}
 
+.top-menu-home a {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
   background-color: #000;
   color: #fff;
-
   text-decoration: none;
-
-  padding: 0.45rem 0.9rem;
-
+  padding: 0.4rem 0.8rem;
   border-radius: 6px;
-
   font-weight: 600;
-
+  font-size: 1.2rem;
   transition: background-color 0.2s ease;
 }
 
@@ -97,7 +93,6 @@ p {
 
 .logo-btn {
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
 
@@ -113,24 +108,20 @@ p {
 
   position: relative;
 
-  transform: translateY(25px);
+  height: var(--top-menu-home-height);
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .logo-btn img {
   display: block;
-
-  height: 42px;
+  height: 100%;
   width: auto;
-
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
   background: transparent;
-
   border: none;
-
-  transition: transform 0.2s ease;
-}
-
-.logo-btn:hover img {
-  transform: scale(1.05);
 }
 
 /* RIGHT SIDE LINKS */
@@ -143,17 +134,15 @@ p {
   font-weight: 600;
 }
 
+.top-menu-links a + a {
+  border-left: 1px solid #000;
+  margin-left: 0.4rem;
+  padding-left: 0.8rem;
+}
+
 .top-menu-links a:hover,
 .top-menu-links a:focus {
   text-decoration: underline;
-}
-
-.top-menu-links a + a::before {
-  content: " | ";
-
-  color: #000;
-
-  margin: 0 0.4rem;
 }
 
 /* =========================
@@ -162,21 +151,14 @@ p {
 
 .site-header {
   width: 100%;
-
   min-height: 220px;
-
-  background: url("images/BannerImage.png") center center / cover no-repeat;
-
+  background: url("images/header.png") center center / cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin-bottom: 2rem;
-
   border-radius: 0.7rem;
-
-  box-shadow: 0 2px 12px 0 #0001;
-
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.418);
   overflow: hidden;
 }
 
@@ -184,22 +166,14 @@ p {
 
 .site-header-title {
   color: #fff;
-
   font-size: 2.5rem;
-
   font-weight: bold;
-
-  text-shadow: 0 2px 8px #0007;
-
   letter-spacing: 1px;
-
   text-align: center;
-
-  padding: 0.1rem 0.4rem;
-
+  padding: 0.4rem 1rem;
   background-color: rgba(0, 0, 0, 0.8);
-
-  border-radius: 0.2rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.418);
 }
 
 /* =========================
