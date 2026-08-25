@@ -27,7 +27,8 @@ h4 {
   line-height: 1.25;
 }
 
-h3, h4 {
+h3,
+h4 {
   margin-top: 0.5rem;
 }
 
@@ -43,6 +44,7 @@ p {
   width: 100%;
   margin: 1rem 0 1.5rem 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
@@ -63,10 +65,11 @@ p {
 /* HOME BUTTON */
 
 .top-menu-home {
-  --top-menu-home-height: 3rem;
+  --top-menu-home-height: calc(3rem + 10px);
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  flex: 0 1 auto;
   min-height: var(--top-menu-home-height);
 }
 
@@ -74,13 +77,14 @@ p {
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
-  background-color: #000;
-  color: #fff;
+  background-color: black;
+  color: #ffffff;
   text-decoration: none;
   padding: 0.4rem 0.8rem;
-  border-radius: 6px;
+  border-radius: 5px;
   font-weight: 600;
   font-size: 1.2rem;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.418);
   transition: background-color 0.2s ease;
 }
 
@@ -91,23 +95,16 @@ p {
 
 /* LOGO BUTTON */
 
-.logo-btn {
+.top-menu-home a.logo-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   background: transparent !important;
-
   padding: 0;
-  margin: 0;
-
   border: none;
   box-shadow: none;
-
   text-decoration: none;
-
   position: relative;
-
   height: var(--top-menu-home-height);
   max-height: 100%;
   overflow: hidden;
@@ -122,16 +119,26 @@ p {
   object-fit: contain;
   background: transparent;
   border: none;
+  padding-left: 1rem;
 }
 
 /* RIGHT SIDE LINKS */
 
+.top-menu-links {
+  display: flex;
+  flex: 1 1 24rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  row-gap: 0.4rem;
+  min-width: 0;
+}
+
 .top-menu-links a {
   color: #000;
-
   text-decoration: none;
-
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .top-menu-links a + a {
@@ -151,7 +158,7 @@ p {
 
 .site-header {
   width: 100%;
-  min-height: 220px;
+  min-height: clamp(150px, 24vw, 220px);
   background: url("images/header.png") center center / cover no-repeat;
   display: flex;
   align-items: center;
@@ -166,11 +173,13 @@ p {
 
 .site-header-title {
   color: #fff;
-  font-size: 2.5rem;
+  max-width: min(90%, 52rem);
+  font-size: clamp(1.35rem, 4.5vw, 2.5rem);
   font-weight: bold;
   letter-spacing: 1px;
+  line-height: 1.15;
   text-align: center;
-  padding: 0.4rem 1rem;
+  padding: clamp(0.25rem, 1vw, 0.4rem) clamp(0.5rem, 2vw, 1rem);
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 0.4rem;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.418);
@@ -195,57 +204,142 @@ p {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
+.tutorial-card-image,
+.homepage-card-image {
+  display: block;
+  position: relative;
+  margin: 0.5rem 0 1rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.homepage-card-image {
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.tutorial-card-image img {
+  height: 240px;
+  margin: 0;
+  object-fit: cover;
+}
+
+.homepage-card-image img {
+  height: 240px;
+  margin: 0;
+  transform-origin: center;
+}
+
+.tutorial-card-image h3,
+.homepage-card-image h3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px 6px 0 0;
+  background: rgba(0, 0, 0, 0.78);
+  color: #fff;
+  line-height: 1.2;
+}
+
 /* Training Fellows section */
 
 .training-fellows-section {
-    margin: 3rem 0;
+  margin: 3rem 0;
 }
 
 .training-fellows-section h2 {
-    margin-bottom: 2rem;
-    text-align: left;
+  margin-bottom: 2rem;
+  text-align: left;
 }
 
 .training-fellows-section .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: stretch;
 }
 
 .training-fellows-section .column {
-    flex: 1 1 calc(33.333% - 2rem);
-    box-sizing: border-box;
-    min-width: 260px;
-    background: #fff;
-    border-radius: 8px;
-    padding: 1.25rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  flex: 1 1 calc(33.333% - 2rem);
+  box-sizing: border-box;
+  min-width: 260px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .training-fellows-section .column img {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    object-fit: cover;
-    display: block;
-    border-radius: 6px;
-    margin-bottom: 1rem;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+  margin-bottom: 1rem;
 }
 
 .training-fellows-section .column h3 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    font-size: 1.35rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
 }
 
 .training-fellows-section .column p {
-    margin-top: 0;
-    line-height: 1.55;
+  margin-top: 0;
+  line-height: 1.55;
 }
 
+.media-video {
+  width: 100%;
+}
 
+.media-row {
+  margin-bottom: 3rem;
+}
 
+.final-media-section {
+  width: 100%;
+  text-align: left;
+}
+
+.final-media-section .media-text,
+.final-media-section .media-video {
+  width: 100%;
+}
+
+.final-media-section .media-text {
+  text-align: left;
+}
+
+.final-media-section h3 {
+  text-align: left;
+}
+
+.final-media-section .media-video a {
+  display: block;
+  text-align: center;
+}
+
+.final-media-section .media-video img {
+  display: block;
+  width: 50%;
+  height: auto;
+  margin: 0 auto 0.75rem;
+}
+
+.media-video iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
 
 /* =========================
    INPUTS
@@ -323,6 +417,45 @@ select:focus {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+.research-adaptation-cards {
+  margin-top: 2rem;
+}
+
+.research-card-image {
+  display: block;
+  position: relative;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.research-card-image h3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px 6px 0 0;
+  background: rgba(0, 0, 0, 0.78);
+  color: #fff;
+  line-height: 1.2;
+}
+
+.research-card-image img {
+  margin: 0;
+}
+
+.pathway-cards .column h3 {
+  margin: -1.5rem -1.5rem 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px 10px 0 0;
+  background: rgba(0, 0, 0, 0.78);
+  color: #fff;
+  line-height: 1.2;
+}
+
 /* =========================
    RESPONSIVE DESIGN
 ========================= */
@@ -333,9 +466,38 @@ select:focus {
   }
 }
 
+@media (max-width: 900px) {
+  .top-menu {
+    justify-content: flex-start;
+  }
+
+  .top-menu-home,
+  .top-menu-links {
+    flex-basis: 100%;
+  }
+
+  .top-menu-links {
+    justify-content: flex-start;
+  }
+}
+
 @media (max-width: 640px) {
   .row {
     grid-template-columns: 1fr;
+  }
+
+  .site-header {
+    min-height: 130px;
+  }
+
+  .site-header-title {
+    max-width: 86%;
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .research-adaptation-cards .column h3 {
+    min-height: 0;
   }
 }
 
