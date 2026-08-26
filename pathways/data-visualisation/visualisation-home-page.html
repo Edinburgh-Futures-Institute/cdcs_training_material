@@ -37,6 +37,57 @@
         line-height: 1.6;
         font-size: 1rem;
       }
+
+      #node-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(15, 23, 42, 0.45);
+        z-index: 1000;
+      }
+
+      #node-modal.open {
+        display: flex;
+      }
+
+      #node-modal-content {
+        font-family: "Source Sans 3", sans-serif;
+        position: relative;
+        width: min(560px, 90vw);
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.25);
+        color: #1f2937;
+        line-height: 1.6;
+      }
+
+      #node-modal-body {
+        margin: 0;
+        padding-right: 2.25rem;
+        white-space: normal;
+      }
+
+      #node-modal-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        border-radius: 999px;
+        background: #e5e7eb;
+        color: #111827;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      #node-modal-close:hover {
+        background: #d1d5db;
+      }
     </style>
   </head>
   <body>
@@ -98,6 +149,12 @@
       >
         Back to the Pathways Homepage
       </a>
+    </div>
+    <div id="node-modal" aria-hidden="true">
+      <div id="node-modal-content" role="dialog" aria-modal="true">
+        <button id="node-modal-close" aria-label="Close">X</button>
+        <p id="node-modal-body"></p>
+      </div>
     </div>
     <script>
       const svg = d3.select("#visualization svg");
@@ -177,6 +234,8 @@
         y: connectorMid.y + 34,
       };
 
+      const upperNodeModalText = "If your data is in a simple spreadsheet, jump to step 5";
+
       //   populate nodes with text
       const boxTexts = [
         `Principles of Data Organisation and 
@@ -219,6 +278,34 @@
         if (!link) return;
         window.open(link, "_blank", "noopener,noreferrer");
       }
+
+      const nodeModal = document.getElementById("node-modal");
+      const nodeModalBody = document.getElementById("node-modal-body");
+      const nodeModalClose = document.getElementById("node-modal-close");
+
+      function openNodeModal(text) {
+        if (!text) return;
+        nodeModalBody.textContent = text;
+        nodeModal.classList.add("open");
+        nodeModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeNodeModal() {
+        nodeModal.classList.remove("open");
+        nodeModal.setAttribute("aria-hidden", "true");
+      }
+
+      nodeModalClose.addEventListener("click", closeNodeModal);
+      nodeModal.addEventListener("click", (event) => {
+        if (event.target === nodeModal) {
+          closeNodeModal();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && nodeModal.classList.contains("open")) {
+          closeNodeModal();
+        }
+      });
 
       //   text positioning
       const measureText = svg
@@ -365,13 +452,13 @@
         .attr("stroke", "#e7135d")
         .attr("stroke-width", 4)
         .attr("cursor", "pointer")
-        .attr("role", "link")
+        .attr("role", "button")
         .attr("tabindex", 0)
-        .on("click", () => openNodeLink(upperNodeLink))
+        .on("click", () => openNodeModal(upperNodeModalText))
         .on("keydown", (event) => {
           if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
-            openNodeLink(upperNodeLink);
+            openNodeModal(upperNodeModalText);
           }
         });
 

@@ -1,142 +1,304 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Step 5 Data Visualisation</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Google Fonts: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../../styles.css">
-
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
     <nav class="top-menu" aria-label="Main navigation">
       <div class="top-menu-home">
-         <a href="../../index.html">Home</a>
-         <a href="https://efi.ed.ac.uk/" class="logo-btn">
-      <img src="../../images/logo.png" alt="Site Logo">
-    </a>
-        </div>
-        <div class="top-menu-links">
-      <a href="../../Tutorials/Tutorials Homepage.html" target="_blank" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
-      <a href="../../SearchGitHub.html" target="_blank" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
-      <a href="../pathway-home.html" target="_blank" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
-      <a href="../../research-adaptation.html" target="_blank" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
-      <a href="../../workflows/workflows-home-page.html" target="_blank" rel="noopener noreferrer" title="Methods Workflows">Workflows</a>
-       </div>
+        <a href="../../index.html">Home</a>
+        <a href="https://efi.ed.ac.uk/" class="logo-btn">
+          <img src="../../images/logo.png" alt="Site Logo" />
+        </a>
+      </div>
+      <div class="top-menu-links">
+        <a
+          href="../../Tutorials/Tutorials Homepage.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Tutorials"
+          >Tutorials</a
+        >
+        <a
+          href="../../SearchGitHub.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Search our Repositories"
+          >Repositories</a
+        >
+        <a
+          href="../pathway-home.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Pathways of Learning"
+          >Pathways</a
+        >
+        <a
+          href="../../research-adaptation.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Research Adaptation Guidance"
+          >Research Adaptation</a
+        >
+        <a
+          href="../../workflows/workflows-home-page.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Methods Workflows"
+          >Workflows</a
+        >
+      </div>
     </nav>
     <div class="container">
-            <div class="site-header">
-      <div class="site-header-title">EFI Data-led Research Methods </div>
-    </div>
-        <h1>Data Wrangling</h1>
-        <p>If you have your data in a database, you may have done some data wrangling already. Data wrangling is the process of collecting, selecting, and transforming your data in order to answer to your research question. Also known as data cleaning, it takes a lot more time than you might think.</p>
-        <p>In general, it is always a good idea to do data wrangling in either Python or R as they will automatically retain all steps performed (if you do not cancel the code) and therefore it will be easy to review each stage and also demonstrate your steps, if required by reviewers or publishers. At the same time, they allow you to perform similar data cleaning tasks by quickly modifying the original code, thereby speeding up your data wrangling process. </p>
-      
-        
-        <h2>What exactly is Data Wrangling?</h2> 
-        
-        <p>The most common actions that feel under the data wrangling umbrella are the following:</p>
-        <ul>
-            <li>Changing the format of your variables (number, integer, character, etc...) </li>
-            <li>Reshaping data (Pivoting tables, stack/unstack, melt tables, etc...)</li>
-            <li>Indexing </li>
-            <li>Duplicating data</li>
-            <li>Grouping data (aggregation)</li>
-            <li>Dealing with missing data </li>
-            <li>Combining data (join, concatenate) </li>
-        </ul>
+      <div class="site-header">
+        <div class="site-header-title">EFI Data-led Research Methods</div>
+      </div>
+      <h1>Data Wrangling</h1>
+      <p>
+        If you have your data in a database, you may have done some data
+        wrangling already. Data wrangling is the process of collecting,
+        selecting, and transforming your data in order to answer to your
+        research question. Also known as data cleaning, it takes a lot more time
+        than you might think.
+      </p>
+      <p>
+        In general, it is always a good idea to do data wrangling in either
+        Python or R as they will automatically retain all steps performed (if
+        you do not cancel the code) and therefore it will be easy to review each
+        stage and also demonstrate your steps, if required by reviewers or
+        publishers. At the same time, they allow you to perform similar data
+        cleaning tasks by quickly modifying the original code, thereby speeding
+        up your data wrangling process.
+      </p>
 
-         <a href="https://www.elderresearch.com/blog/what-is-data-wrangling-and-why-does-it-take-so-long">More information: What is data wrangling and why it can take so long?</a>
-        <p> </p>
-        <p> </p>
-        <p><strong>Data Wrangling with Python and R </strong> </p>
-        <p>One of the most popular Python libraries for data wrangling is Pandas. Pandas aims to be the fundamental high-level building block for doing practical, real-world data analysis in Python. Additionally, it has the broader goal of becoming the most powerful and flexible open source data analysis and manipulation tool available in any language.</p>
-        <p>Data wrangling in R is mainly done via the Tidyverse package suite. The Tidyverse is a collection of packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.</p>
-        
-        <a href="https://pandas.pydata.org/about/index.html">Pandas</a>
-        <a href="hhttps://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Pandas_Cheat_Sheet_2.pdf">Pandas Cheat Sheet</a>
-        <a href="https://tidyverse.org/">Tidyverse</a>
-        <a href="https://www.datacamp.com/cheat-sheet/tidyverse-cheat-sheet-for-beginners">Tidyverse Cheat Sheet</a>
+      <h2>What exactly is Data Wrangling?</h2>
 
-         <h2>Where to find more information</h2>
+      <p>
+        The most common actions that feel under the data wrangling umbrella are
+        the following:
+      </p>
+      <ul>
+        <li>
+          Changing the format of your variables (number, integer, character,
+          etc...)
+        </li>
+        <li>
+          Reshaping data (Pivoting tables, stack/unstack, melt tables, etc...)
+        </li>
+        <li>Indexing</li>
+        <li>Duplicating data</li>
+        <li>Grouping data (aggregation)</li>
+        <li>Dealing with missing data</li>
+        <li>Combining data (join, concatenate)</li>
+      </ul>
 
-         <div class="row pathway-resource-cards">
-            <div class="column">
-                <h3>Our Tutorials</h3>
-                <img src="../../images/uta_tom_dorsey.jpg" alt="Image of group in workshop">
-                <ul style="padding-left: 1em; margin-left: 0;">
-                     <li><a href="https://dcs-training.github.io/Tutorials/SPSSTutorial.html" target="_blank">SPSS to R Conversion Course</a></li>
-                     <li><a href="https://github.com/DCS-training/Data-Wrangling-And-Vis-Pandas" target="_blank">Data Wrangling And Vis Pandas </a></li>
-                     <li><a href="https://github.com/DCS-training/A-Pipeline-for-Data-Wrangling-and-Manipulation-with-R" target="_blank">A Pipeline for Data Wrangling and Manipulation with R </a></li>
-                     <li><a href="https://github.com/DCS-training/Data-Science-in-the-Wild" target="_blank">Data Science in the Wild </a></li>
-                    <li><a href="https://github.com/DCS-training/Much-ado-about-nothing-missing-data-in-research" target="_blank"> Much Ado About Nothing. Missing Data in Research </a></li>
-                    <li><a href="https://github.com/DCS-training/IntroToPython" target="_blank"> Intro to Python</a></li>
-                    <li><a href="https://github.com/DCS-training/IntroToRAndRStudio" target="_blank">Intro to R and RStudio </a></li>
-                </ul>
-                
-            </div>
-             <div class="column">
-                <h3>UoE Resources</h3>
-                <img src="../../images/Playfair Header.png" alt="Image of group in workshop">
-                <ul style="padding-left: 1em; margin-left: 0;">
-                     <li><a href="https://information-services.ed.ac.uk/help-consultancy/is-skills/programmes-courses-and-toolkits/development-programmes/data-skills" target="_blank">Developing your Data Skills (Information Services)</a></li>
-                     <li><a href="https://media.ed.ac.uk/channel/Inf1-DA+2017_18/170184951" target="_blank">Data & Analysis (Video) </a></li>
-                     <li><a href="https://media.ed.ac.uk/media/IDS%20-%20Week%2003%20-%2003%20-%20Grammar%20of%20data%20wrangling/1_meyz4shf" target="_blank">Grammar of Data Wrangling (Video) </a></li>    
-                    </ul>
-                
-            </div>
-             <div class="column">
-                <h3>Self-Guided Learning</h3>
-                <img src="../../images/other_laptop.jpg" alt="Image of group in workshop">
-                <ul style="padding-left: 1em; margin-left: 0;">
-                     <li><a href="https://www.coursera.org/specializations/data-wrangling-python" target="_blank">Data Wrangling with Python (Coursera)</a></li>
-                     <li><a href="https://www.coursera.org/learn/python-data-analysis" target="_blank">Introduction to Data Science in Python</a></li>
-                     <li><a href="https://www.linkedin.com/learning/paths/master-python-for-data-science" target="_blank">Advance Your Python Skills for Data Science (Linkedin Learning Video)</a></li>
-                     <li><a href="https://www.linkedin.com/learning/pandas-for-data-science" target="_blank"> Pandas for Data Science (Linkedin Learning Video)</a></li>
-                     <li><a href="https://www.linkedin.com/learning/data-wrangling-in-r" target="_blank">Data Wrangling in R (Linkedin Learning Video)</a></li>
-                     <li><a href="https://www.linkedin.com/learning/r-essential-training-wrangling-and-visualizing-data" target="_blank">R Essential Training: Wrangling and Visualizing Data(Linkedin Learning Video)</a></li>
-                </ul>
-                
-            </div>
-        </div>
-
-        <div style="text-align: center; margin: 2rem 0;">
-  <a href="visualisation-home-page.html"
-     style="
-       display: inline-block;
-       padding: 0.75rem 2rem;
-       background: #e7135d ;
-       color: #fff;
-       font-size: 1.1rem;
-       font-family: 'Montserrat', sans-serif;
-       border-radius: 5px;
-       text-decoration: none;
-   ">
-    Back to the Data Visualisation Pathway Homepage
-  </a>
-</div>
-<div style="text-align: center; margin: 2rem 0">
       <a
-        href="../sentiment-analysis/sentiment-analysis-home-page.html" 
-        style="
-          display: inline-block;
-          padding: 0.75rem 2rem;
-          background: #e7135d;
-          color: #fff;
-          font-size: 1.1rem;
-          font-family: &quot;Montserrat&quot;, sans-serif;
-          border-radius: 5px;
-          text-decoration: none;
-        "
+        href="https://www.elderresearch.com/blog/what-is-data-wrangling-and-why-does-it-take-so-long"
+        >More information: What is data wrangling and why it can take so
+        long?</a
       >
-        Back to the Sentiment Analysis Homepage
-      </a>
+      <p></p>
+      <p></p>
+      <p><strong>Data Wrangling with Python and R </strong></p>
+      <p>
+        One of the most popular Python libraries for data wrangling is Pandas.
+        Pandas aims to be the fundamental high-level building block for doing
+        practical, real-world data analysis in Python. Additionally, it has the
+        broader goal of becoming the most powerful and flexible open source data
+        analysis and manipulation tool available in any language.
+      </p>
+      <p>
+        Data wrangling in R is mainly done via the Tidyverse package suite. The
+        Tidyverse is a collection of packages designed for data science. All
+        packages share an underlying design philosophy, grammar, and data
+        structures.
+      </p>
+
+      <a href="https://pandas.pydata.org/about/index.html">Pandas</a>
+      <a
+        href="hhttps://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Pandas_Cheat_Sheet_2.pdf"
+        >Pandas Cheat Sheet</a
+      >
+      <a href="https://tidyverse.org/">Tidyverse</a>
+      <a
+        href="https://www.datacamp.com/cheat-sheet/tidyverse-cheat-sheet-for-beginners"
+        >Tidyverse Cheat Sheet</a
+      >
+
+      <h2>Where to find more information</h2>
+
+      <div class="row pathway-resource-cards">
+        <div class="column">
+          <h3>Our Tutorials</h3>
+          <img
+            src="../../images/uta_tom_dorsey.jpg"
+            alt="Image of group in workshop"
+          />
+          <ul style="padding-left: 1em; margin-left: 0">
+            <li>
+              <a
+                href="https://dcs-training.github.io/Tutorials/SPSSTutorial.html"
+                target="_blank"
+                >SPSS to R Conversion Course</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/DCS-training/Data-Wrangling-And-Vis-Pandas"
+                target="_blank"
+                >Data Wrangling And Vis Pandas
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/DCS-training/A-Pipeline-for-Data-Wrangling-and-Manipulation-with-R"
+                target="_blank"
+                >A Pipeline for Data Wrangling and Manipulation with R
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/DCS-training/Data-Science-in-the-Wild"
+                target="_blank"
+                >Data Science in the Wild
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/DCS-training/Much-ado-about-nothing-missing-data-in-research"
+                target="_blank"
+              >
+                Much Ado About Nothing. Missing Data in Research
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/DCS-training/IntroToPython"
+                target="_blank"
+              >
+                Intro to Python</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/DCS-training/IntroToRAndRStudio"
+                target="_blank"
+                >Intro to R and RStudio
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3>UoE Resources</h3>
+          <img
+            src="../../images/Playfair Header.png"
+            alt="Image of group in workshop"
+          />
+          <ul style="padding-left: 1em; margin-left: 0">
+            <li>
+              <a
+                href="https://information-services.ed.ac.uk/help-consultancy/is-skills/programmes-courses-and-toolkits/development-programmes/data-skills"
+                target="_blank"
+                >Developing your Data Skills (Information Services)</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://media.ed.ac.uk/channel/Inf1-DA+2017_18/170184951"
+                target="_blank"
+                >Data & Analysis (Video)
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://media.ed.ac.uk/media/IDS%20-%20Week%2003%20-%2003%20-%20Grammar%20of%20data%20wrangling/1_meyz4shf"
+                target="_blank"
+                >Grammar of Data Wrangling (Video)
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3>Self-Guided Learning</h3>
+          <img
+            src="../../images/other_laptop.jpg"
+            alt="Image of group in workshop"
+          />
+          <ul style="padding-left: 1em; margin-left: 0">
+            <li>
+              <a
+                href="https://www.coursera.org/specializations/data-wrangling-python"
+                target="_blank"
+                >Data Wrangling with Python (Coursera)</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.coursera.org/learn/python-data-analysis"
+                target="_blank"
+                >Introduction to Data Science in Python</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/learning/paths/master-python-for-data-science"
+                target="_blank"
+                >Advance Your Python Skills for Data Science (Linkedin Learning
+                Video)</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/learning/pandas-for-data-science"
+                target="_blank"
+              >
+                Pandas for Data Science (Linkedin Learning Video)</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/learning/data-wrangling-in-r"
+                target="_blank"
+                >Data Wrangling in R (Linkedin Learning Video)</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/learning/r-essential-training-wrangling-and-visualizing-data"
+                target="_blank"
+                >R Essential Training: Wrangling and Visualizing Data(Linkedin
+                Learning Video)</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin: 2rem 0">
+        <a
+          href="visualisation-home-page.html"
+          style="
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: #e7135d;
+            color: #fff;
+            font-size: 1.1rem;
+            font-family: &quot;Montserrat&quot;, sans-serif;
+            border-radius: 5px;
+            text-decoration: none;
+          "
+        >
+          Back to the Data Visualisation Pathway Homepage
+        </a>
+      </div>
     </div>
-
-
-
-
-</div>
-</body>
+  </body>
 </html>

@@ -191,16 +191,11 @@ p {
 
 .column img {
   display: block;
-
   width: 100%;
   height: auto;
-
   border-radius: 6px;
-
   margin: 0.5rem 0 1rem 0;
-
   background: #fff;
-
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -214,7 +209,7 @@ p {
 }
 
 .tutorial-card-image img {
-  height: 240px;
+  height: 220px;
   margin: 0;
   object-fit: cover;
 }
@@ -410,12 +405,8 @@ select:focus {
 
 .column {
   background: #f3f3f3;
-
-  /* border: 2px solid #000; */
-
   border-radius: 10px;
-
-  padding: 1.5rem;
+  padding: 1rem;
 
   box-sizing: border-box;
 
@@ -428,7 +419,8 @@ select:focus {
   margin-top: 2rem;
 }
 
-.research-card-image {
+.research-card-image,
+.workflow-card-image {
   display: block;
   position: relative;
   margin-bottom: 1rem;
@@ -436,7 +428,8 @@ select:focus {
   text-decoration: none;
 }
 
-.research-card-image h3 {
+.research-card-image h3,
+.workflow-card-image h3 {
   position: absolute;
   top: 0;
   left: 0;
@@ -450,12 +443,13 @@ select:focus {
   line-height: 1.2;
 }
 
-.research-card-image img {
+.research-card-image img,
+.workflow-card-image img {
   margin: 0;
 }
 
 .pathway-cards .column h3 {
-  margin: -1.5rem -1.5rem 1rem;
+  margin: -1rem -1rem 1rem;
   padding: 0.5rem 0.75rem;
   border-radius: 10px 10px 0 0;
   background: rgba(0, 0, 0, 0.78);
@@ -469,9 +463,9 @@ select:focus {
 
 .pathway-resource-cards .column > h3 {
   position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  right: 1.5rem;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
   z-index: 1;
   margin: 0;
   padding: 0.5rem 0.75rem;

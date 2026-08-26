@@ -63,6 +63,12 @@
         line-height: 1.6;
       }
 
+      #node-modal-body {
+        margin: 0;
+        padding-right: 2.25rem;
+        white-space: normal;
+      }
+
       #node-modal-close {
         position: absolute;
         top: 0.5rem;
@@ -136,7 +142,7 @@
   const nodeCount = 6;
   const nodeRadius = 18;
   const reservedBottomSpace = 280;
-  const visualizationOffsetY = -70;
+  const visualizationOffsetY = -140;
 
   const boxGap = 16;
   const boxMinHeight = 110;
@@ -179,7 +185,7 @@
     y: yUpper,
   };
 
-  const upperNodeModalText = "YOU MAY FIND YOU WOULD LIKE TO TRY A DIFFERENT TOOL BASED ON THE RESULTS OF YOUR ANALYSIS";
+  const upperNodeModalText = "You may find you would like to try a different tool based on the results of your analysis";
 
   const pathPoints = [
     { x: nodes[0].x, y: yTop },
@@ -456,7 +462,7 @@
     });
   });
 
-  // node circles (dark fill, white numbers)
+  // node circles
   svg
     .selectAll("circle.node")
     .data(linearNodes)
@@ -465,8 +471,8 @@
     .attr("cx", (d) => d.x)
     .attr("cy", (d) => d.y)
     .attr("r", nodeRadius)
-    .attr("fill", "#041d40")
-    .attr("stroke", "#041d40")
+    .attr("fill", "#ffffff")
+    .attr("stroke", "#e7135d")
     .attr("stroke-width", 4)
     .attr("cursor", "pointer")
     .attr("role", "link")
@@ -491,7 +497,7 @@
     .attr("dominant-baseline", "middle")
     .attr("font-size", 14)
     .attr("font-weight", 600)
-    .attr("fill", "#ffffff")
+    .attr("fill", "#041d40")
     .attr("pointer-events", "none")
     .text((d, i) => i + 1);
 </script>

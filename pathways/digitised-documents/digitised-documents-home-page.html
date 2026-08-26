@@ -63,6 +63,12 @@
         line-height: 1.6;
       }
 
+      #node-modal-body {
+        margin: 0;
+        padding-right: 2.25rem;
+        white-space: normal;
+      }
+
       #node-modal-close {
         position: absolute;
         top: 0.5rem;
@@ -141,17 +147,17 @@
     const nodeRadius = 18;
     const pathDrop = 0;
     const reservedBottomSpace = 250;
-    const visualizationOffsetY = -70;
+    const visualizationOffsetY = -120;
     const branchOffsetY = 140;
 
     const boxGap = 24;
     const boxMinHeight = 110;
-    const boxWidth = 180;
+    const boxWidth = 165;
     const nodeInset = boxGap + boxWidth / 2;
     const boxTextPaddingX = 10;
     const boxTextPaddingY = 20;
-    const boxLineHeight = 18;
-    const boxFontSize = 14;
+    const boxLineHeight = 20;
+    const boxFontSize = 16;
     const boxFontWeight = 500;
     const nodeBoxTextOffsetY = -20;
 
@@ -218,7 +224,7 @@
       y: yUpper,
     };
 
-    const upperNodeModalText = "IF YOU DO NOT NEED TO EXTRACT TEXT FROM YOUR DIGITAL DOCUMENTS GO TO STEP 5 OR 6";
+    const upperNodeModalText = "If you do not need to extract text from your digital documents, go to step 5 or 6";
 
     const boxTexts = [
       `Establish Permissions & Copyright.
@@ -331,11 +337,11 @@
     }
 
     // Branch nodes get boxes to the RIGHT of the circle
-    const branchBoxWidth = 200;
+    const branchBoxWidth = 185;
     const branchBoxTextPaddingX = 10;
     const branchBoxTextPaddingY = 12;
-    const branchBoxLineHeight = 17;
-    const branchBoxFontSize = 13;
+    const branchBoxLineHeight = 19;
+    const branchBoxFontSize = 15;
 
     const allNodesWithTextBoxes = linearNodes;
 
@@ -606,8 +612,8 @@
       .attr("cx", (d) => d.x)
       .attr("cy", (d) => d.y)
       .attr("r", nodeRadius)
-      .attr("fill", "#041d40")
-      .attr("stroke", "#041d40")
+      .attr("fill", "#ffffff")
+      .attr("stroke", "#e7135d")
       .attr("stroke-width", 4)
       .attr("cursor", "pointer")
       .attr("role", "link")
@@ -629,8 +635,8 @@
       .attr("cx", (d) => d.x)
       .attr("cy", (d) => d.y)
       .attr("r", nodeRadius)
-      .attr("fill", "#041d40")
-      .attr("stroke", "#041d40")
+      .attr("fill", "#ffffff")
+      .attr("stroke", "#e7135d")
       .attr("stroke-width", 4)
       .attr("cursor", "pointer")
       .attr("role", "link")
@@ -655,7 +661,7 @@
       .attr("dominant-baseline", "middle")
       .attr("font-size", 14)
       .attr("font-weight", 600)
-      .attr("fill", "#ffffff")
+      .attr("fill", "#041d40")
       .attr("pointer-events", "none")
       .text((d, i) => i + 1);
 
@@ -671,7 +677,7 @@
       .attr("dominant-baseline", "middle")
       .attr("font-size", 14)
       .attr("font-weight", 600)
-      .attr("fill", "#ffffff")
+      .attr("fill", "#041d40")
       .attr("pointer-events", "none")
       .text((d) => d.label);
   </script>
