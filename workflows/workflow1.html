@@ -1,228 +1,236 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-<title>Webscraping Workflow</title>
+  <head>
+    <title>Webscraping Workflow</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
 
+    <style>
+      h1 {
+        font-size: 28px;
+      }
 
-  <style>
-    /* html, body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: #fff;
-    }
+      /* TOP MENU (unchanged style, simplified placement-safe) */
+      .top-menu {
+        width: 100%;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+      }
 
-    body {
-      width: 100%;
-      margin: 0;
-    } */
+      .top-menu-home a {
+        background: #000;
+        color: #fff;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        text-decoration: none;
+      }
 
-    h1 {
-      margin: 16px;
-      font-size: 28px;
-    }
+      .top-menu-links a {
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+      }
 
-    /* TOP MENU (unchanged style, simplified placement-safe) */
-    .top-menu {
-      width: 100%;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #ddd;
-      box-sizing: border-box;
-    }
+      /* VIEWPORT */
+      .viewport {
+        width: 100%;
+        height: 80vh; /* not full-screen chaos, but large enough */
+        overflow: hidden;
+        position: relative;
+        background: #f5f5f5;
+        cursor: grab;
+        border-top: 1px solid #ddd;
+      }
 
-    .top-menu-home a {
-      background: #000;
-      color: #fff;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      text-decoration: none;
-    }
+      .viewport:active {
+        cursor: grabbing;
+      }
 
-    .top-menu-links a {
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-    }
+      .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: 0 0;
+      }
 
-    /* VIEWPORT */
-    .viewport {
-      width: 100%;
-      height: 80vh; /* not full-screen chaos, but large enough */
-      overflow: hidden;
-      position: relative;
-      background: #f5f5f5;
-      cursor: grab;
-      border-top: 1px solid #ddd;
-    }
+      object {
+        display: block;
+        pointer-events: none;
+      }
 
-    .viewport:active {
-      cursor: grabbing;
-    }
+      .controls {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+      }
 
-    .content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform-origin: 0 0;
-    }
+      button {
+        margin-left: 5px;
+        padding: 6px 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
 
-    object {
-      display: block;
-      pointer-events: none;
-    }
+  <body>
+    <!-- TOP MENU -->
+    <div class="top-menu" aria-label="Main navigation">
+      <div class="top-menu-home">
+        <a href="../index.html">Home</a>
+        <a href="https://efi.ed.ac.uk/" class="logo-btn">
+          <img src="../images/logo.png" alt="Site Logo" />
+        </a>
+      </div>
+      <div class="top-menu-links">
+        <a href="../Tutorials/Tutorials%20Homepage.html">Tutorials</a>
+        <a href="../SearchGitHub.html">Repositories</a>
+        <a href="../pathways/pathway-home.html">Pathways</a>
+        <a href="../research-adaptation.html">Research Adaptation</a>
+        <a href="workflows-home-page.html">Workflows</a>
+      </div>
+    </div>
 
-    .controls {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 10;
-    }
-
-    button {
-      margin-left: 5px;
-      padding: 6px 10px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- TOP MENU -->
-<div class="top-menu" aria-label="Main navigation">
-  <div class="top-menu-home">
-    <a href="../index.html">Home</a>
-    <a href="https://efi.ed.ac.uk/" class="logo-btn">
-      <img src="../images/logo.png" alt="Site Logo">
-  </div>
-  <div class="top-menu-links">
-    <a href="../Tutorials/Tutorials%20Homepage.html">Tutorials</a>
-    <a href="../SearchGitHub.html">Repositories</a>
-    <a href="../pathways/pathway-home.html">Pathways</a>
-    <a href="../research-adaptation.html">Research Adaptation</a>
-    <a  href="workflows-home-page.html">Workflows</a>
-  </div>
-</div>
-
-<div class="main-content">
+    <div class="main-content">
       <div class="site-header">
         <div class="site-header-title">EFI Data-led Research Methods</div>
       </div>
-<h1>Webscraping</h1>
-<p>Web scraping can be a valuable way of collecting data from websites for research, but it is not always technically, legally, or ethically appropriate. 
-  Before writing any code or using a scraping tool, researchers should work through a set of decisions about whether the data are available,
-   whether they may be reused, and whether scraping is the right method for accessing them. </p>
-   
-   <p>This workflow is designed as a decision tree to help researchers assess what can and cannot be done when collecting web data. 
-   It encourages users to consider alternatives such as official APIs, 
-   ownloadable datasets, institutional subscriptions, or direct permission from data owners before attempting to scrape a site.</p>
+      <h1>Webscraping</h1>
+      <p>
+        Web scraping can be a valuable way of collecting data from websites for
+        research, but it is not always technically, legally, or ethically
+        appropriate. Before writing any code or using a scraping tool,
+        researchers should work through a set of decisions about whether the
+        data are available, whether they may be reused, and whether scraping is
+        the right method for accessing them.
+      </p>
 
-<p>The workflow guides researchers through key questions: 
-Is the content publicly accessible? Does the website’s terms of use permit automated collection? Are there copyright, licensing, privacy, or personal data concerns? Is the website technically suitable for scraping, or does it prohibit automated access through tools such as robots.txt, rate limits, logins, or anti-bot measures? It also prompts researchers to consider the scale and purpose of collection, whether the data include sensitive information, and how the resulting dataset will be stored, documented, shared, or published. By following the decision tree, researchers can identify when scraping is likely to be acceptable, when further advice or permission is needed, and when scraping should not be undertaken.
-</p>
- </div>
-<!-- VIEWER -->
-<div class="viewport" id="viewport">
+      <p>
+        This workflow is designed as a decision tree to help researchers assess
+        what can and cannot be done when collecting web data. It encourages
+        users to consider alternatives such as official APIs, ownloadable
+        datasets, institutional subscriptions, or direct permission from data
+        owners before attempting to scrape a site.
+      </p>
 
-  <div class="controls">
-    <button onclick="zoom(1.1)">+</button>
-    <button onclick="zoom(0.9)">−</button>
-    <button onclick="fitToScreen()">Fit</button>
-    <button onclick="resetView()">Reset</button>
-  </div>
+      <p>
+        The workflow guides researchers through key questions: Is the content
+        publicly accessible? Does the website’s terms of use permit automated
+        collection? Are there copyright, licensing, privacy, or personal data
+        concerns? Is the website technically suitable for scraping, or does it
+        prohibit automated access through tools such as robots.txt, rate limits,
+        logins, or anti-bot measures? It also prompts researchers to consider
+        the scale and purpose of collection, whether the data include sensitive
+        information, and how the resulting dataset will be stored, documented,
+        shared, or published. By following the decision tree, researchers can
+        identify when scraping is likely to be acceptable, when further advice
+        or permission is needed, and when scraping should not be undertaken.
+      </p>
+    </div>
+    <!-- VIEWER -->
+    <div class="viewport" id="viewport">
+      <div class="controls">
+        <button onclick="zoom(1.1)">+</button>
+        <button onclick="zoom(0.9)">−</button>
+        <button onclick="fitToScreen()">Fit</button>
+        <button onclick="resetView()">Reset</button>
+      </div>
 
-  <div class="content" id="content">
-    <object id="svgObj" data="svg/Webscraping.svg" type="image/svg+xml"></object>
-  </div>
+      <div class="content" id="content">
+        <object
+          id="svgObj"
+          data="svg/Webscraping.svg"
+          type="image/svg+xml"
+        ></object>
+      </div>
+    </div>
 
-</div>
+    <script>
+      let scale = 0.3; // 👈 IMPORTANT: start zoomed OUT
+      let x = 0;
+      let y = 0;
 
-<script>
-let scale = 0.3;   // 👈 IMPORTANT: start zoomed OUT
-let x = 0;
-let y = 0;
+      const viewport = document.getElementById("viewport");
+      const content = document.getElementById("content");
+      const svgObj = document.getElementById("svgObj");
 
-const viewport = document.getElementById("viewport");
-const content = document.getElementById("content");
-const svgObj = document.getElementById("svgObj");
+      function update() {
+        content.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+      }
 
-function update() {
-  content.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
-}
+      function zoom(factor) {
+        scale *= factor;
+        scale = Math.min(Math.max(scale, 0.1), 8);
+        update();
+      }
 
-function zoom(factor) {
-  scale *= factor;
-  scale = Math.min(Math.max(scale, 0.1), 8);
-  update();
-}
+      function resetView() {
+        scale = 0.3; // 👈 keeps it small (fixes your “too big start” issue)
+        x = 0;
+        y = 0;
+        update();
+      }
 
-function resetView() {
-  scale = 0.3;  // 👈 keeps it small (fixes your “too big start” issue)
-  x = 0;
-  y = 0;
-  update();
-}
-
-/* =========================
+      /* =========================
    RELIABLE FIT TO SCREEN
 ========================= */
-function fitToScreen() {
-  const rect = viewport.getBoundingClientRect();
+      function fitToScreen() {
+        const rect = viewport.getBoundingClientRect();
 
-  const svg = svgObj.contentDocument?.documentElement;
+        const svg = svgObj.contentDocument?.documentElement;
 
-  if (!svg || !svg.viewBox?.baseVal?.width) {
-    setTimeout(fitToScreen, 100);
-    return;
-  }
+        if (!svg || !svg.viewBox?.baseVal?.width) {
+          setTimeout(fitToScreen, 100);
+          return;
+        }
 
-  const vb = svg.viewBox.baseVal;
+        const vb = svg.viewBox.baseVal;
 
-  const scaleX = rect.width / vb.width;
-  const scaleY = rect.height / vb.height;
+        const scaleX = rect.width / vb.width;
+        const scaleY = rect.height / vb.height;
 
-  scale = Math.min(scaleX, scaleY) * 0.9;
+        scale = Math.min(scaleX, scaleY) * 0.9;
 
-  x = 0;
-  y = 0;
+        x = 0;
+        y = 0;
 
-  update();
-}
+        update();
+      }
 
-/* PAN */
-let isDown = false;
-let startX, startY;
+      /* PAN */
+      let isDown = false;
+      let startX, startY;
 
-viewport.addEventListener("mousedown", (e) => {
-  isDown = true;
-  startX = e.clientX - x;
-  startY = e.clientY - y;
-});
+      viewport.addEventListener("mousedown", (e) => {
+        isDown = true;
+        startX = e.clientX - x;
+        startY = e.clientY - y;
+      });
 
-viewport.addEventListener("mousemove", (e) => {
-  if (!isDown) return;
-  x = e.clientX - startX;
-  y = e.clientY - startY;
-  update();
-});
+      viewport.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        x = e.clientX - startX;
+        y = e.clientY - startY;
+        update();
+      });
 
-viewport.addEventListener("mouseup", () => isDown = false);
-viewport.addEventListener("mouseleave", () => isDown = false);
+      viewport.addEventListener("mouseup", () => (isDown = false));
+      viewport.addEventListener("mouseleave", () => (isDown = false));
 
-/* ZOOM WHEEL */
-viewport.addEventListener("wheel", (e) => {
-  e.preventDefault();
-  zoom(e.deltaY < 0 ? 1.1 : 0.9);
-});
+      /* ZOOM WHEEL */
+      viewport.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        zoom(e.deltaY < 0 ? 1.1 : 0.9);
+      });
 
-update();
-</script>
-
-</body>
+      update();
+    </script>
+  </body>
 </html>
