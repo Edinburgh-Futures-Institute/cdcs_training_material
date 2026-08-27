@@ -1,170 +1,511 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Text Extraction &amp; Preparation</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Google Fonts: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../styles.css">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
 
-<body>
+  <body>
     <nav class="top-menu" aria-label="Main navigation">
-        <div class="top-menu-home">
-            <a href="../../index.html">Home</a>
-            <a href="https://efi.ed.ac.uk/research/data-led-methods-and-research-technology/" target="_blank" class="logo-btn">
-                <img src="../../images/efi_logo.png" alt="Site Logo">
-            </a>
-        </div>
+      <div class="top-menu-home">
+        <a href="../../index.html">Home</a>
+        <a
+          href="https://efi.ed.ac.uk/research/data-led-methods-and-research-technology/"
+          target="_blank"
+          class="logo-btn"
+        >
+          <img src="../../images/efi_logo.png" alt="Site Logo" />
+        </a>
+      </div>
 
-        <div class="top-menu-links">
-            <a href="../../Tutorials/Tutorials Homepage.html" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
-            <a href="../../SearchGitHub.html" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
-            <a href="../pathway-home.html" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
-            <a href="../../research-adaptation.html" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
-            <a href="../../workflows/workflows-home-page.html" rel="noopener noreferrer" title="Webscraping">Webscraping</a>
-        </div>
+      <div class="top-menu-links">
+        <a
+          href="../../Tutorials/Tutorials Homepage.html"
+          rel="noopener noreferrer"
+          title="Tutorials"
+          >Tutorials</a
+        >
+        <a
+          href="../../SearchGitHub.html"
+          rel="noopener noreferrer"
+          title="Search our Repositories"
+          >Repositories</a
+        >
+        <a
+          href="../pathway-home.html"
+          rel="noopener noreferrer"
+          title="Pathways of Learning"
+          >Pathways</a
+        >
+        <a
+          href="../../research-adaptation.html"
+          rel="noopener noreferrer"
+          title="Research Adaptation Guidance"
+          >Research Adaptation</a
+        >
+        <a
+          href="../../workflows/workflows-home-page.html"
+          rel="noopener noreferrer"
+          title="Webscraping"
+          >Webscraping</a
+        >
+      </div>
     </nav>
 
     <div class="container">
-        <div class="site-header">
-            <div class="site-header-title">EFI Data-led Research Methods</div>
+      <div class="site-header">
+        <div class="site-header-title">EFI Data-led Research Methods</div>
+      </div>
+
+      <h1>Text Extraction &amp; Preparation</h1>
+
+      <p>
+        Text recognition from images is an important part of the digitisation
+        process that creates a text output from digital images. Optical
+        Character Recognition (OCR) is the most well-known method of text
+        extraction. OCR uses technology to identify individual characters in
+        digital images or scanned documents by recognising each character at a
+        time. This process allows large volumes of documents to be scanned to
+        create text transcriptions that would be time-consuming to do by hand,
+        providing access to many textual documents. When you access digitised
+        books online the searchable text has often been created using OCR.
+      </p>
+
+      <p>
+        <img
+          src="../../images/NLS_OCR.png"
+          alt="Digitised book with text created using OCR"
+          style="max-width: 800px; width: 100%; height: auto"
+        />
+      </p>
+
+      <p>
+        This example shows the image of the original page alongside text created
+        using OCR in the
+        <a
+          href="https://digital.nls.uk/chapbooks-printed-in-scotland/archive/104184546?mode=transcription"
+          target="_blank"
+          rel="noopener noreferrer"
+          >National Library of Scotland’s online image gallery</a
+        >.
+      </p>
+
+      <p>
+        If you need to extract text from images, follow Converting Images to
+        Text Files with OCR, then move to Cleaning Up OCR to clean your data.
+      </p>
+
+      <p>If you already have an OCR output move straight to Cleaning Up OCR.</p>
+
+      <h2>Converting Images to Text Files with OCR</h2>
+
+      <p>
+        OCR can be run on printed or handwritten text, but the results vary
+        depending on the type and quality of text. Handwritten text in block
+        capitals is more likely to work with OCR than non-standardised text or
+        difficult to read writing such as copperplate. Printed or typed text
+        usually has much better results than handwritten. To use OCR you will
+        need high-quality images to run the software on.
+      </p>
+
+      <p>These images should meet the following criteria:</p>
+
+      <ul>
+        <li>Be brightly lit and in focus.</li>
+        <li>
+          Have a good contrast between the text and page, for example, black
+          text on a white or light-coloured page.
+        </li>
+        <li>
+          Any text in the image should be straight in the photograph and not
+          skewed.
+        </li>
+        <li>
+          High-resolution images on capture; this cannot be changed after the
+          photo is taken.
+        </li>
+        <li>
+          Stored in a format that keeps the image quality as high as possible,
+          such as TIFF files. JPG files are smaller because they compress data
+          and lose image quality.
+        </li>
+        <li>
+          Kept in a usable format; OCR programs will accept certain file formats
+          such as JPG, TIFF, PNG or in some cases PDF. It is best to check in
+          advance to ensure you have a usable format for your specific software.
+        </li>
+      </ul>
+
+      <p>
+        For example, this file of
+        <a
+          href="https://openbooks.is.ed.ac.uk/record/121815/1/0339005d.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          >The Student</a
+        >, the University of Edinburgh’s student newspaper, is brightly lit and
+        focused so that all the text is clear and straight-on in the photograph.
+        There is also good contrast between the dark lettering and the lighter
+        page, making it a perfect image to use with OCR software.
+      </p>
+
+      <p>
+        All these factors can impact the quality of the OCR produced and
+        influence the accuracy of the text output. A conservation assessment of
+        materials and guidelines for handling them should be made before images
+        are scanned and digitised, either by organisations such as libraries and
+        archives or by individuals in ownership or custody of materials. All
+        imaging and handling should adhere to these guides and the condition of
+        cultural heritage materials should not be compromised when imaging. For
+        example, do not force a tightly bound book spine in order to get a
+        clearer or straighter image; always prioritise the safe handling of
+        materials.
+      </p>
+
+      <p>
+        Image processing software used by libraries and archives often have OCR
+        built in, but it is available in commonly known software such as Adobe
+        Acrobat and ABBYY FineReader and
+        <a
+          href="https://cran.r-project.org/web/packages/tesseract/vignettes/intro.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          >R via Tesseract</a
+        >. The University of Edinburgh provides access to this software and
+        others through the uCreate space on the first floor Main Library in
+        George Square. There are also open software programmes to run your own;
+        see the
+        <a
+          href="https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Programming Historian: OCR and Machine Translation</a
+        >
+        lesson to run your own OCR.
+      </p>
+
+      <p>
+        <img
+          src="../../images/TheStudent.png"
+          alt="Digitised image of The Student UoE Newspaper"
+          style="max-width: 600px; width: 100%; height: auto"
+        />
+      </p>
+
+      <h2>Cleaning up OCR</h2>
+
+      <p>
+        Although OCR software can create large volumes of text from images, the
+        text will contain errors and inaccuracies.
+      </p>
+
+      <p>Examples of common OCR errors include:</p>
+
+      <ul>
+        <li>
+          The misrecognition of characters that appear similar, for example ‘cl’
+          and ‘d’, or ‘rn’ and ‘m’, which results in the incorrect substitution
+          of a letter or letters. For example, ‘clean’ becomes recognised as
+          ‘dean’.
+        </li>
+        <li>
+          Marks on the page being picked up as letters or punctuation by the
+          software, resulting in incorrect characters being inserted where they
+          do not exist in the text.
+        </li>
+        <li>
+          Omissions or deletions where letters or words were not recognised by
+          the software.
+        </li>
+        <li>
+          OCR software that recognises words may have difficulty with vocabulary
+          not found in dictionaries, such as names of people or locations, or
+          non-standard spellings in older historical texts.
+        </li>
+      </ul>
+
+      <p>
+        Although not specifically an error, another challenge of OCR is the
+        splitting of words across text lines which are usually hyphenated. If
+        you are conducting text analysis it may be helpful to remove the
+        hyphenation to show the full word, which can be done in the OCR clean-up
+        process: see
+        <a
+          href="http://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Programming Historian: Cleaning OCR’d text with Regular
+          Expressions</a
+        >.
+      </p>
+
+      <p>
+        You can
+        <a
+          href="https://towardsdatascience.com/evaluating-ocr-output-quality-with-character-error-rate-cer-and-word-error-rate-wer-853175297510"
+          target="_blank"
+          rel="noopener noreferrer"
+          >calculate your character error rate and word error rate</a
+        >
+        to determine your text quality.
+      </p>
+
+      <p>
+        Anyone working with documents produced by OCR should be aware of these
+        common errors and challenges when working with ‘dirty’ OCR. Certain
+        errors can be cleaned up to make OCR’d text more usable, although it is
+        still difficult to achieve a completely accurate text. Depending on the
+        quantity of text you are working with, you may be able to also manually
+        correct and clean up your text. If you have a large quantity of data
+        additional manual corrections will not be feasible so you may need to
+        accept a certain degree of inaccuracy in your extracted text.
+      </p>
+
+      <p>
+        ROpenSci has a
+        <a
+          href="https://ropensci.org/blog/2017/08/17/tesseract-16/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >guide on using the Tesseract and Magick</a
+        >
+        programs to clean up images and run OCR for a higher quality output.
+      </p>
+
+      <p>For more on dirty OCR see:</p>
+
+      <ul>
+        <li>
+          Cordell, Ryan. ‘“Q i-Jtb the Raven”: Taking Dirty OCR Seriously’.
+          <em>Book History</em> 20, no. 1 (2017): 188–225.
+          <a
+            href="https://doi.org/10.1353/bh.2017.0006"
+            target="_blank"
+            rel="noopener noreferrer"
+            >https://doi.org/10.1353/bh.2017.0006</a
+          >.
+        </li>
+      </ul>
+
+      <h2>Text Extraction with HTR</h2>
+
+      <p>
+        Handwritten Text Recognition (HTR) is another method for text
+        extraction. Where OCR often focuses on individual characters, HTR
+        software uses artificial intelligence (AI) to recognise characters and
+        words within each line of text. This more advanced technique of text
+        extraction can often produce more accurate results than OCR, potentially
+        requiring less processing after text extraction.
+      </p>
+
+      <p>
+        OCR is more well-known and established so is more readily available for
+        use, especially in open software options, than HTR.
+        <a
+          href="https://readcoop.eu/transkribus/?sc=Transkribus"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Transkribus</a
+        >
+        is one platform designed for HTR use with historical documents for text
+        recognition, transcription and a search function. It has a limited free
+        version which can be used to generate around 500 pages of text and
+        options to purchase further credits on the platform, so users would need
+        to be aware of their financial scope for large quantities of text.
+      </p>
+
+      <p>
+        Although HTR can generate text with a higher accuracy rate, some level
+        of text cleaning may be required before progressing with your data, such
+        as the hyphenation correction outlined above.
+      </p>
+
+      <p>
+        Once you have extracted and cleaned your text you are ready to use it in
+        your research.
+      </p>
+
+      <h2>Where to find more information</h2>
+
+      <div class="row pathway-resource-cards">
+        <div class="column">
+          <h3>Our Tutorials</h3>
+          <img
+            src="../../images/uta_tom_dorsey.jpg"
+            alt="Image of group in workshop"
+          />
+          <ul style="padding-left: 1em; margin-left: 0">
+            <li>
+              <a
+                href="https://github.com/DCS-training/OCR-From-Images-To-Text-2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                >From Images to Text: Working with OCR</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/DCS-training/Image-to-Tech-Text-Extraction"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Image to Tech: Introduction to Text Extraction</a
+              >
+            </li>
+          </ul>
         </div>
 
-        <h1>Text Extraction &amp; Preparation</h1>
-
-        <p>Text recognition from images is an important part of the digitisation process that creates a text output from digital images. Optical Character Recognition (OCR) is the most well-known method of text extraction. OCR uses technology to identify individual characters in digital images or scanned documents by recognising each character at a time. This process allows large volumes of documents to be scanned to create text transcriptions that would be time-consuming to do by hand, providing access to many textual documents. When you access digitised books online the searchable text has often been created using OCR.</p>
-
-        <p>
-    <img src="../../images/NLS_OCR.png" 
-         alt="Digitised book with text created using OCR"
-         style="max-width: 800px; width: 100%; height: auto;">
-</p>
-
-        <p>This example shows the image of the original page alongside text created using OCR in the <a href="https://digital.nls.uk/chapbooks-printed-in-scotland/archive/104184546?mode=transcription" target="_blank" rel="noopener noreferrer">National Library of Scotland’s online image gallery</a>.</p>
-
-        <p>If you need to extract text from images, follow Converting Images to Text Files with OCR, then move to Cleaning Up OCR to clean your data.</p>
-
-        <p>If you already have an OCR output move straight to Cleaning Up OCR.</p>
-
-        <h2>Converting Images to Text Files with OCR</h2>
-
-        <p>OCR can be run on printed or handwritten text, but the results vary depending on the type and quality of text. Handwritten text in block capitals is more likely to work with OCR than non-standardised text or difficult to read writing such as copperplate. Printed or typed text usually has much better results than handwritten. To use OCR you will need high-quality images to run the software on.</p>
-
-        <p>These images should meet the following criteria:</p>
-
-        <ul>
-            <li>Be brightly lit and in focus.</li>
-            <li>Have a good contrast between the text and page, for example, black text on a white or light-coloured page.</li>
-            <li>Any text in the image should be straight in the photograph and not skewed.</li>
-            <li>High-resolution images on capture; this cannot be changed after the photo is taken.</li>
-            <li>Stored in a format that keeps the image quality as high as possible, such as TIFF files. JPG files are smaller because they compress data and lose image quality.</li>
-            <li>Kept in a usable format; OCR programs will accept certain file formats such as JPG, TIFF, PNG or in some cases PDF. It is best to check in advance to ensure you have a usable format for your specific software.</li>
-        </ul>
-
-        <p>For example, this file of <a href="https://openbooks.is.ed.ac.uk/record/121815/1/0339005d.pdf" target="_blank" rel="noopener noreferrer">The Student</a>, the University of Edinburgh’s student newspaper, is brightly lit and focused so that all the text is clear and straight-on in the photograph. There is also good contrast between the dark lettering and the lighter page, making it a perfect image to use with OCR software.</p>
-
-        <p>All these factors can impact the quality of the OCR produced and influence the accuracy of the text output. 
-            A conservation assessment of materials and guidelines for handling them should be made before images are scanned and digitised, either by organisations such as libraries and archives or by individuals in ownership or custody of materials. All imaging and handling should adhere to these guides and the condition of cultural heritage materials should not be compromised when imaging. For example, do not force a tightly bound book spine in order to get a clearer or straighter image; always prioritise the safe handling of materials.</p>
-
-        <p>Image processing software used by libraries and archives often have OCR built in, but it is available in commonly known software such as Adobe Acrobat and ABBYY FineReader and <a href="https://cran.r-project.org/web/packages/tesseract/vignettes/intro.html" target="_blank" rel="noopener noreferrer">R via Tesseract</a>. The University of Edinburgh provides access to this software and others through the uCreate space on the first floor Main Library in George Square. There are also open software programmes to run your own; see the <a href="https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation" target="_blank" rel="noopener noreferrer">Programming Historian: OCR and Machine Translation</a> lesson to run your own OCR.</p>
-
-        <p><img src="../../images/TheStudent.png" alt="Digitised image of The Student UoE Newspaper" style="max-width: 600px; width: 100%; height: auto;"></p>
-
-        <h2>Cleaning up OCR</h2>
-
-        <p>Although OCR software can create large volumes of text from images, the text will contain errors and inaccuracies.</p>
-
-        <p>Examples of common OCR errors include:</p>
-
-        <ul>
-            <li>The misrecognition of characters that appear similar, for example ‘cl’ and ‘d’, or ‘rn’ and ‘m’, which results in the incorrect substitution of a letter or letters. For example, ‘clean’ becomes recognised as ‘dean’.</li>
-            <li>Marks on the page being picked up as letters or punctuation by the software, resulting in incorrect characters being inserted where they do not exist in the text.</li>
-            <li>Omissions or deletions where letters or words were not recognised by the software.</li>
-            <li>OCR software that recognises words may have difficulty with vocabulary not found in dictionaries, such as names of people or locations, or non-standard spellings in older historical texts.</li>
-        </ul>
-
-        <p>Although not specifically an error, another challenge of OCR is the splitting of words across text lines which are usually hyphenated. If you are conducting text analysis it may be helpful to remove the hyphenation to show the full word, which can be done in the OCR clean-up process: see <a href="http://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions" target="_blank" rel="noopener noreferrer">Programming Historian: Cleaning OCR’d text with Regular Expressions</a>.</p>
-
-        <p>You can <a href="https://towardsdatascience.com/evaluating-ocr-output-quality-with-character-error-rate-cer-and-word-error-rate-wer-853175297510" target="_blank" rel="noopener noreferrer">calculate your character error rate and word error rate</a> to determine your text quality.</p>
-
-        <p>Anyone working with documents produced by OCR should be aware of these common errors and challenges when working with ‘dirty’ OCR. Certain errors can be cleaned up to make OCR’d text more usable, although it is still difficult to achieve a completely accurate text. Depending on the quantity of text you are working with, you may be able to also manually correct and clean up your text. If you have a large quantity of data additional manual corrections will not be feasible so you may need to accept a certain degree of inaccuracy in your extracted text.</p>
-
-        <p>ROpenSci has a <a href="https://ropensci.org/blog/2017/08/17/tesseract-16/" target="_blank" rel="noopener noreferrer">guide on using the Tesseract and Magick</a> programs to clean up images and run OCR for a higher quality output.</p>
-
-        <p>For more on dirty OCR see:</p>
-
-        <ul>
-            <li>Cordell, Ryan. ‘“Q i-Jtb the Raven”: Taking Dirty OCR Seriously’. <em>Book History</em> 20, no. 1 (2017): 188–225. <a href="https://doi.org/10.1353/bh.2017.0006" target="_blank" rel="noopener noreferrer">https://doi.org/10.1353/bh.2017.0006</a>.</li>
-        </ul>
-
-        <h2>Text Extraction with HTR</h2>
-
-        <p>Handwritten Text Recognition (HTR) is another method for text extraction. Where OCR often focuses on individual characters, HTR software uses artificial intelligence (AI) to recognise characters and words within each line of text. This more advanced technique of text extraction can often produce more accurate results than OCR, potentially requiring less processing after text extraction.</p>
-
-        <p>OCR is more well-known and established so is more readily available for use, especially in open software options, than HTR. <a href="https://readcoop.eu/transkribus/?sc=Transkribus" target="_blank" rel="noopener noreferrer">Transkribus</a> is one platform designed for HTR use with historical documents for text recognition, transcription and a search function. It has a limited free version which can be used to generate around 500 pages of text and options to purchase further credits on the platform, so users would need to be aware of their financial scope for large quantities of text.</p>
-
-        <p>Although HTR can generate text with a higher accuracy rate, some level of text cleaning may be required before progressing with your data, such as the hyphenation correction outlined above.</p>
-
-        <p>Once you have extracted and cleaned your text you are ready to use it in your research.</p>
-
-        <h2>Where to find more information</h2>
-
-        <div class="row pathway-resource-cards">
-            <div class="column">
-                <h3>Our Tutorials</h3>
-                <img src="../../images/uta_tom_dorsey.jpg" alt="Image of group in workshop">
-                <ul style="padding-left: 1em; margin-left: 0;">
-                    <li><a href="https://github.com/DCS-training/OCR-From-Images-To-Text-2025" target="_blank" rel="noopener noreferrer">From Images to Text: Working with OCR</a></li>
-                    <li><a href="https://github.com/DCS-training/Image-to-Tech-Text-Extraction" target="_blank" rel="noopener noreferrer">Image to Tech: Introduction to Text Extraction</a></li>
-                </ul>
-            </div>
-
-            <div class="column">
-                <h3>UoE Resources</h3>
-                <img src="../../images/Playfair Header.png" alt="Image of group in workshop">
-                <ul style="padding-left: 1em; margin-left: 0;">
-                    <li><a href="https://www.digitalskills.ed.ac.uk/all-resources/?wdt_column_filter%5B1%5D=Webinar%7CClassroom" target="_blank" rel="noopener noreferrer">Digital Skills Training at the University of Edinburgh</a></li>
-                    <li><a href="https://library.ed.ac.uk/ucreate" target="_blank" rel="noopener noreferrer">The uCreate space at the University of Edinburgh</a></li>
-                    <li><a href="https://library.ed.ac.uk/ucreate/multimediafacilities/multimedia/software" target="_blank" rel="noopener noreferrer">Software available on the uCreate computers</a></li>
-                    <li><a href="https://www.ed.ac.uk/sites/default/files/atoms/files/ocr_abbyy.pdf" target="_blank" rel="noopener noreferrer">uCreate guide: OCR scanning using ABBYY FineReader</a></li>
-                    <li><a href="https://go-gale-com.ezproxy.is.ed.ac.uk/ps/helpCenter?userGroupName=ed_itw&amp;inPS=true&amp;nspage=true&amp;prodId=DSLAB&amp;docId=KCEVJT241548301" target="_blank" rel="noopener noreferrer">Gale Digital Scholar Lab</a></li>
-                </ul>
-            </div>
-
-            <div class="column">
-                <h3>Self-Guided Learning</h3>
-                <img src="../../images/other_laptop.jpg" alt="Image of group in workshop">
-                <ul style="padding-left: 1em; margin-left: 0;">
-                    <li><a href="http://programminghistorian.org/en/lessons/OCR-and-Machine-Translation" target="_blank" rel="noopener noreferrer">Programming Historian: OCR and Machine Translation</a></li>
-                    <li><a href="http://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions" target="_blank" rel="noopener noreferrer">Programming Historian: Cleaning OCR’d text with Regular Expressions</a></li>
-                    <li><a href="http://programminghistorian.org/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file" target="_blank" rel="noopener noreferrer">Programming Historian: Generating an Ordered Data Set from an OCR Text File</a></li>
-                    <li><a href="http://programminghistorian.org/en/lessons/working-with-batches-of-pdf-files" target="_blank" rel="noopener noreferrer">Programming Historian: Working with batches of PDF files</a></li>
-                    <li><a href="https://www.linkedin.com/learning/digital-imaging-for-business-professionals/welcome?autoplay=true&amp;u=50251009" target="_blank" rel="noopener noreferrer">Understanding Resolution (LinkedIn Learning)</a></li>
-                    <li><a href="https://www.linkedin.com/learning/acrobat-x-essential-training/recognizing-text-in-a-scanned-pdf?autoplay=true&amp;u=50251009" target="_blank" rel="noopener noreferrer">Recognising text in a scanned PDF (LinkedIn Learning)</a></li>
-                    <li><a href="https://cran.r-project.org/web/packages/tesseract/vignettes/intro.html" target="_blank" rel="noopener noreferrer">Tesseract Engine for R</a></li>
-                    <li><a href="https://cran.r-project.org/web/packages/magick/vignettes/intro.html" target="_blank" rel="noopener noreferrer">Advanced Image processing with Magick (R)</a></li>
-                </ul>
-            </div>
+        <div class="column">
+          <h3>UoE Resources</h3>
+          <img
+            src="../../images/Playfair Header.png"
+            alt="Image of group in workshop"
+          />
+          <ul style="padding-left: 1em; margin-left: 0">
+            <li>
+              <a
+                href="https://www.digitalskills.ed.ac.uk/all-resources/?wdt_column_filter%5B1%5D=Webinar%7CClassroom"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Digital Skills Training at the University of Edinburgh</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://library.ed.ac.uk/ucreate"
+                target="_blank"
+                rel="noopener noreferrer"
+                >The uCreate space at the University of Edinburgh</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://library.ed.ac.uk/ucreate/multimediafacilities/multimedia/software"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Software available on the uCreate computers</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.ed.ac.uk/sites/default/files/atoms/files/ocr_abbyy.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                >uCreate guide: OCR scanning using ABBYY FineReader</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://go-gale-com.ezproxy.is.ed.ac.uk/ps/helpCenter?userGroupName=ed_itw&amp;inPS=true&amp;nspage=true&amp;prodId=DSLAB&amp;docId=KCEVJT241548301"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Gale Digital Scholar Lab</a
+              >
+            </li>
+          </ul>
         </div>
 
-        <div style="text-align: center; margin: 2rem 0;">
-            <a href="digitised-documents-home-page.html"
-               style="
-                   display: inline-block;
-                   padding: 0.75rem 2rem;
-                   background: #e7135d;
-                   color: #fff;
-                   font-size: 1.1rem;
-                   font-family: 'Montserrat', sans-serif;
-                   border-radius: 5px;
-                   text-decoration: none;
-               ">
-                Back to the Managing Digitised Documents Pathway Homepage
-            </a>
+        <div class="column">
+          <h3>Self-Guided Learning</h3>
+          <img
+            src="../../images/other_laptop.jpg"
+            alt="Image of group in workshop"
+          />
+          <ul style="padding-left: 1em; margin-left: 0">
+            <li>
+              <a
+                href="http://programminghistorian.org/en/lessons/OCR-and-Machine-Translation"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Programming Historian: OCR and Machine Translation</a
+              >
+            </li>
+            <li>
+              <a
+                href="http://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Programming Historian: Cleaning OCR’d text with Regular
+                Expressions</a
+              >
+            </li>
+            <li>
+              <a
+                href="http://programminghistorian.org/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Programming Historian: Generating an Ordered Data Set from an
+                OCR Text File</a
+              >
+            </li>
+            <li>
+              <a
+                href="http://programminghistorian.org/en/lessons/working-with-batches-of-pdf-files"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Programming Historian: Working with batches of PDF files</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/learning/digital-imaging-for-business-professionals/welcome?autoplay=true&amp;u=50251009"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Understanding Resolution (LinkedIn Learning)</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/learning/acrobat-x-essential-training/recognizing-text-in-a-scanned-pdf?autoplay=true&amp;u=50251009"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Recognising text in a scanned PDF (LinkedIn Learning)</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://cran.r-project.org/web/packages/tesseract/vignettes/intro.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Tesseract Engine for R</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://cran.r-project.org/web/packages/magick/vignettes/intro.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Advanced Image processing with Magick (R)</a
+              >
+            </li>
+          </ul>
         </div>
+      </div>
+
+      <div style="text-align: center; margin: 2rem 0">
+        <a
+          href="digitised-documents-home-page.html"
+          style="
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: #e7135d;
+            color: #fff;
+            font-size: 1.1rem;
+            font-family: &quot;Montserrat&quot;, sans-serif;
+            border-radius: 5px;
+            text-decoration: none;
+          "
+        >
+          Back to the Managing Digitised Documents Pathway Homepage
+        </a>
+      </div>
     </div>
-</body>
+  </body>
 </html>

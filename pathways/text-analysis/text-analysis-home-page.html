@@ -96,17 +96,46 @@
   <body>
     <nav class="top-menu" aria-label="Main navigation">
       <div class="top-menu-home">
-         <a href="../../index.html">Home</a>
-         <a href="https://efi.ed.ac.uk/research/data-led-methods-and-research-technology/" target="_blank" class="logo-btn">
-      <img src="../../images/efi_logo.png" alt="Site Logo">
-    </a>
-        </div>
-        <div class="top-menu-links">
-      <a href="../../Tutorials/Tutorials Homepage.html" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
-      <a href="../../SearchGitHub.html" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
-      <a href="../../pathways/pathway-home.html" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
-      <a href="../../research-adaptation.html" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
-      <a href="../../workflows/workflows-home-page.html" rel="noopener noreferrer" title="Webscraping">Webscraping</a>
+        <a href="../../index.html">Home</a>
+        <a
+          href="https://efi.ed.ac.uk/research/data-led-methods-and-research-technology/"
+          target="_blank"
+          class="logo-btn"
+        >
+          <img src="../../images/efi_logo.png" alt="Site Logo" />
+        </a>
+      </div>
+      <div class="top-menu-links">
+        <a
+          href="../../Tutorials/Tutorials Homepage.html"
+          rel="noopener noreferrer"
+          title="Tutorials"
+          >Tutorials</a
+        >
+        <a
+          href="../../SearchGitHub.html"
+          rel="noopener noreferrer"
+          title="Search our Repositories"
+          >Repositories</a
+        >
+        <a
+          href="../../pathways/pathway-home.html"
+          rel="noopener noreferrer"
+          title="Pathways of Learning"
+          >Pathways</a
+        >
+        <a
+          href="../../research-adaptation.html"
+          rel="noopener noreferrer"
+          title="Research Adaptation Guidance"
+          >Research Adaptation</a
+        >
+        <a
+          href="../../workflows/workflows-home-page.html"
+          rel="noopener noreferrer"
+          title="Webscraping"
+          >Webscraping</a
+        >
       </div>
     </nav>
 
@@ -118,18 +147,52 @@
     </div>
     <div id="below-visualization-text">
       <h4>Authors: Lucia Michielin, Lucy Havens</h4>
-      <p>Text analysis allows patterns in language to be studied at scale, enabling “distant reading” of books, magazines, newspapers, and other digitized text. This pathway will guide you through the main steps and techniques needed to begin doing computational analysis of textual data.</p>
-      <h3>Python VS R - What should I choose?</h3>
-      <p>The last two steps of the pathway suggest the use of either Python or R to wrangle and visualise your data. 
-        Although there are more user-friendly alternatives, this is because using a coding environment will help you to streamline your workflow and make your visualisation fully reproducible.</p>
       <p>
-        But what would be better for your research, R or Python? The articles below discuss the pros and cons of Python and R and can help you decide which of the two languages would be the best choice for your research.
+        Text analysis allows patterns in language to be studied at scale,
+        enabling “distant reading” of books, magazines, newspapers, and other
+        digitized text. This pathway will guide you through the main steps and
+        techniques needed to begin doing computational analysis of textual data.
+      </p>
+      <h3>Python VS R - What should I choose?</h3>
+      <p>
+        The last two steps of the pathway suggest the use of either Python or R
+        to wrangle and visualise your data. Although there are more
+        user-friendly alternatives, using a coding environment
+        will help you to streamline your workflow and make your visualisation
+        fully reproducible.
+      </p>
+      <p>
+        But what would be better for your research, R or Python? The articles
+        below discuss the pros and cons of Python and R and can help you decide
+        which of the two languages would be the best choice for your research.
       </p>
       <ul>
-        <li><a href="https://towardsdatascience.com/python-vs-r-the-basics-d754c45c1596/" target="_blank">Python vs R: The Basics</a></li>
-        <li><a href="https://www.datacamp.com/tutorial/r-or-python-for-data-analysis" target="_blank">Choosing Python or R for Data Analysis? An Infographic</a></li>
-        <li><a href="https://www.dataquest.io/blog/python-vs-r/" target="_blank">R vs Python for Data Analysis — An Objective Comparison</a></li>
-        <li><a href="https://medium.com/analytics-and-data/r-vs-python-a-comprehensive-guide-for-data-professionals-321e8dead598" target="_blank">R vs. Python, a comprehensive guide for data professionals</a></li>
+        <li>
+          <a
+            href="https://towardsdatascience.com/python-vs-r-the-basics-d754c45c1596/"
+            target="_blank"
+            >Python vs R: The Basics</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.datacamp.com/tutorial/r-or-python-for-data-analysis"
+            target="_blank"
+            >Choosing Python or R for Data Analysis? An Infographic</a
+          >
+        </li>
+        <li>
+          <a href="https://www.dataquest.io/blog/python-vs-r/" target="_blank"
+            >R vs Python for Data Analysis — An Objective Comparison</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://medium.com/analytics-and-data/r-vs-python-a-comprehensive-guide-for-data-professionals-321e8dead598"
+            target="_blank"
+            >R vs. Python, a comprehensive guide for data professionals</a
+          >
+        </li>
       </ul>
 
       <p></p>
@@ -157,374 +220,407 @@
         <p id="node-modal-body"></p>
       </div>
     </div>
-<script>
-  const svg = d3.select("#visualization svg");
-  const width = 960;
-  const height = 700;
-  const nodeCount = 6;
-  const nodeRadius = 18;
-  const reservedBottomSpace = 280;
-  const visualizationOffsetY = -140;
+    <script>
+      const svg = d3.select("#visualization svg");
+      const width = 960;
+      const height = 700;
+      const nodeCount = 6;
+      const nodeRadius = 18;
+      const reservedBottomSpace = 280;
+      const visualizationOffsetY = -140;
 
-  const boxGap = 16;
-  const boxMinHeight = 110;
-  const boxWidth = (width - boxGap * (nodeCount + 1)) / nodeCount;
-  const nodeInset = boxGap + boxWidth / 2;
-  const boxTextPaddingX = 10;
-  const boxTextPaddingY = 20;
-  const boxLineHeight = 18;
-  const boxFontSize = 14;
-  const boxFontWeight = 500;
-  const nodeBoxTextOffsetY = -20;
+      const boxGap = 16;
+      const boxMinHeight = 110;
+      const boxWidth = (width - boxGap * (nodeCount + 1)) / nodeCount;
+      const nodeInset = boxGap + boxWidth / 2;
+      const boxTextPaddingX = 10;
+      const boxTextPaddingY = 20;
+      const boxLineHeight = 18;
+      const boxFontSize = 14;
+      const boxFontWeight = 500;
+      const nodeBoxTextOffsetY = -20;
 
-  const yBottom = height - reservedBottomSpace + visualizationOffsetY;
-  const yTop = yBottom;
-  const yUpper = yTop - 150;
+      const yBottom = height - reservedBottomSpace + visualizationOffsetY;
+      const yTop = yBottom;
+      const yUpper = yTop - 150;
 
-  const xScale = d3
-    .scaleLinear()
-    .domain([0, nodeCount - 1])
-    .range([nodeInset, width - nodeInset]);
+      const xScale = d3
+        .scaleLinear()
+        .domain([0, nodeCount - 1])
+        .range([nodeInset, width - nodeInset]);
 
-  const nodes = d3.range(nodeCount).map((index) => ({
-    index,
-    x: xScale(index),
-    y: yTop,
-  }));
+      const nodes = d3.range(nodeCount).map((index) => ({
+        index,
+        x: xScale(index),
+        y: yTop,
+      }));
 
-  const linearNodes = nodes;
+      const linearNodes = nodes;
 
-  // connector: from node 3 (index 2) up, across to node 6 (index 5), back down
-  const connectorPoints = [
-    { x: nodes[2].x, y: nodes[2].y },
-    { x: nodes[2].x, y: yUpper },
-    { x: nodes[5].x, y: yUpper },
-    { x: nodes[5].x, y: nodes[5].y },
-  ];
+      // connector: from node 3 (index 2) up, across to node 6 (index 5), back down
+      const connectorPoints = [
+        { x: nodes[2].x, y: nodes[2].y },
+        { x: nodes[2].x, y: yUpper },
+        { x: nodes[5].x, y: yUpper },
+        { x: nodes[5].x, y: nodes[5].y },
+      ];
 
-  const connectorMid = {
-    x: (nodes[2].x + nodes[5].x) / 2,
-    y: yUpper,
-  };
+      const connectorMid = {
+        x: (nodes[2].x + nodes[5].x) / 2,
+        y: yUpper,
+      };
 
-  const upperNodeModalText = "You may find you would like to try a different tool based on the results of your analysis";
+      const upperNodeModalText =
+        "You may find you would like to try a different tool based on the results of your analysis";
 
-  const pathPoints = [
-    { x: nodes[0].x, y: yTop },
-    { x: nodes[5].x, y: yTop },
-  ];
+      const pathPoints = [
+        { x: nodes[0].x, y: yTop },
+        { x: nodes[5].x, y: yTop },
+      ];
 
-  const boxTexts = [
-    `Obtain Your Corpus.
+      const boxTexts = [
+        `Obtain Your Corpus.
     Has the collection of text files, or corpus, you want to study already been created, or will you create it yourself?`,
-    `Document Your Corpus.
+        `Document Your Corpus.
     Does your corpus have an inventory file or other metadata describing the texts it contains? If not, create one!`,
-    `Choose a Text Analysis Tool.
+        `Choose a Text Analysis Tool.
     The text analysis tool(s) suitable for your analysis will depend on your research question(s) and the amount of computer programming you'd like to do.`,
-    `Preprocess the Text.
+        `Preprocess the Text.
     Normalise your text, segment it into words and sentences, and filter and re-organise your texts in preparation for your analysis.`,
-    `Analyse the Text.
+        `Analyse the Text.
     Using your chosen tool, run a series of functions, methods or algorithms on your text.`,
-    `Evaluate and Report.
+        `Evaluate and Report.
     Evaluate and report the results of your analysis based on the quality of your text, the representativeness of your sample, and the context of your research.`,
-  ];
+      ];
 
-  const nodeLinks = [
-    "step1.html",
-    "step2.html",
-    "step3.html",
-    "step4.html",
-    "step5.html",
-    "step6.html",
-  ];
+      const nodeLinks = [
+        "step1.html",
+        "step2.html",
+        "step3.html",
+        "step4.html",
+        "step5.html",
+        "step6.html",
+      ];
 
-  function openNodeLink(link) {
-    if (!link) return;
-    window.location.href = link;
-  }
-
-  const nodeModal = document.getElementById("node-modal");
-  const nodeModalBody = document.getElementById("node-modal-body");
-  const nodeModalClose = document.getElementById("node-modal-close");
-
-  function openNodeModal(text) {
-    if (!text) return;
-    nodeModalBody.textContent = text;
-    nodeModal.classList.add("open");
-    nodeModal.setAttribute("aria-hidden", "false");
-  }
-
-  function closeNodeModal() {
-    nodeModal.classList.remove("open");
-    nodeModal.setAttribute("aria-hidden", "true");
-  }
-
-  nodeModalClose.addEventListener("click", closeNodeModal);
-  nodeModal.addEventListener("click", (event) => {
-    if (event.target === nodeModal) {
-      closeNodeModal();
-    }
-  });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && nodeModal.classList.contains("open")) {
-      closeNodeModal();
-    }
-  });
-
-  const measureText = svg
-    .append("text")
-    .attr("x", -9999)
-    .attr("y", -9999)
-    .attr("font-size", boxFontSize)
-    .attr("font-weight", boxFontWeight)
-    .attr("visibility", "hidden");
-
-  function getWrappedLines(value, maxWidth, fontWeight) {
-    const words = String(value)
-      .replace(/\s+/g, " ")
-      .trim()
-      .split(/\s+/)
-      .filter(Boolean);
-    if (!words.length) return [];
-    const fw = fontWeight ?? boxFontWeight;
-    measureText.attr("font-weight", fw);
-    const lines = [];
-    let line = [];
-    for (const word of words) {
-      line.push(word);
-      measureText.text(line.join(" "));
-      if (
-        measureText.node().getComputedTextLength() > maxWidth &&
-        line.length > 1
-      ) {
-        line.pop();
-        lines.push(line.join(" "));
-        line = [word];
+      function openNodeLink(link) {
+        if (!link) return;
+        window.location.href = link;
       }
-    }
-    if (line.length) lines.push(line.join(" "));
-    measureText.attr("font-weight", boxFontWeight);
-    return lines;
-  }
 
-  function splitHeadingAndBody(value) {
-    const normalized = String(value).replace(/\s+/g, " ").trim();
-    if (!normalized) return { heading: "", body: "" };
-    const delimiters = [",", ".", ":", ";"];
-    const delimiterIndexes = delimiters
-      .map((d) => normalized.indexOf(d))
-      .filter((i) => i !== -1);
-    if (!delimiterIndexes.length) return { heading: normalized, body: "" };
-    const splitIndex = Math.min(...delimiterIndexes);
-    return {
-      heading: normalized.slice(0, splitIndex).trim(),
-      body: normalized.slice(splitIndex + 1).trim(),
-    };
-  }
+      const nodeModal = document.getElementById("node-modal");
+      const nodeModalBody = document.getElementById("node-modal-body");
+      const nodeModalClose = document.getElementById("node-modal-close");
 
-  const nodeBoxes = linearNodes.map((node) => {
-    const parsed = splitHeadingAndBody(boxTexts[node.index]);
-    const maxTextWidth = boxWidth - boxTextPaddingX * 2;
-    const headingLines = getWrappedLines(parsed.heading.toUpperCase(), maxTextWidth, 700);
-    const bodyLines = getWrappedLines(parsed.body, maxTextWidth, boxFontWeight);
-    const headingGap = headingLines.length && bodyLines.length ? 5 : 0;
-    const lineCount = headingLines.length + bodyLines.length;
-    const textHeight = lineCount * boxLineHeight + headingGap + boxTextPaddingY * 2;
-    return {
-      node,
-      x: node.x - boxWidth / 2,
-      y: node.y + nodeRadius + 10,
-      headingLines,
-      bodyLines,
-      headingGap,
-      boxHeight: Math.max(boxMinHeight, textHeight),
-    };
-  });
-
-  measureText.remove();
-
-  const maxBoxBottom = d3.max(nodeBoxes, (d) => d.y + d.boxHeight);
-  const contentHeight = Math.max(height, maxBoxBottom + 20);
-  svg.attr("viewBox", `0 0 ${width} ${contentHeight}`);
-  svg.style("height", `${contentHeight}px`);
-
-  // main horizontal path
-  svg
-    .append("path")
-    .attr("d", d3.line().x((d) => d.x).y((d) => d.y)(pathPoints))
-    .attr("fill", "none")
-    .attr("stroke", "#041d40")
-    .attr("stroke-width", 4)
-    .attr("stroke-linecap", "round");
-
-  // upper connector (pink loop)
-  svg
-    .append("path")
-    .attr("d", d3.line().x((d) => d.x).y((d) => d.y)(connectorPoints))
-    .attr("fill", "none")
-    .attr("stroke", "#e7135d")
-    .attr("stroke-width", 4)
-    .attr("stroke-linecap", "round")
-    .attr("stroke-linejoin", "round");
-
-  // ? circle
-  svg
-    .append("circle")
-    .attr("cx", connectorMid.x)
-    .attr("cy", connectorMid.y)
-    .attr("r", 20)
-    .attr("fill", "#ffffff")
-    .attr("stroke", "#e7135d")
-    .attr("stroke-width", 4)
-    .attr("cursor", "pointer")
-    .attr("role", "button")
-    .attr("tabindex", 0)
-    .on("click", () => openNodeModal(upperNodeModalText))
-    .on("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        openNodeModal(upperNodeModalText);
+      function openNodeModal(text) {
+        if (!text) return;
+        nodeModalBody.textContent = text;
+        nodeModal.classList.add("open");
+        nodeModal.setAttribute("aria-hidden", "false");
       }
-    });
 
-  svg
-    .append("text")
-    .attr("x", connectorMid.x)
-    .attr("y", connectorMid.y)
-    .attr("text-anchor", "middle")
-    .attr("dominant-baseline", "middle")
-    .attr("font-size", 18)
-    .attr("font-weight", 700)
-    .attr("fill", "#e7135d")
-    .attr("pointer-events", "none")
-    .text("?");
-
-  // callout box (pink filled, white text)
-  const calloutBoxWidth = 300;
-  const calloutBoxHeight = 68;
-  const calloutBoxX = connectorMid.x - calloutBoxWidth / 2;
-  const calloutBoxY = connectorMid.y + 28;
-
-  svg
-    .append("rect")
-    .attr("x", calloutBoxX)
-    .attr("y", calloutBoxY)
-    .attr("width", calloutBoxWidth)
-    .attr("height", calloutBoxHeight)
-    .attr("rx", 4)
-    .attr("fill", "#e7135d");
-
-  const calloutLabel = svg
-    .append("text")
-    .attr("text-anchor", "middle")
-    .attr("font-size", 13)
-    .attr("font-weight", 700)
-    .attr("fill", "#ffffff");
-
-  calloutLabel
-    .append("tspan")
-    .attr("x", connectorMid.x)
-    .attr("y", calloutBoxY + 18)
-    .text("YOU MAY FIND YOU WOULD LIKE TO");
-
-  calloutLabel
-    .append("tspan")
-    .attr("x", connectorMid.x)
-    .attr("y", calloutBoxY + 36)
-    .text("TRY A DIFFERENT TOOL BASED ON");
-
-  calloutLabel
-    .append("tspan")
-    .attr("x", connectorMid.x)
-    .attr("y", calloutBoxY + 54)
-    .text("THE RESULTS OF YOUR ANALYSIS");
-
-  // text boxes below each node
-  svg
-    .selectAll("rect.node-box")
-    .data(nodeBoxes)
-    .join("rect")
-    .attr("class", "node-box")
-    .attr("x", (d) => d.x)
-    .attr("y", (d) => d.y)
-    .attr("width", boxWidth)
-    .attr("height", (d) => d.boxHeight)
-    .attr("rx", 10)
-    .attr("fill", "#ffffff");
-
-  const nodeBoxLabels = svg
-    .selectAll("text.node-box-label")
-    .data(nodeBoxes)
-    .join("text")
-    .attr("class", "node-box-label")
-    .attr("x", (d) => d.x + boxTextPaddingX)
-    .attr("y", (d) => d.y + boxTextPaddingY)
-    .attr("text-anchor", "start")
-    .attr("font-size", boxFontSize)
-    .attr("font-weight", boxFontWeight)
-    .attr("fill", "#1f2937");
-
-  nodeBoxLabels.each(function (d) {
-    const text = d3.select(this);
-    const leftX = d.x + boxTextPaddingX;
-    const lineCount = d.headingLines.length + d.bodyLines.length;
-    const textBlockHeight = lineCount * boxLineHeight + d.headingGap;
-    const startY =
-      d.y + (d.boxHeight - textBlockHeight) / 2 + boxFontSize + nodeBoxTextOffsetY;
-    let cursorY = startY;
-    text.text(null);
-    d.headingLines.forEach((line) => {
-      text.append("tspan").attr("x", leftX).attr("y", cursorY + 10).attr("font-weight", 700).text(line);
-      cursorY += boxLineHeight;
-    });
-    if (d.headingLines.length && d.bodyLines.length) cursorY += d.headingGap;
-    d.bodyLines.forEach((line) => {
-      text.append("tspan").attr("x", leftX).attr("y", cursorY + 10).attr("font-weight", boxFontWeight).text(line);
-      cursorY += boxLineHeight;
-    });
-  });
-
-  // node circles
-  svg
-    .selectAll("circle.node")
-    .data(linearNodes)
-    .join("circle")
-    .attr("class", "node")
-    .attr("cx", (d) => d.x)
-    .attr("cy", (d) => d.y)
-    .attr("r", nodeRadius)
-    .attr("fill", "#ffffff")
-    .attr("stroke", "#e7135d")
-    .attr("stroke-width", 4)
-    .attr("cursor", "pointer")
-    .attr("role", "link")
-    .attr("tabindex", 0)
-    .on("click", (event, d) => openNodeLink(nodeLinks[d.index]))
-    .on("keydown", (event, d) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        openNodeLink(nodeLinks[d.index]);
+      function closeNodeModal() {
+        nodeModal.classList.remove("open");
+        nodeModal.setAttribute("aria-hidden", "true");
       }
-    });
 
-  // node number labels
-  svg
-    .selectAll("text.node-label")
-    .data(linearNodes)
-    .join("text")
-    .attr("class", "node-label")
-    .attr("x", (d) => d.x)
-    .attr("y", (d) => d.y)
-    .attr("text-anchor", "middle")
-    .attr("dominant-baseline", "middle")
-    .attr("font-size", 14)
-    .attr("font-weight", 600)
-    .attr("fill", "#041d40")
-    .attr("pointer-events", "none")
-    .text((d, i) => i + 1);
-</script>
+      nodeModalClose.addEventListener("click", closeNodeModal);
+      nodeModal.addEventListener("click", (event) => {
+        if (event.target === nodeModal) {
+          closeNodeModal();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && nodeModal.classList.contains("open")) {
+          closeNodeModal();
+        }
+      });
 
+      const measureText = svg
+        .append("text")
+        .attr("x", -9999)
+        .attr("y", -9999)
+        .attr("font-size", boxFontSize)
+        .attr("font-weight", boxFontWeight)
+        .attr("visibility", "hidden");
 
+      function getWrappedLines(value, maxWidth, fontWeight) {
+        const words = String(value)
+          .replace(/\s+/g, " ")
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean);
+        if (!words.length) return [];
+        const fw = fontWeight ?? boxFontWeight;
+        measureText.attr("font-weight", fw);
+        const lines = [];
+        let line = [];
+        for (const word of words) {
+          line.push(word);
+          measureText.text(line.join(" "));
+          if (
+            measureText.node().getComputedTextLength() > maxWidth &&
+            line.length > 1
+          ) {
+            line.pop();
+            lines.push(line.join(" "));
+            line = [word];
+          }
+        }
+        if (line.length) lines.push(line.join(" "));
+        measureText.attr("font-weight", boxFontWeight);
+        return lines;
+      }
 
-    </body>
-    </html>
+      function splitHeadingAndBody(value) {
+        const normalized = String(value).replace(/\s+/g, " ").trim();
+        if (!normalized) return { heading: "", body: "" };
+        const delimiters = [",", ".", ":", ";"];
+        const delimiterIndexes = delimiters
+          .map((d) => normalized.indexOf(d))
+          .filter((i) => i !== -1);
+        if (!delimiterIndexes.length) return { heading: normalized, body: "" };
+        const splitIndex = Math.min(...delimiterIndexes);
+        return {
+          heading: normalized.slice(0, splitIndex).trim(),
+          body: normalized.slice(splitIndex + 1).trim(),
+        };
+      }
+
+      const nodeBoxes = linearNodes.map((node) => {
+        const parsed = splitHeadingAndBody(boxTexts[node.index]);
+        const maxTextWidth = boxWidth - boxTextPaddingX * 2;
+        const headingLines = getWrappedLines(
+          parsed.heading.toUpperCase(),
+          maxTextWidth,
+          700,
+        );
+        const bodyLines = getWrappedLines(
+          parsed.body,
+          maxTextWidth,
+          boxFontWeight,
+        );
+        const headingGap = headingLines.length && bodyLines.length ? 5 : 0;
+        const lineCount = headingLines.length + bodyLines.length;
+        const textHeight =
+          lineCount * boxLineHeight + headingGap + boxTextPaddingY * 2;
+        return {
+          node,
+          x: node.x - boxWidth / 2,
+          y: node.y + nodeRadius + 10,
+          headingLines,
+          bodyLines,
+          headingGap,
+          boxHeight: Math.max(boxMinHeight, textHeight),
+        };
+      });
+
+      measureText.remove();
+
+      const maxBoxBottom = d3.max(nodeBoxes, (d) => d.y + d.boxHeight);
+      const contentHeight = Math.max(height, maxBoxBottom + 20);
+      svg.attr("viewBox", `0 0 ${width} ${contentHeight}`);
+      svg.style("height", `${contentHeight}px`);
+
+      // main horizontal path
+      svg
+        .append("path")
+        .attr(
+          "d",
+          d3
+            .line()
+            .x((d) => d.x)
+            .y((d) => d.y)(pathPoints),
+        )
+        .attr("fill", "none")
+        .attr("stroke", "#041d40")
+        .attr("stroke-width", 4)
+        .attr("stroke-linecap", "round");
+
+      // upper connector (pink loop)
+      svg
+        .append("path")
+        .attr(
+          "d",
+          d3
+            .line()
+            .x((d) => d.x)
+            .y((d) => d.y)(connectorPoints),
+        )
+        .attr("fill", "none")
+        .attr("stroke", "#e7135d")
+        .attr("stroke-width", 4)
+        .attr("stroke-linecap", "round")
+        .attr("stroke-linejoin", "round");
+
+      // ? circle
+      svg
+        .append("circle")
+        .attr("cx", connectorMid.x)
+        .attr("cy", connectorMid.y)
+        .attr("r", 20)
+        .attr("fill", "#ffffff")
+        .attr("stroke", "#e7135d")
+        .attr("stroke-width", 4)
+        .attr("cursor", "pointer")
+        .attr("role", "button")
+        .attr("tabindex", 0)
+        .on("click", () => openNodeModal(upperNodeModalText))
+        .on("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openNodeModal(upperNodeModalText);
+          }
+        });
+
+      svg
+        .append("text")
+        .attr("x", connectorMid.x)
+        .attr("y", connectorMid.y)
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "middle")
+        .attr("font-size", 18)
+        .attr("font-weight", 700)
+        .attr("fill", "#e7135d")
+        .attr("pointer-events", "none")
+        .text("?");
+
+      // callout box (pink filled, white text)
+      const calloutBoxWidth = 300;
+      const calloutBoxHeight = 68;
+      const calloutBoxX = connectorMid.x - calloutBoxWidth / 2;
+      const calloutBoxY = connectorMid.y + 28;
+
+      svg
+        .append("rect")
+        .attr("x", calloutBoxX)
+        .attr("y", calloutBoxY)
+        .attr("width", calloutBoxWidth)
+        .attr("height", calloutBoxHeight)
+        .attr("rx", 4)
+        .attr("fill", "#e7135d");
+
+      const calloutLabel = svg
+        .append("text")
+        .attr("text-anchor", "middle")
+        .attr("font-size", 13)
+        .attr("font-weight", 700)
+        .attr("fill", "#ffffff");
+
+      calloutLabel
+        .append("tspan")
+        .attr("x", connectorMid.x)
+        .attr("y", calloutBoxY + 18)
+        .text("YOU MAY FIND YOU WOULD LIKE TO");
+
+      calloutLabel
+        .append("tspan")
+        .attr("x", connectorMid.x)
+        .attr("y", calloutBoxY + 36)
+        .text("TRY A DIFFERENT TOOL BASED ON");
+
+      calloutLabel
+        .append("tspan")
+        .attr("x", connectorMid.x)
+        .attr("y", calloutBoxY + 54)
+        .text("THE RESULTS OF YOUR ANALYSIS");
+
+      // text boxes below each node
+      svg
+        .selectAll("rect.node-box")
+        .data(nodeBoxes)
+        .join("rect")
+        .attr("class", "node-box")
+        .attr("x", (d) => d.x)
+        .attr("y", (d) => d.y)
+        .attr("width", boxWidth)
+        .attr("height", (d) => d.boxHeight)
+        .attr("rx", 10)
+        .attr("fill", "#ffffff");
+
+      const nodeBoxLabels = svg
+        .selectAll("text.node-box-label")
+        .data(nodeBoxes)
+        .join("text")
+        .attr("class", "node-box-label")
+        .attr("x", (d) => d.x + boxTextPaddingX)
+        .attr("y", (d) => d.y + boxTextPaddingY)
+        .attr("text-anchor", "start")
+        .attr("font-size", boxFontSize)
+        .attr("font-weight", boxFontWeight)
+        .attr("fill", "#1f2937");
+
+      nodeBoxLabels.each(function (d) {
+        const text = d3.select(this);
+        const leftX = d.x + boxTextPaddingX;
+        const lineCount = d.headingLines.length + d.bodyLines.length;
+        const textBlockHeight = lineCount * boxLineHeight + d.headingGap;
+        const startY =
+          d.y +
+          (d.boxHeight - textBlockHeight) / 2 +
+          boxFontSize +
+          nodeBoxTextOffsetY;
+        let cursorY = startY;
+        text.text(null);
+        d.headingLines.forEach((line) => {
+          text
+            .append("tspan")
+            .attr("x", leftX)
+            .attr("y", cursorY + 10)
+            .attr("font-weight", 700)
+            .text(line);
+          cursorY += boxLineHeight;
+        });
+        if (d.headingLines.length && d.bodyLines.length)
+          cursorY += d.headingGap;
+        d.bodyLines.forEach((line) => {
+          text
+            .append("tspan")
+            .attr("x", leftX)
+            .attr("y", cursorY + 10)
+            .attr("font-weight", boxFontWeight)
+            .text(line);
+          cursorY += boxLineHeight;
+        });
+      });
+
+      // node circles
+      svg
+        .selectAll("circle.node")
+        .data(linearNodes)
+        .join("circle")
+        .attr("class", "node")
+        .attr("cx", (d) => d.x)
+        .attr("cy", (d) => d.y)
+        .attr("r", nodeRadius)
+        .attr("fill", "#ffffff")
+        .attr("stroke", "#e7135d")
+        .attr("stroke-width", 4)
+        .attr("cursor", "pointer")
+        .attr("role", "link")
+        .attr("tabindex", 0)
+        .on("click", (event, d) => openNodeLink(nodeLinks[d.index]))
+        .on("keydown", (event, d) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openNodeLink(nodeLinks[d.index]);
+          }
+        });
+
+      // node number labels
+      svg
+        .selectAll("text.node-label")
+        .data(linearNodes)
+        .join("text")
+        .attr("class", "node-label")
+        .attr("x", (d) => d.x)
+        .attr("y", (d) => d.y)
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "middle")
+        .attr("font-size", 14)
+        .attr("font-weight", 600)
+        .attr("fill", "#041d40")
+        .attr("pointer-events", "none")
+        .text((d, i) => i + 1);
+    </script>
+  </body>
+</html>

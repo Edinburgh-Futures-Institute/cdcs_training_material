@@ -14,7 +14,7 @@
       rel="stylesheet"
     />
     <title>3D Data</title>
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <style>
       #visualization {
@@ -96,17 +96,46 @@
   <body>
     <nav class="top-menu" aria-label="Main navigation">
       <div class="top-menu-home">
-         <a href="../../index.html">Home</a>
-         <a href="https://efi.ed.ac.uk/research/data-led-methods-and-research-technology/" target="_blank" class="logo-btn">
-      <img src="../../images/efi_logo.png" alt="Site Logo">
-    </a>
-        </div>
-        <div class="top-menu-links">
-      <a href="../../Tutorials/Tutorials Homepage.html" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
-      <a href="../../SearchGitHub.html" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
-      <a href="../../pathways/pathway-home.html" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
-      <a href="../../research-adaptation.html" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
-      <a href="../../workflows/workflows-home-page.html" rel="noopener noreferrer" title="Webscraping">Webscraping</a>
+        <a href="../../index.html">Home</a>
+        <a
+          href="https://efi.ed.ac.uk/research/data-led-methods-and-research-technology/"
+          target="_blank"
+          class="logo-btn"
+        >
+          <img src="../../images/efi_logo.png" alt="Site Logo" />
+        </a>
+      </div>
+      <div class="top-menu-links">
+        <a
+          href="../../Tutorials/Tutorials Homepage.html"
+          rel="noopener noreferrer"
+          title="Tutorials"
+          >Tutorials</a
+        >
+        <a
+          href="../../SearchGitHub.html"
+          rel="noopener noreferrer"
+          title="Search our Repositories"
+          >Repositories</a
+        >
+        <a
+          href="../../pathways/pathway-home.html"
+          rel="noopener noreferrer"
+          title="Pathways of Learning"
+          >Pathways</a
+        >
+        <a
+          href="../../research-adaptation.html"
+          rel="noopener noreferrer"
+          title="Research Adaptation Guidance"
+          >Research Adaptation</a
+        >
+        <a
+          href="../../workflows/workflows-home-page.html"
+          rel="noopener noreferrer"
+          title="Webscraping"
+          >Webscraping</a
+        >
       </div>
     </nav>
     <div class="site-header">
@@ -117,7 +146,11 @@
     </div>
     <div id="below-visualization-text" style="width: 100%">
       <h4>Author: Lucia Michielin, Daniel Wheeldon</h4>
-      <p>There are different techniques and methods to create and work with 3D data. This pathway will help you identify the best option depending on what are you trying to do.</p>
+      <p>
+        There are different techniques and methods to create and work with 3D
+        data. This pathway will help you identify the best option depending on
+        what are you trying to do.
+      </p>
     </div>
     <div style="text-align: center; margin: 2rem 0">
       <a
@@ -205,11 +238,11 @@
       const boxTexts = {
         "0X": `3d print at uoe`,
         "0L": `data creation`,
-        "1A": `Computer drawing. 3D data can be  reated using a broad
+        "1A": `Computer drawing. 3D data can be created using a broad
         array of software. Some software is extremely
         precise and suitable for complex engineering tasks, 
         others can be more approximate emphasising creative
-        free form modelling`,
+        free form modelling.`,
         "1B": `Scanning data. 3D scanning is the action of 
         using active sensors (e.g., laser) to record three-dimentional
         data concerning objects and places. The usual
@@ -218,7 +251,7 @@
         "1C": `From photos to 3D. Photogrammetry and structure
         from motion (3D models from 2D images) techniques
         can be used to generate three-dimentional objects.
-        Because the do not use active sensors the 
+        Because they do not use active sensors they 
         are called passive mathods.`,
         2: `3D data wrangling. The first product of active 
         and passive data acquisition is normally a point
@@ -235,9 +268,9 @@
         Like 3D printing, computer-aided manufacturing is
         becoming a more affordable and accessible resource
         nowadays.`,
-        "4C": `Othtophotos renders and simulations. 
+        "4C": `Orthophotos renders and simulations. 
         3d objects can be used to produce measurable
-        profiles, photorealistic static or video visualizations
+        profiles, photorealistic static or video visualisations
         called renders. They can also be used 
         to create proper simulations.`,
 
@@ -258,22 +291,22 @@
       const modalNodeTexts = {
         "0X": `The University of Edinburgh has a series of facilities and workshops with a wide variety
         of instrumentation that staff and students can access.`,
-        "0R": `From simple orthophotos and renders to 3D simulations and 3D printing the possible outputs of 
-        working with 3D data are vast and it is field in constant expansion. Depending on the research questions 
-        you were trying to answer two one of more of the options here presented can be a good option`,
+        "0R": `From simple orthophotos and renders to 3D simulations and 3D printing, the possible outputs of 
+        working with 3D data are vast and it is a field in constant expansion. Depending on the research questions 
+        you were trying to answer, one or more of the options here presented can be a good option.`,
         "0L": `There are two main ways to generate 3D data. You can either start from scratch or you can 
         record and process existing 3D objects. If you start from scratch you can either use technical drawing 
         software like Autodesk Suite, Rhino and others or you can go through the modelling approach with software
         like Blender, Maya, 3D Studio Max etc. If you want to start from real-word objects there are two main types 
         of techniques you can use: active techniques that will require ad hoc instrumentation and passive technique 
-        like photogrammetry and Structure from Motion. Discover more about each technique by exploring steps 1A 1B and 1C.`,
+        like photogrammetry and Structure from Motion. Discover more about each technique by exploring steps 1A, 1B and 1C.`,
         "4B": `Other 3D manufacture (CAM)
         Computer Aided Manufacturing (CAM) is the use of software and computer-controlled machinery to automate a manufacturing process.
         You need three components for a CAM system to function:
         • Software that tells a machine how to make a product by generating toolpaths.
         • Industrial machinery that can turn raw material into a finished product.
         • Post Processing converts toolpaths into a language machines can understand.
-        These three components are glued together with tons of human labour and skill.`
+        These three components are glued together with tons of human labour and skill.`,
       };
 
       const modalNodeHtml = {

@@ -1,294 +1,388 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Step 6 Statistics</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../styles.css">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
 
-<body>
-
+  <body>
     <nav class="top-menu" aria-label="Main navigation">
-        <div class="top-menu-home">
-            <a href="../../index.html">Home</a>
+      <div class="top-menu-home">
+        <a href="../../index.html">Home</a>
 
-            <a href="https://efi.ed.ac.uk/research/data-led-methods-and-research-technology/" target="_blank" class="logo-btn">
-                <img src="../../images/efi_logo.png" alt="Site Logo">
-            </a>
-        </div>
+        <a
+          href="https://efi.ed.ac.uk/research/data-led-methods-and-research-technology/"
+          target="_blank"
+          class="logo-btn"
+        >
+          <img src="../../images/efi_logo.png" alt="Site Logo" />
+        </a>
+      </div>
 
-        <div class="top-menu-links">
-            <a href="../../Tutorials/Tutorials Homepage.html" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
-            <a href="../../SearchGitHub.html" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
-            <a href="../pathway-home.html" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
-            <a href="../../research-adaptation.html" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
-            <a href="../../workflows/workflows-home-page.html" rel="noopener noreferrer" title="Webscraping">Webscraping</a>
-        </div>
+      <div class="top-menu-links">
+        <a
+          href="../../Tutorials/Tutorials Homepage.html"
+          rel="noopener noreferrer"
+          title="Tutorials"
+          >Tutorials</a
+        >
+        <a
+          href="../../SearchGitHub.html"
+          rel="noopener noreferrer"
+          title="Search our Repositories"
+          >Repositories</a
+        >
+        <a
+          href="../pathway-home.html"
+          rel="noopener noreferrer"
+          title="Pathways of Learning"
+          >Pathways</a
+        >
+        <a
+          href="../../research-adaptation.html"
+          rel="noopener noreferrer"
+          title="Research Adaptation Guidance"
+          >Research Adaptation</a
+        >
+        <a
+          href="../../workflows/workflows-home-page.html"
+          rel="noopener noreferrer"
+          title="Webscraping"
+          >Webscraping</a
+        >
+      </div>
     </nav>
 
     <div class="container">
+      <div class="site-header">
+        <div class="site-header-title">EFI Data-led Research Methods</div>
+      </div>
 
-        <div class="site-header">
-            <div class="site-header-title">
-                EFI Data-led Research Methods
-            </div>
+      <h1>Descriptive Statistics</h1>
+
+      <p>
+        Descriptive statistics quantitatively describes or summarises aspects of
+        a dataset.
+      </p>
+
+      <p>
+        It helps simplify large quantities of data into a more understandable
+        and easily interpretable form. Each descriptive statistic reduces lots
+        of data into a simpler summary.
+      </p>
+
+      <p>
+        There are different ways to do so: via graphs, calculations, and tables.
+        The important things to keep in mind are to convey the results clearly,
+        to always state the sample size (how many records are in your datasets),
+        and to understand the level of simplification involved (certain trends
+        will be lost if you generalise the analysis too much).
+      </p>
+
+      <p>
+        If you are planning to use graphic visualisations for your descriptive
+        analysis, you should also have a look at the
+        <a href="../data-visualisation/step6.html" target="_blank">
+          Building Graphs
+        </a>
+        step in the Data Visualisation Pathway.
+      </p>
+
+      <h2>Distribution</h2>
+
+      <p>
+        One of the most common forms of descriptive analysis is the description
+        of data distribution.
+      </p>
+
+      <p>
+        In theory, a sample collecting numerical information about a variable
+        (for example, the height of a group of people) would have a normal
+        distribution, meaning that if plotted it would resemble a bell-shaped
+        curve.
+      </p>
+
+      <p>
+        Going back to the people's heights example, this means that many people
+        will have heights clustering around a central value, while progressively
+        fewer people will have much lower or higher heights.
+      </p>
+
+      <p>
+        Normally distributed samples are at the basis of many inferential
+        statistics methods, and therefore it is very important to understand
+        your sample before choosing a specific method.
+      </p>
+
+      <p>
+        However, this principle is often more applicable to the exact sciences
+        than to the Social Sciences and Humanities. Data in these disciplines
+        are often not normally distributed, and this needs to be taken into
+        consideration during analysis.
+      </p>
+
+      <p>
+        This issue can partially be addressed through the
+        <strong>Central Limit Theorem</strong>.
+      </p>
+
+      <ul>
+        <li>
+          <a href="https://www.youtube.com/watch?v=rzFX5NWojp0" target="_blank">
+            Normal Distribution Explained
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.youtube.com/watch?v=YAlJCEDH2uY&t=16s"
+            target="_blank"
+          >
+            Central Limit Theorem Explained
+          </a>
+        </li>
+      </ul>
+
+      <h2>Measures of Central Tendency and Dispersion</h2>
+
+      <p>
+        Two additional characteristics that can be examined for each variable
+        are:
+      </p>
+
+      <ul>
+        <li>
+          <strong>Measures of Central Tendency</strong> — how values cluster
+          together
+        </li>
+        <li><strong>Measures of Dispersion</strong> — how values spread out</li>
+      </ul>
+
+      <h3>Measures of Central Tendency</h3>
+
+      <ul>
+        <li>
+          <strong>Arithmetic Mean:</strong>
+          the average value of the sample (sum of all values divided by the
+          number of values)
+        </li>
+
+        <li>
+          <strong>Median:</strong>
+          the middle value splitting the higher and lower halves of the sample
+        </li>
+
+        <li>
+          <strong>Mode:</strong>
+          the most frequently repeated value in a sample
+        </li>
+      </ul>
+
+      <h3>Measures of Dispersion</h3>
+
+      <ul>
+        <li>
+          <strong>Variance:</strong>
+          the squared mean difference between each value and the mean, divided
+          by the sample size minus one
+        </li>
+
+        <li>
+          <strong>Standard Deviation (SD):</strong>
+          a measure of the amount of variation or dispersion within a set of
+          values. A low standard deviation indicates that values tend to be
+          close to the mean.
+        </li>
+      </ul>
+
+      <p>
+        <a
+          href="https://www.youtube.com/watch?v=SzZ6GpcfoQY&t=1s"
+          target="_blank"
+        >
+          Discover more about measures of central tendency and dispersion
+        </a>
+      </p>
+
+      <h2>Where to find more information</h2>
+
+      <div class="row pathway-resource-cards">
+        <div class="column">
+          <h3>Our Tutorials</h3>
+
+          <img
+            src="../../images/uta_tom_dorsey.jpg"
+            alt="Statistics learning resources"
+          />
+
+          <ul style="padding-left: 1em; margin-left: 0">
+            <li>
+              <a
+                href="https://github.com/DCS-training/DescriptiveStatistics"
+                target="_blank"
+                >Descriptive Statistics</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/DCS-training/Digital-Method-of-the-Month/blob/main/DMM%20Docs/Descriptive%20and%20inferential%20statistics.md"
+                target="_blank"
+                >Descriptive and Inferential Statistics Digital Method of the
+                Month</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/DCS-training/Intro-to-Statistics"
+                target="_blank"
+                >Intro to Statistics</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/DCS-training/R-Visualisation-and-Stats"
+                target="_blank"
+                >Data Visualisation and Statistics with R</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/DCS-training/summerschool2024-stream2/tree/main/Day4"
+                target="_blank"
+                >Day 4 of the 2024 summer school (Data Analysis)</a
+              >
+            </li>
+          </ul>
         </div>
 
-        <h1>Descriptive Statistics</h1>
+        <div class="column">
+          <h3>UoE Resources</h3>
 
-        <p>
-            Descriptive statistics quantitatively describes or summarises aspects of a dataset.
-        </p>
+          <img
+            src="../../images/Playfair Header.png"
+            alt="University of Edinburgh resources"
+          />
 
-        <p>
-            It helps simplify large quantities of data into a more understandable and easily interpretable form. 
-            Each descriptive statistic reduces lots of data into a simpler summary.
-        </p>
-
-        <p>
-            There are different ways to do so: via graphs, calculations, and tables. 
-            The important things to keep in mind are to convey the results clearly, 
-            to always state the sample size (how many records are in your datasets), 
-            and to understand the level of simplification involved 
-            (certain trends will be lost if you generalise the analysis too much).
-        </p>
-
-        <p>
-            If you are planning to use graphic visualisations for your descriptive analysis, 
-            you should also have a look at the 
-            <a href="../data-visualisation/step6.html" target="_blank">
-                Building Graphs
-            </a> 
-            step in the Data Visualisation Pathway.
-        </p>
-
-        <h2>Distribution</h2>
-
-        <p>
-            One of the most common forms of descriptive analysis is the description of data distribution.
-        </p>
-
-        <p>
-            In theory, a sample collecting numerical information about a variable 
-            (for example, the height of a group of people) would have a normal distribution, 
-            meaning that if plotted it would resemble a bell-shaped curve.
-        </p>
-
-        <p>
-            Going back to the people heights example, this means that many people will have heights 
-            clustering around a central value, while progressively fewer people will have much lower or higher heights.
-        </p>
-
-        <p>
-            Normally distributed samples are at the basis of many inferential statistics methods, 
-            and therefore it is very important to understand your sample before choosing a specific method.
-        </p>
-
-        <p>
-            However, this principle is often more applicable to the exact sciences than to the Social Sciences and Humanities. 
-            Data in these disciplines are often not normally distributed, and this needs to be taken into consideration during analysis.
-        </p>
-
-        <p>
-            This issue can partially be addressed through the 
-            <strong>Central Limit Theorem</strong>.
-        </p>
-
-        <ul>
+          <ul style="padding-left: 1em; margin-left: 0">
             <li>
-                <a href="https://www.youtube.com/watch?v=rzFX5NWojp0" target="_blank">
-                    Normal Distribution Explained
-                </a>
+              <a
+                href="https://media.ed.ac.uk/media/6.%20Choosing%20Appropriate%20Summary%20Statistics%20for%20Continuous%20Data%20/1_jzsgqr6i"
+                target="_blank"
+              >
+                Choosing Appropriate Summary Statistics for Continuous Data
+              </a>
             </li>
 
             <li>
-                <a href="https://www.youtube.com/watch?v=YAlJCEDH2uY&t=16s" target="_blank">
-                    Central Limit Theorem Explained
-                </a>
-            </li>
-        </ul>
-
-        <h2>Measures of Central Tendency and Dispersion</h2>
-
-        <p>
-            Two additional characteristics that can be examined for each variable are:
-        </p>
-
-        <ul>
-            <li><strong>Measures of Central Tendency</strong> — how values cluster together</li>
-            <li><strong>Measures of Dispersion</strong> — how values spread out</li>
-        </ul>
-
-        <h3>Measures of Central Tendency</h3>
-
-        <ul>
-            <li>
-                <strong>Arithmetic Mean:</strong> 
-                the average value of the sample 
-                (sum of all values divided by the number of values)
+              <a
+                href="https://media.ed.ac.uk/media/Data%20Scales%20and%20Summary%20Statistics/1_etr0c9y7"
+                target="_blank"
+              >
+                Data Scales and Summary Statistics
+              </a>
             </li>
 
             <li>
-                <strong>Median:</strong> 
-                the middle value splitting the higher and lower halves of the sample
+              <a
+                href="https://media.ed.ac.uk/media/Statistics/1_xs4af4ge"
+                target="_blank"
+              >
+                Statistics
+              </a>
             </li>
-
-            <li>
-                <strong>Mode:</strong> 
-                the most frequently repeated value in a sample
-            </li>
-        </ul>
-
-        <h3>Measures of Dispersion</h3>
-
-        <ul>
-            <li>
-                <strong>Variance:</strong> 
-                the squared mean difference between each value and the mean, 
-                divided by the sample size minus one
-            </li>
-
-            <li>
-                <strong>Standard Deviation (SD):</strong> 
-                a measure of the amount of variation or dispersion within a set of values. 
-                A low standard deviation indicates that values tend to be close to the mean.
-            </li>
-        </ul>
-
-        <p>
-            <a href="https://www.youtube.com/watch?v=SzZ6GpcfoQY&t=1s" target="_blank">
-                Discover more about measures of central tendency and dispersion
-            </a>
-        </p>
-
-<h2>Where to find more information</h2>
-
-<div class="row pathway-resource-cards">
-
-    <div class="column">
-
-        <h3>Our Tutorials</h3>
-
-              <img src="../../images/uta_tom_dorsey.jpg" alt="Statistics learning resources">
-
-        <ul style="padding-left: 1em; margin-left: 0;">
-
-            <li><a href="https://github.com/DCS-training/DescriptiveStatistics">Descriptive Statistics</a></li>
-            <li><a href="https://github.com/DCS-training/Digital-Method-of-the-Month/blob/main/DMM%20Docs/Descriptive%20and%20inferential%20statistics.md">Descriptive and Inferential Statistics Digital Method of the Month</a></li>
-            <li><a href="https://github.com/DCS-training/Intro-to-Statistics">Placeholder Tutorial 3</a></li>
-            <li><a href="https://github.com/DCS-training/R-Visualisation-and-Stats">Data Visualisation and Statistics with R</a></li>
-            <li><a href="https://github.com/DCS-training/summerschool2024-stream2/tree/main/Day4">Day 4 of the 2024 summer school (Data Analysis)</a></li>
-
-        </ul>
-
-    </div>
-
-    <div class="column">
-
-        <h3>UoE Resources</h3>
-
-        <img src="../../images/Playfair Header.png" alt="University of Edinburgh resources">
-
-        <ul style="padding-left: 1em; margin-left: 0;">
-
-            <li>
-                <a href="https://media.ed.ac.uk/media/6.%20Choosing%20Appropriate%20Summary%20Statistics%20for%20Continuous%20Data%20/1_jzsgqr6i" target="_blank">
-                    Choosing Appropriate Summary Statistics for Continuous Data
-                </a>
-            </li>
-
-            <li>
-                <a href="https://media.ed.ac.uk/media/Data%20Scales%20and%20Summary%20Statistics/1_etr0c9y7" target="_blank">
-                    Data Scales and Summary Statistics
-                </a>
-            </li>
-
-            <li>
-                <a href="https://media.ed.ac.uk/media/Statistics/1_xs4af4ge" target="_blank">
-                    Statistics
-                </a>
-            </li>
-
-        </ul>
-
-    </div>
-
- 
-    <div class="column">
-
-        <h3>Self-Guided Learning</h3>
-
-              <img src="../../images/other_laptop.jpg" alt="Self-guided learning resources">
-
-        <ul style="padding-left: 1em; margin-left: 0;">
-
-            <li>
-                <a href="https://www.youtube.com/c/joshstarmer/featured" target="_blank">
-                    Stat Quest Youtube Channel
-                </a>
-            </li>
-
-            <li>
-                <a href="https://towardsdatascience.com/discovering-the-treasures-of-22-r-exploratory-analysis-packages-9bb1c5b4e6f8/" target="_blank">
-                    Exploratory Analysis with R
-                </a>
-            </li>
-
-            <li>
-                <a href="http://www.sthda.com/english/wiki/descriptive-statistics-and-graphics" target="_blank">
-                    Summarising Stats with R
-                </a>
-            </li>
-
-            <li>
-                <a href="https://r4ds.had.co.nz/exploratory-data-analysis.html" target="_blank">
-                    Exploratory data analysis with R
-                </a>
-            </li>
-
-            <li>
-                <a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/06_calculate_statistics.html" target="_blank">
-                    Summarising Stats with Python and Pandas
-                </a>
-            </li>
-
-            <li>
-                <a href="https://www.datasciencemadesimple.com/descriptive-summary-statistics-python-pandas/" target="_blank">
-                    Descriptive stats with Python
-                </a>
-            </li>
-
-
-        </ul>
-
-    </div>
-
-</div>
-        <div style="text-align: center; margin: 2rem 0;">
-
-            <a href="statistics-home-page.html" 
-               style="
-                    display: inline-block;
-                    padding: 0.75rem 2rem;
-                    background: #e7135d;
-                    color: #fff;
-                    font-size: 1.1rem;
-                    font-family: 'Montserrat', sans-serif;
-                    border-radius: 5px;
-                    text-decoration: none;
-               ">
-
-                Back to the Statistical Analysis Pathway Homepage
-
-            </a>
-
+          </ul>
         </div>
 
-    </div>
+        <div class="column">
+          <h3>Self-Guided Learning</h3>
 
-</body>
+          <img
+            src="../../images/other_laptop.jpg"
+            alt="Self-guided learning resources"
+          />
+
+          <ul style="padding-left: 1em; margin-left: 0">
+            <li>
+              <a
+                href="https://www.youtube.com/c/joshstarmer/featured"
+                target="_blank"
+              >
+                Stat Quest Youtube Channel
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://towardsdatascience.com/discovering-the-treasures-of-22-r-exploratory-analysis-packages-9bb1c5b4e6f8/"
+                target="_blank"
+              >
+                Exploratory Analysis with R
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="http://www.sthda.com/english/wiki/descriptive-statistics-and-graphics"
+                target="_blank"
+              >
+                Summarising Stats with R
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://r4ds.had.co.nz/exploratory-data-analysis.html"
+                target="_blank"
+              >
+                Exploratory data analysis with R
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/06_calculate_statistics.html"
+                target="_blank"
+              >
+                Summarising Stats with Python and Pandas
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.datasciencemadesimple.com/descriptive-summary-statistics-python-pandas/"
+                target="_blank"
+              >
+                Descriptive stats with Python
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div style="text-align: center; margin: 2rem 0">
+        <a
+          href="statistics-home-page.html"
+          style="
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: #e7135d;
+            color: #fff;
+            font-size: 1.1rem;
+            font-family: &quot;Montserrat&quot;, sans-serif;
+            border-radius: 5px;
+            text-decoration: none;
+          "
+        >
+          Back to the Statistical Analysis Pathway Homepage
+        </a>
+      </div>
+    </div>
+  </body>
 </html>

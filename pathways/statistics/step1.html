@@ -1,128 +1,309 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Step 1 Statistics</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Google Fonts: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../styles.css">
-
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
     <nav class="top-menu" aria-label="Main navigation">
       <div class="top-menu-home">
-         <a href="../../index.html">Home</a>
-         <a href="https://efi.ed.ac.uk/research/data-led-methods-and-research-technology/" target="_blank" class="logo-btn">
-      <img src="../../images/efi_logo.png" alt="Site Logo">
-    </a>
-        </div>
-        <div class="top-menu-links">
-      <a href="../../Tutorials/Tutorials Homepage.html" rel="noopener noreferrer" title="Tutorials">Tutorials</a>
-      <a href="../../SearchGitHub.html" rel="noopener noreferrer" title="Search our Repositories">Repositories</a>
-      <a href="../pathway-home.html" rel="noopener noreferrer" title="Pathways of Learning">Pathways</a>
-      <a href="../../research-adaptation.html" rel="noopener noreferrer" title="Research Adaptation Guidance">Research Adaptation</a>
-      <a href="../../workflows/workflows-home-page.html" rel="noopener noreferrer" title="Webscraping">Webscraping</a>
-       </div>
+        <a href="../../index.html">Home</a>
+        <a
+          href="https://efi.ed.ac.uk/research/data-led-methods-and-research-technology/"
+          target="_blank"
+          class="logo-btn"
+        >
+          <img src="../../images/efi_logo.png" alt="Site Logo" />
+        </a>
+      </div>
+      <div class="top-menu-links">
+        <a
+          href="../../Tutorials/Tutorials Homepage.html"
+          rel="noopener noreferrer"
+          title="Tutorials"
+          >Tutorials</a
+        >
+        <a
+          href="../../SearchGitHub.html"
+          rel="noopener noreferrer"
+          title="Search our Repositories"
+          >Repositories</a
+        >
+        <a
+          href="../pathway-home.html"
+          rel="noopener noreferrer"
+          title="Pathways of Learning"
+          >Pathways</a
+        >
+        <a
+          href="../../research-adaptation.html"
+          rel="noopener noreferrer"
+          title="Research Adaptation Guidance"
+          >Research Adaptation</a
+        >
+        <a
+          href="../../workflows/workflows-home-page.html"
+          rel="noopener noreferrer"
+          title="Webscraping"
+          >Webscraping</a
+        >
+      </div>
     </nav>
     <div class="container">
-            <div class="site-header">
-      <div class="site-header-title">EFI Data-led Research Methods </div>
-    </div>
-        <h1>Principles of Data Organisation and FAIR Data</h1>
-        <p>There is plenty of guidance available on what makes it a good table: this page contains some of the key points and additional information that will help you to make your data usable by other researchers. </p>
-        <h2>Principles of data organisation</h2>
-        <p>The general rules of using spreadsheet to record data are: </p>
-        <ol>
-            <li><strong>Put all your variables in columns</strong> - Variables are the things you’re measuring, like ‘weight’ or ‘temperature’. </li>
-            <li><strong>Put each observation in its own row</strong> - For example, if you are collecting information on books in a library, every row will identify one specific book.  </li>
-            <li><strong>Don’t combine multiple pieces of information in one cell </strong> - Break down your information into basic types,  so that it can be used and sorted in many ways. This may help you in future and is import\ant to enable reuse.</li>
-            <li><strong>Leave the raw data raw </strong>- don’t change it! Always work on a copy of your data, no matter if you have received a spreadsheet from someone else, or if you are making modifications to your own data. This means you can always go back to check the original later.   </li>
-            <li><strong>Export the cleaned data to a text-based format like CSV (comma-separated values) </strong> - This ensures that anyone can use the data and is the format required by most data repositories. </li>
-        </ol>
-        <p> </p>
-        <p> </p>
-        <p><strong>Other important tips for populating your table: </strong> </p>
-        <ul>
-            <li>Avoid using multiple tables within one spreadsheet. </li>
-            <li>Avoid spreading data across multiple tabs (but do use a new tab to record data cleaning or manipulations). </li>
-            <li>Record zeros as zeros. Do not leave an empty cell to identify 0 values. </li>
-            <li>Use an appropriate null value to record missing data. 0 is different than no data and your table should represent it. </li>
-            <li>Don’t use formatting to convey information or to make your spreadsheet look pretty. Anything that is done on the spreadsheet that will combine cell and use colour to convey information will not be read by other software. </li>
-            <li>Place comments in a separate column. Only data should go into your table. All the additional information must go on an associated metadata file. </li>
-            <li>Record units in column headers.  In 6 months' time you won't remember which unit you used. </li>
-            <li>Avoid spaces, numbers and special characters in column headers. </li>
-            <li>Avoid special characters in your data. Not all software is able to encode them. </li>
-        </ul>
-        <a href="https://datacarpentry.org/spreadsheet-ecology-lesson/">From Data Carpentry's Spreadsheet Ecology Lesson</a>
+      <div class="site-header">
+        <div class="site-header-title">EFI Data-led Research Methods</div>
+      </div>
+      <h1>Principles of Data Organisation and FAIR Data</h1>
+      <p>
+        There is plenty of guidance available on what makes a good table:
+        this page contains some of the key points and additional information
+        that will help you to make your data usable by other researchers.
+      </p>
+      <h2>Principles of data organisation</h2>
+      <p>The general rules of using spreadsheets to record data are:</p>
+      <ol>
+        <li>
+          <strong>Put all your variables in columns</strong> - Variables are the
+          things you’re measuring, like ‘weight’ or ‘temperature’.
+        </li>
+        <li>
+          <strong>Put each observation in its own row</strong> - For example, if
+          you are collecting information on books in a library, every row will
+          identify one specific book.
+        </li>
+        <li>
+          <strong
+            >Don’t combine multiple pieces of information in one cell
+          </strong>
+          - Break down your information into basic types, so that it can be used
+          and sorted in many ways. This may help you in the future and is important
+          to enable reuse.
+        </li>
+        <li>
+          <strong>Leave the raw data raw </strong>- don’t change it! Always work
+          on a copy of your data, no matter if you have received a spreadsheet
+          from someone else, or if you are making modifications to your own
+          data. This means you can always go back to check the original later.
+        </li>
+        <li>
+          <strong
+            >Export the cleaned data to a text-based format like CSV
+            (comma-separated values)
+          </strong>
+          - This ensures that anyone can use the data and is the format required
+          by most data repositories.
+        </li>
+      </ol>
+      <p></p>
+      <p></p>
+      <p><strong>Other important tips for populating your table: </strong></p>
+      <ul>
+        <li>Avoid using multiple tables within one spreadsheet.</li>
+        <li>
+          Avoid spreading data across multiple tabs (but do use a new tab to
+          record data cleaning or manipulations).
+        </li>
+        <li>
+          Record zeros as zeros. Do not leave an empty cell to identify 0
+          values.
+        </li>
+        <li>
+          Use an appropriate null value to record missing data. 0 is different
+          than no data and your table should represent it.
+        </li>
+        <li>
+          Don’t use formatting to convey information or to make your spreadsheet
+          look pretty. Anything that is done on the spreadsheet that will
+          combine cells and use colour to convey information will not be read by
+          other software.
+        </li>
+        <li>
+          Place comments in a separate column. Only data should go into your
+          table. All the additional information must go on an associated
+          metadata file.
+        </li>
+        <li>
+          Record units in column headers. In 6 months' time you won't remember
+          which unit you used.
+        </li>
+        <li>Avoid spaces, numbers and special characters in column headers.</li>
+        <li>
+          Avoid special characters in your data. Not all software is able to
+          encode them.
+        </li>
+      </ul>
+      <a href="https://datacarpentry.org/spreadsheet-ecology-lesson/" target="_blank"
+        >From Data Carpentry's Spreadsheet Ecology Lesson</a
+      >
 
-        <h2>Make your data fair: Fair Data Principles</h2>
-        <p>FAIR is an acronym that stands for: Findable, Accessible, Interoperable, Reproducible. It references a protocol published in 2016 and it is nowadays widely accepted as the standard protocol for data interoperability.</p>
+      <h2>Make your data fair: FAIR Data Principles</h2>
+      <p>
+        FAIR is an acronym that stands for: Findable, Accessible, Interoperable,
+        Reproducible. It references a protocol published in 2016 and it is
+        nowadays widely accepted as the standard protocol for data
+        interoperability.
+      </p>
 
-        <ul>
-            <li><strong>Findable </strong> - The first step in (re)using data is to find them. Metadata and data should be easy to find for both humans and computers. Machine-readable metadata are essential for automatic discovery of datasets and services. </li>
-            <li><strong>Accessible </strong> - Once the user finds the required data, she/he needs to know how they can be accessed, possibly including authentication and authorisation.  </li>
-            <li><strong>Interoperable  </strong> The data usually need to be integrated with other data. In addition, the data need to interoperate with applications or workflows for analysis, storage, and processing</li>
-            <li><strong>Reusable </strong>- The ultimate goal of FAIR is to optimise the reuse of data. To achieve this, metadata and data should be well-described so that they can be replicated and/or combined in different settings.</li>
-        </ul>
+      <ul>
+        <li>
+          <strong>Findable </strong> - The first step in (re)using data is to
+          find them. Metadata and data should be easy to find for both humans
+          and computers. Machine-readable metadata are essential for automatic
+          discovery of datasets and services.
+        </li>
+        <li>
+          <strong>Accessible </strong> - Once the user finds the required data,
+          they need to know how they can be accessed, possibly including
+          authentication and authorisation.
+        </li>
+        <li>
+          <strong>Interoperable </strong> - The data usually need to be integrated
+          with other data. In addition, the data need to interoperate with
+          applications or workflows for analysis, storage, and processing.
+        </li>
+        <li>
+          <strong>Reusable </strong> - The ultimate goal of FAIR is to optimise
+          the reuse of data. To achieve this, metadata and data should be
+          well-described so that they can be replicated and/or combined in
+          different settings.
+        </li>
+      </ul>
 
-        <a href="https://www.go-fair.org/fair-principles">Fair Data Principles</a>
+      <a href="https://www.go-fair.org/fair-principles" target="_blank">FAIR Data Principles</a>
 
-         <h2>Where to find more information</h2>
+      <h2>Where to find more information</h2>
 
-         <div class="row pathway-resource-cards">
-            <div class="column">
-                <h3>Our Tutorials</h3>
-                <img src="../../images/uta_tom_dorsey.jpg" alt="Image of group in workshop">
-                <ul style="padding-left: 1em; margin-left: 0;">
-                    <li><a href="https://uoe.sharepoint.com/sites/DataintheWild" target="_blank">Data in the Wild (UoE login needed)</a></li>
-                </ul>
-                
-            </div>
-             <div class="column">
-                <h3>UoE Resources</h3>
-                <img src="../../images/Playfair Header.png" alt="Image of group in workshop">
-                <ul style="padding-left: 1em; margin-left: 0;">
-                     <li><a href="https://mantra.edina.ac.uk/" target="_blank">Mantra. Research Data Management Training </a></li>
-                </ul>
-                
-            </div>
-             <div class="column">
-                <h3>Self-Guided Learning</h3>
-                <img src="../../images/other_laptop.jpg" alt="Image of group in workshop">
-                <ul style="padding-left: 1em; margin-left: 0;">
-                     <li><a href="https://www.linkedin.com/learning/introduction-to-data-science-2" target="_blank">Chapter 5 of Introduction to data science Linkedin learning course</a></li>
-                     <li><a href="https://www.youtube.com/watch?v=5CllhgYKutc" target="_blank">Fair Data Webinar</a></li>
-                     <li><a href="https://www.youtube.com/watch?v=jFekfemq7qU" target="_blank">RDA Webinar with Dr. Michel Dumontier: FAIR principles</a></li>
-                     <li><a href="https://www.youtube.com/watch?v=CsrWenP3Dfo" target="_blank">How and why make your research data FAIR? </a></li>
-                     <li><a href="hhttps://datacarpentry.org/spreadsheet-ecology-lesson/" target="_blank">Data Carpentry Spreadsheet for Ecology Class</a></li>
-                     <li><a href="https://datacarpentry.org/spreadsheets-socialsci/" target="_blank">Data Carpentry Spreadsheet for Social Scientists Class</a></li>
-                     <li><a href="https://librarycarpentry.org/lc-spreadsheets/" target="_blank">Tidy Data For Librarians (Library Carpentry)</a></li>
-                     <li><a href="https://matthewlincoln.net/2020/05/26/tidy-data-for-humanities.html" target="_blank">Tidy Data for Humanities</a></li>
-                     <li><a href="https://www.cessda.eu/Training/Training-Resources/Library/Data-Management-Expert-Guide" target="_blank"> Guide to FAIR data</a></li>
-                </ul>
-                
-            </div>
+      <div class="row pathway-resource-cards">
+        <div class="column">
+          <h3>Our Tutorials</h3>
+          <img
+            src="../../images/uta_tom_dorsey.jpg"
+            alt="Image of group in workshop"
+          />
+          <ul style="padding-left: 1em; margin-left: 0">
+            <li>
+              <a
+                href="https://uoe.sharepoint.com/sites/DataintheWild"
+                target="_blank"
+                >Data in the Wild (UoE login needed)</a
+              >
+            </li>
+          </ul>
         </div>
+        <div class="column">
+          <h3>UoE Resources</h3>
+          <img
+            src="../../images/Playfair Header.png"
+            alt="Image of group in workshop"
+          />
+          <ul style="padding-left: 1em; margin-left: 0">
+            <li>
+              <a href="https://mantra.ed.ac.uk/" target="_blank"
+                >Mantra. Research Data Management Training
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3>Self-Guided Learning</h3>
+          <img
+            src="../../images/other_laptop.jpg"
+            alt="Image of group in workshop"
+          />
+          <ul style="padding-left: 1em; margin-left: 0">
+            <li>
+              <a
+                href="https://www.linkedin.com/learning/introduction-to-data-science-2"
+                target="_blank"
+                >Chapter 5 of Introduction to data science LinkedIn learning
+                course</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=5CllhgYKutc"
+                target="_blank"
+                >FAIR Data Webinar</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=jFekfemq7qU"
+                target="_blank"
+                >RDA Webinar with Dr. Michel Dumontier: FAIR principles</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=CsrWenP3Dfo"
+                target="_blank"
+                >How and why make your research data FAIR?
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://datacarpentry.org/spreadsheet-ecology-lesson/"
+                target="_blank"
+                >Data Carpentry Spreadsheet for Ecology Class</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://datacarpentry.org/spreadsheets-socialsci/"
+                target="_blank"
+                >Data Carpentry Spreadsheet for Social Scientists Class</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://librarycarpentry.org/lc-spreadsheets/"
+                target="_blank"
+                >Tidy Data For Librarians (Library Carpentry)</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://matthewlincoln.net/2020/05/26/tidy-data-for-humanities.html"
+                target="_blank"
+                >Tidy Data for Humanities</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.cessda.eu/Training/Training-Resources/Library/Data-Management-Expert-Guide"
+                target="_blank"
+              >
+                Guide to FAIR data</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
 
-        <div style="text-align: center; margin: 2rem 0;">
-  <a href="statistics-home-page.html"
-     style="
-       display: inline-block;
-       padding: 0.75rem 2rem;
-       background: #e7135d ;
-       color: #fff;
-       font-size: 1.1rem;
-       font-family: 'Montserrat', sans-serif;
-       border-radius: 5px;
-       text-decoration: none;
-   ">
-    Back to the Statistical Analysis Pathway Homepage
-  </a>
-</div>
-
-
-
-</div>
-</body>
+      <div style="text-align: center; margin: 2rem 0">
+        <a
+          href="statistics-home-page.html"
+          style="
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: #e7135d;
+            color: #fff;
+            font-size: 1.1rem;
+            font-family: &quot;Montserrat&quot;, sans-serif;
+            border-radius: 5px;
+            text-decoration: none;
+          "
+        >
+          Back to the Statistical Analysis Pathway Homepage
+        </a>
+      </div>
+    </div>
+  </body>
 </html>
