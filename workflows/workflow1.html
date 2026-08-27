@@ -15,29 +15,6 @@
         font-size: 28px;
       }
 
-      /* TOP MENU (unchanged style, simplified placement-safe) */
-      .top-menu {
-        width: 100%;
-        padding: 1rem;
-        display: flex;
-        justify-content: space-between;
-        box-sizing: border-box;
-      }
-
-      .top-menu-home a {
-        background: #000;
-        color: #fff;
-        padding: 0.4rem 0.8rem;
-        border-radius: 6px;
-        text-decoration: none;
-      }
-
-      .top-menu-links a {
-        color: #000;
-        text-decoration: none;
-        font-weight: bold;
-      }
-
       /* VIEWPORT */
       .viewport {
         width: 100%;
@@ -82,11 +59,11 @@
 
   <body>
     <!-- TOP MENU -->
-    <div class="top-menu" aria-label="Main navigation">
+    <nav class="top-menu" aria-label="Main navigation">
       <div class="top-menu-home">
         <a href="../index.html">Home</a>
-        <a href="https://efi.ed.ac.uk/" class="logo-btn">
-          <img src="../images/logo.png" alt="Site Logo" />
+        <a href="https://efi.ed.ac.uk/" target="_blank" class="logo-btn">
+          <img src="../images/efi_logo.png" alt="Site Logo" />
         </a>
       </div>
       <div class="top-menu-links">
@@ -96,7 +73,7 @@
         <a href="../research-adaptation.html">Research Adaptation</a>
         <a href="workflows-home-page.html">Workflows</a>
       </div>
-    </div>
+    </nav>
 
     <div class="main-content">
       <div class="site-header">
