@@ -259,16 +259,15 @@ p {
 }
 
 .training-fellows-section .row {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
   align-items: stretch;
 }
 
 .training-fellows-section .column {
-  flex: 1 1 calc(33.333% - 2rem);
   box-sizing: border-box;
-  min-width: 260px;
+  min-width: 0;
   background: #fff;
   border-radius: 8px;
   padding: 1.25rem;
@@ -487,6 +486,10 @@ select:focus {
   .row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .training-fellows-section .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 900px) {
@@ -506,6 +509,10 @@ select:focus {
 
 @media (max-width: 640px) {
   .row {
+    grid-template-columns: 1fr;
+  }
+
+  .training-fellows-section .row {
     grid-template-columns: 1fr;
   }
 
